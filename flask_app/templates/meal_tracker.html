@@ -15,7 +15,7 @@
         <!-- style="background-color: #B3A494; -->
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Flex Program</a>
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -41,36 +41,87 @@
         </div>
     </nav>
 
-    <main class="m-4 px-5">  <!-- main section (left) -->
-        <div class="w-75">  <!-- left side -->
-            <div class="d-flex gap-4">  <!-- left top section -->
-                <div class="w-10">
-                    <!-- "daily" info incl current date and sub-header -->
-                    <div class="bg-info text-light text-center p-2">
-                        <p class="fs-3">Feb 1</p>
-                        <p class="fs-3">2023</p>
-                    </div>
-                    <h3 class="text-info fw-bold pt-5">Daily Menu</h3>
-                </div>    
-                <h1 class="fw-bolder">MEAL TRACKER</h1>
-            </div>
-            <div> <!-- left bottom section -->
-                <div></div>   <!-- meal time blocks -->
-                <div></div>   <!-- text lines -->
-                <div></div>  <!-- "hydrate" section -->
+    <!-- <main>
+        <div class="container d-flex gap-3 align-items-end mt-4">
+            <h1 class="fw-bolder pt-5 bg-info text-light w-75">flex MEAL TRACKER</h1>
+            <div class="input-group mb-3 w-25 h-50">
+                <input type="number" class="form-control" name="weight" placeholder="lbs">
+                <input type="submit" value="Weight In!" class="btn btn-outline-primary">
             </div>
         </div>
-        <div>   <!-- right side -->
-            <div>  <!-- right top section -->
-                <div></div>   <!-- weigh-in field -->
-                <div></div>   <!-- food type field header boxes -->
+        <div class="container"> 
+            <div>
+                <div class="form-floating w-100 mb-2">
+                    <textarea class="form-control border border-2 border-secondary" name="breakfast" style="height: 100px"></textarea>
+                    <label for="breakfast">Breakfast</label>
+                </div>
             </div>
-            <div> <!-- right bottom section -->
-                <div></div>   <!-- food type blocks for value input -->
-                <div></div>   <!-- food type total-->
+            <div class="form-floating w-100 mb-2">
+                <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 100px"></textarea>
+                <label for="lunch">Lunch</label>
+            </div>
+            <div class="form-floating w-100 mb-2">
+                <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 100px"></textarea>
+                <label for="dinner">Dinner</label>
+            </div>
+            <div class="form-floating w-100 mb-2">
+                <textarea class="form-control border border-2 border-secondary" name="snack" style="height: 100px"></textarea>
+                <label for="snack">Snack</label>
+            </div>
+            <div></div> 
+        </div>
+    </main> -->
+
+    <main class="container d-flex gap-2 justify-content-between m-4">  
+        <div class="container w-75"> 
+            <h1 class="fw-bolder pt-5 bg-info text-light rounded">flex MEAL TRACKER</h1>
+            <h3 class="text-info fw-bold pt-3">Daily Menu</h3>
+            <div> 
+                <div class="form-floating w-100 mb-2">
+                    <textarea class="form-control border border-2 border-secondary" name="breakfast" style="height: 100px"></textarea>
+                    <label for="breakfast">Breakfast</label>
+                </div>
+                <div class="form-floating w-100 mb-2">
+                    <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 100px"></textarea>
+                    <label for="lunch">Lunch</label>
+                </div>
+                <div class="form-floating w-100 mb-2">
+                    <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 100px"></textarea>
+                    <label for="dinner">Dinner</label>
+                </div>
+                <div class="form-floating w-100 mb-2">
+                    <textarea class="form-control border border-2 border-secondary" name="snack" style="height: 100px"></textarea>
+                    <label for="snack">Snack</label>
+                </div>
+                <div></div> 
+            </div>
+        </div>
+        <div class="container w-25">  
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" name="weight" placeholder="lbs">
+                <input type="submit" value="Weight In!" class="btn btn-outline-primary">
+            </div>
+            <div>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text bg-primary text-light">Proteins</span>
+                    <input type="number" class="form-control">
+                </div>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text bg-primary text-light">Fats</span>
+                    <input type="number" class="form-control">
+                </div>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text bg-primary text-light">Fruits</span>
+                    <input type="number" class="form-control">
+                </div>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text bg-primary text-light">Veggies</span>
+                    <input type="number" class="form-control">
+                </div>
             </div>
         </div>
     </main>  
+
     <div>   <!-- bottom -->
         <div></div>  <!-- "flex daily bonus" checkbox and field -->
         <div></div>  <!-- notes caption and text lines -->

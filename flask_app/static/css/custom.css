@@ -1,5 +1,5 @@
 .bg-primary {
-    background-color: #603143 !important;
+    background-color: #4f4b42 !important;
 }
 
 .bg-secondary {
@@ -11,7 +11,7 @@
 }
 
 .text-primary {
-    color: #603143 !important;
+    color: #4f4b42 !important;
 }
 
 .text-secondary {
@@ -20,4 +20,23 @@
 
 .text-info {
     color: #603143 !important;
+}
+
+.border-secondary {
+    border-color: #B3A494 !important;
+}
+
+.border-info {
+    border-color: #603143 !important;
+}
+
+.btn-outline-primary {
+    color: #4f4b42;
+    border-color: #4f4b42;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #4f4b42;
+    border-color: #4f4b42;
 }
