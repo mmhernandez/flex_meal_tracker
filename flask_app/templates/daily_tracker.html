@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Tracker</title>
+
+    <!-- styling -->
+    <link rel="stylesheet" href="../static/css/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark py-3 px-5 bg-secondary">
+        <!-- style="background-color: #B3A494; -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Flex Program</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <form>
+        <div class="container d-flex gap-3 align-items-end mt-4">
+            <h1 class="fw-bolder pt-5 bg-info text-light w-75">flex MEAL TRACKER</h1>
+            <div class="w-25">
+                <h3 class="text-end text-secondary">Today's date here</h3>
+                <div class="input-group mb-3 w-100 h-50">
+                    <input type="number" class="form-control" name="weight" placeholder="lbs">
+                    <input type="submit" value="Weight In!" class="btn btn-outline-primary">
+                </div>
+            </div>
+        </div>
+        <div class="container"> 
+            <h3 class="text-info fw-bold pt-3">Daily Menu</h3>
+            <div class="d-flex gap-3">
+                <div class="form-floating w-75 mb-5">
+                    <textarea class="form-control border border-2 border-secondary" name="breakfast" style="height: 150px"></textarea>
+                    <label for="breakfast">Breakfast</label>
+                </div>
+                <div class="w-25 mt-1">
+                    <div class="row mb-4">
+                        <div class="form-floating col">
+                            <input type="number" name="proteins" class="form-control">
+                            <label for="proteins" class="form-label">Proteins</label>
+                        </div>
+                        <div class="form-floating col">
+                            <input type="number" name="fats" class="form-control">
+                            <label for="fats" class="form-label">Fats</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-floating col">
+                            <input type="number" name="fruits" class="form-control">
+                            <label for="fruits" class="form-label">Fruits</label>
+                        </div>
+                        <div class="form-floating col">
+                            <input type="number" name="vegetables" class="form-control">
+                            <label for="vegetables" class="form-label">Vegetables</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex gap-3 my-3">
+                <div class="form-floating mb-5 w-75">
+                    <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px"></textarea>
+                    <label for="lunch">Lunch</label>
+                </div>
+                <div class="w-25 mt-1">
+                    <div class="row mb-4">
+                        <div class="form-floating col">
+                            <input type="number" name="proteins" class="form-control">
+                            <label for="proteins" class="form-label">Proteins</label>
+                        </div>
+                        <div class="form-floating col">
+                            <input type="number" name="fats" class="form-control">
+                            <label for="fats" class="form-label">Fats</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-floating col">
+                            <input type="number" name="fruits" class="form-control">
+                            <label for="fruits" class="form-label">Fruits</label>
+                        </div>
+                        <div class="form-floating col">
+                            <input type="number" name="vegetables" class="form-control">
+                            <label for="vegetables" class="form-label">Vegetables</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex gap-3 my-3">
+                <div class="form-floating w-75 mb-5">
+                    <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px"></textarea>
+                    <label for="snack">Dinner</label>
+                </div>
+                <div class="w-25 mt-1">
+                    <div class="row mb-4">
+                        <div class="form-floating col">
+                            <input type="number" name="proteins" class="form-control">
+                            <label for="proteins" class="form-label">Proteins</label>
+                        </div>
+                        <div class="form-floating col">
+                            <input type="number" name="fats" class="form-control">
+                            <label for="fats" class="form-label">Fats</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-floating col">
+                            <input type="number" name="fruits" class="form-control">
+                            <label for="fruits" class="form-label">Fruits</label>
+                        </div>
+                        <div class="form-floating col">
+                            <input type="number" name="vegetables" class="form-control">
+                            <label for="vegetables" class="form-label">Vegetables</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex gap-3 my-3">
+                <div class="form-floating w-75 mb-5">
+                    <textarea class="form-control border border-2 border-secondary" name="snack" style="height: 150px"></textarea>
+                    <label for="snack">Snack</label>
+                </div>
+                <div class="w-25 mt-1">
+                    <div class="row mb-4">
+                        <div class="form-floating col">
+                            <input type="number" name="proteins" class="form-control">
+                            <label for="proteins" class="form-label">Proteins</label>
+                        </div>
+                        <div class="form-floating col">
+                            <input type="number" name="fats" class="form-control">
+                            <label for="fats" class="form-label">Fats</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-floating col">
+                            <input type="number" name="fruits" class="form-control">
+                            <label for="fruits" class="form-label">Fruits</label>
+                        </div>
+                        <div class="form-floating col">
+                            <input type="number" name="vegetables" class="form-control">
+                            <label for="vegetables" class="form-label">Vegetables</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h3 class="text-info fw-bold mt-3">Hydrate</h3>
+            <p>Click a water droplet for every 8oz of water water you drink throughout the day!</p>
+            <div class="d-flex justify-items-between">
+                <button type="button" class="btn btn-lg btn-outline-success active mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </button>
+                <button type="button" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </button>
+                <button type="button" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </button>
+                <button type="button" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </button>
+                <button type="button" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </button>
+                <button type="button" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </button>
+                <button type="button" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </button>
+                <button type="button" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="container my-5">
+            <h3 class="text-info fw-bold">Daily Summary</h3>
+        </div>
+    
+        <div>   <!-- bottom -->
+            <div></div>  <!-- "flex daily bonus" checkbox and field -->
+            <div></div>  <!-- notes caption and text lines -->
+        </div>
+    
+    </form>
+
+
+    <footer></footer>
+</body>
+</html>
