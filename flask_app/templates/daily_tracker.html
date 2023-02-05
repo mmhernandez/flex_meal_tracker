@@ -7,12 +7,11 @@
     <title>Daily Tracker</title>
 
     <!-- styling -->
-    <link rel="stylesheet" href="../static/css/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark py-3 px-5 bg-secondary">
-        <!-- style="background-color: #B3A494; -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-3 px-5 bg-grey">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Flex Program</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -43,9 +42,9 @@
 
     <form>
         <div class="container d-flex gap-3 align-items-end mt-4">
-            <h1 class="fw-bolder pt-5 bg-info text-light w-75">flex MEAL TRACKER</h1>
+            <h1 class="fw-bolder pt-5 bg-info text-light w-75 rounded">flex MEAL TRACKER</h1>
             <div class="w-25">
-                <h3 class="text-end text-secondary">Today's date here</h3>
+                <h3 class="text-end text-dark">Today's date here</h3>
                 <div class="input-group mb-3 w-100 h-50">
                     <input type="number" class="form-control" name="weight" placeholder="lbs">
                     <input type="submit" value="Weight In!" class="btn btn-outline-primary">
@@ -54,12 +53,13 @@
         </div>
         <div class="container"> 
             <h3 class="text-info fw-bold pt-3">Daily Menu</h3>
-            <div class="d-flex gap-3">
+            <div class="d-flex">
+                <img src="../static/images/breakfast.jpg" alt="" class="meal-img">
                 <div class="form-floating w-75 mb-5">
                     <textarea class="form-control border border-2 border-secondary" name="breakfast" style="height: 150px"></textarea>
                     <label for="breakfast">Breakfast</label>
                 </div>
-                <div class="w-25 mt-1">
+                <div class="w-25 mt-1 ms-4">
                     <div class="row mb-4">
                         <div class="form-floating col">
                             <input type="number" name="proteins" class="form-control">
@@ -82,12 +82,13 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex gap-3 my-3">
+            <div class="d-flex my-3">
+                <img src="../static/images/lunch.jpg" alt="" class="meal-img">
                 <div class="form-floating mb-5 w-75">
                     <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px"></textarea>
                     <label for="lunch">Lunch</label>
                 </div>
-                <div class="w-25 mt-1">
+                <div class="w-25 mt-1 ms-4">
                     <div class="row mb-4">
                         <div class="form-floating col">
                             <input type="number" name="proteins" class="form-control">
@@ -110,12 +111,13 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex gap-3 my-3">
+            <div class="d-flex my-3">
+                <img src="../static/images/dinner.jpg" alt="" class="meal-img">
                 <div class="form-floating w-75 mb-5">
                     <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px"></textarea>
                     <label for="snack">Dinner</label>
                 </div>
-                <div class="w-25 mt-1">
+                <div class="w-25 mt-1 ms-4">
                     <div class="row mb-4">
                         <div class="form-floating col">
                             <input type="number" name="proteins" class="form-control">
@@ -138,12 +140,13 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex gap-3 my-3">
+            <div class="d-flex my-3">
+                <img src="../static/images/snack.jpg" alt="" class="meal-img">
                 <div class="form-floating w-75 mb-5">
                     <textarea class="form-control border border-2 border-secondary" name="snack" style="height: 150px"></textarea>
                     <label for="snack">Snack</label>
                 </div>
-                <div class="w-25 mt-1">
+                <div class="w-25 mt-1 ms-4">
                     <div class="row mb-4">
                         <div class="form-floating col">
                             <input type="number" name="proteins" class="form-control">
@@ -229,10 +232,7 @@
             <div></div>  <!-- "flex daily bonus" checkbox and field -->
             <div></div>  <!-- notes caption and text lines -->
         </div>
-    
     </form>
-
-
     <footer></footer>
 </body>
 </html>
