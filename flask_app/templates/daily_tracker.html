@@ -218,7 +218,11 @@
                 </button>
             </div>
         </div>
-        <div class="container my-5">
+        <div class="container my-5 pb-5">
+            <input type="checkbox" name="daily_bonus" class="form-check-input fs-2 me-3">
+            <label for="daily_bonus" class="form-check-label fs-3 fw-bold text-info">Flex<sup>TM</sup> Daily Bonus</label>
+        </div>
+        <div class="container mb-5">
             <h3 class="text-info fw-bold">Daily Summary</h3>
             <p>Total macro nutrients for the day.</p>
             <div class="d-flex gap-5">
@@ -252,10 +256,9 @@
                 </div>
             </div>
         </div>
-    
-        <div>   <!-- bottom -->
-            <div></div>  <!-- "flex daily bonus" checkbox and field -->
-            <div></div>  <!-- notes caption and text lines -->
+        <div class="container mb-5">
+            <label for="notes" class="form-label fs-3 fw-bold text-info">Notes</label>
+            <textarea name="notes" id="" cols="30" rows="7" class="form-control"></textarea>
         </div>
     </form>
     <footer class="bg-grey py-3">
