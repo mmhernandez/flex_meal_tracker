@@ -13,6 +13,11 @@
   background-size: cover;
 }
 
+.bg-cover-image-opaque {
+  background: url(../../../images/body_under_construction_opaque.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
