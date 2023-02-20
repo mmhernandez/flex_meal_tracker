@@ -1,5 +1,9 @@
-/* CREATE ROOT 
-    WITH COLOR VARIABLES */
+:root {
+    --maroon: #603143;
+    --dark: #202B27;
+    --grey: #a6a9a2;
+    --tan: #E6D2BC;
+}
 
 /* header */
 .cover-container {
@@ -7,7 +11,7 @@
 }
 
 .nav-masthead .nav-link {
-    color: rgba(255, 255, 255, .5);
+    color: #ffffff80;
     border-bottom: .25rem solid transparent;
 }
 
@@ -38,14 +42,15 @@
 
 .bg-secondary {
     background-color: #B3A494 !important;
+    /* color: #E6D2BC; */
 }
 
 .bg-info {
-    background-color: #603143 !important;
+    background-color: var(--maroon) !important;
 }
 
 .bg-grey {
-    background-color: #BFC2C1 !important;
+    background-color: var(--grey) !important;
 }
 
 .text-primary {
@@ -57,11 +62,11 @@
 }
 
 .text-info {
-    color: #603143 !important;
+    color: var(--maroon) !important;
 }
 
 .text-grey {
-    color: #A6A9A2 !important;
+    color: var(--grey) !important;
 }
 
 .border-secondary {
@@ -69,7 +74,7 @@
 }
 
 .border-info {
-    border-color: #603143 !important;
+    border-color: var(--maroon) !important;
 }
 
 .btn-outline-primary {
@@ -115,8 +120,8 @@
     box-shadow: 0 0 0 0.25rem rgba(85, 88, 92, 0.25);
 }
 .form-check-input:checked {
-background-color: #603143;
-border-color: #603143;
+background-color: var(--maroon);
+border-color: var(--maroon);
 }
 .form-control:focus {
     color: #212529;
@@ -136,10 +141,10 @@ border-color: #603143;
 
 /* calendar */
 .calendar {
-    background: #2b4450;
+    background: #626363;
     border-radius: 4px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, .3);
-    height: 501px;
+    height: 530px;
     perspective: 1000;
     transition: .9s;
     transform-style: preserve-3d;
@@ -151,7 +156,7 @@ border-color: #603143;
 }
 
 .current-date {
-    border-bottom: 1px solid rgba(73, 114, 133, .6);
+    border-bottom: 1px solid var(--grey);
     display: flex;
     justify-content: space-between;
     padding: 30px 40px;
@@ -202,8 +207,8 @@ border-color: #603143;
 }
 
 .weeks span.active {
-    background: #f78536;
-    border-radius: 50%;
+    background: var(--maroon);
+    border-radius: 40%;
 }
 
 .weeks span:not(.last-month):hover {
@@ -211,17 +216,12 @@ border-color: #603143;
     font-weight: 600;
 }
 
-.event {
-    position: relative;
+.week-days > li {
+    list-style: none;
 }
 
-.event:after {
-    content: '•';
-    color: #f78536;
-    font-size: 1.4em;
-    position: absolute;
-    right: -4px;
-    top: -4px;
+.event {
+    color: var(--maroon);
 }
 
 /* footer */
