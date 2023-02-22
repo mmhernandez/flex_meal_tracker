@@ -120,6 +120,9 @@
 .bg-tan {
     background-color: var(--tan) !important;
 }
+.text-tan {
+    color: var(--tan) !important;
+}
 .btn-tan {
     color: #000;
     background-color: var(--tan);
@@ -337,7 +340,7 @@ pre {
 } */
 
 .calendar-days div.curr-date {
-    background-color: var(--maroon);
+    background-color: var(--tan);
     color: #fff;
     border-radius: 50%;
 }
