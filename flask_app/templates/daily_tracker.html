@@ -15,9 +15,8 @@
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
             <nav class="mb-auto">
                 <div>
-                    <a href="#" class="nav nav-link float-md-start fs-4 py-1 text-light">Flex Program</a>
+                    <a href="/" class="nav nav-link float-md-start fs-4 py-1 text-light">Flex Program</a>
                     <nav class="nav nav-masthead justify-content-center float-md-end">
-                        <a class="nav-link fw-bold py-1 px-0" href="#">Home</a>
                         <a class="nav-link fw-bold py-1 px-0 me-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" >Calendar</a>
                         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                             <div class="offcanvas-header">
@@ -57,50 +56,44 @@
                         </div>
                         <a class="nav-link fw-bold py-1 px-0" href="#">Dashboard</a>
                         <a class="nav-link fw-bold py-1 px-0" href="#">Account</a>
+                        <a class="nav-link fw-bold py-1 px-0" href="/logout">Logout</a>
                     </nav>
                 </div>
             </nav>
         </div>
     </header>
     <main>
-        <div class="d-flex justify-content-between w-75 mx-auto mt-4 pt-5 ps-1 bg-tan rounded">
+        <div class="d-flex justify-content-between w-75 mx-auto mt-4 mb-5 pt-5 ps-1 bg-tan rounded">
             <h1 class="text-dark fw-bolder">flex</br>DAILY MEAL TRACKER</h1>
             <p class="fs-1 text-white pe-1">**date here**</p>
-        </div>
-        <div class="w-25 mx-auto">
-            <h3 class="text-center text-dark">Today's date here</h3>
-            <div class="input-group mb-3 w-100 h-50">
-                <input type="number" class="form-control" name="weight" placeholder="lbs">
-                <input type="submit" value="Weight In!" class="btn btn-outline-primary">
-            </div>
         </div>
         <div class="d-flex justify-content-between gap-3 w-75 mx-auto">
             <!-- Breakfast -->
             <div class="container bg-white rounded p-3 shadow">
                 <div class="d-flex justify-content-between">
                     <p class="fs-3 text-dark">Breakfast</p>
-                    <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropBreakfast">Edit</button>
+                    <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropBreakfast">Update</button>
                 </div>
                 <div class="form-floating mb-5">
-                    <textarea class="form-control border border-2 border-secondary" name="breakfast" style="height: 150px"></textarea>
+                    <textarea class="form-control border border-2 border-secondary" name="breakfast" style="height: 150px" disabled></textarea>
                     <label for="breakfast">Breakfast meal details</label>
                 </div>
                 <div class="d-flex justify-content-between gap-1">
                     <div class="form-floating">
-                        <input type="number" name="proteins" class="form-control">
-                        <label for="proteins" class="form-label">Proteins</label>
+                        <input type="number" name="proteins" class="form-control" disabled>
+                        <label for="proteins" class="form-label">Proteins (oz)</label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" name="fats" class="form-control">
-                        <label for="fats" class="form-label">Fats</label>
+                        <input type="number" name="fats" class="form-control" disabled>
+                        <label for="fats" class="form-label">Fats (serving)</label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" name="fruits" class="form-control">
-                        <label for="fruits" class="form-label">Fruits</label>
+                        <input type="number" name="fruits" class="form-control" disabled>
+                        <label for="fruits" class="form-label">Fruits (qty)</label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" name="vegetables" class="form-control">
-                        <label for="vegetables" class="form-label">Vegetables</label>
+                        <input type="number" name="vegetables" class="form-control" disabled>
+                        <label for="vegetables" class="form-label">Veggies (qty)</label>
                     </div>
                 </div>
             </div>
@@ -116,8 +109,9 @@
                             <div class="modal-body">
                                 <div class="form-floating mb-5">
                                     <textarea class="form-control border border-2 border-secondary" name="breakfast" style="height: 150px"></textarea>
-                                    <label for="breakfast">Breakfast meal details</label>
+                                    <label for="breakfast">Add your breakfast meal details</label>
                                 </div>
+                                <p class="text-primary">Add the quantity of each food type below:</p>
                                 <div class="d-flex justify-content-between gap-1">
                                     <div class="form-floating">
                                         <input type="number" name="proteins" class="form-control">
@@ -149,28 +143,28 @@
             <div class="container bg-white rounded p-3 shadow">
                 <div class="d-flex justify-content-between">
                     <p class="fs-3 text-dark">Lunch</p>
-                    <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropLunch">Edit</button>
+                    <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropLunch">Update</button>
                 </div>
                 <div class="form-floating mb-5">
-                    <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px"></textarea>
+                    <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px" disabled></textarea>
                     <label for="lunch">Lunch meal details</label>
                 </div>
                 <div class="d-flex justify-content-between gap-1">
                     <div class="form-floating">
-                        <input type="number" name="proteins" class="form-control">
-                        <label for="proteins" class="form-label">Proteins</label>
+                        <input type="number" name="proteins" class="form-control" disabled>
+                        <label for="proteins" class="form-label">Proteins (oz)</label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" name="fats" class="form-control">
-                        <label for="fats" class="form-label">Fats</label>
+                        <input type="number" name="fats" class="form-control" disabled>
+                        <label for="fats" class="form-label">Fats (serving)</label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" name="fruits" class="form-control">
-                        <label for="fruits" class="form-label">Fruits</label>
+                        <input type="number" name="fruits" class="form-control" disabled>
+                        <label for="fruits" class="form-label">Fruits (qty)</label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" name="vegetables" class="form-control">
-                        <label for="vegetables" class="form-label">Vegetables</label>
+                        <input type="number" name="vegetables" class="form-control" disabled>
+                        <label for="vegetables" class="form-label">Veggies (qty)</label>
                     </div>
                 </div>
             </div>
@@ -185,24 +179,25 @@
                         <form action="" class="container p-3 my-3">
                             <div class="modal-body">
                                 <div class="form-floating mb-5">
-                                    <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px"></textarea>
-                                    <label for="lunch">Lunch meal details</label>
+                                    <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px" disabled></textarea>
+                                    <label for="lunch">Add your lunch meal details</label>
                                 </div>
+                                <p class="text-primary">Add the quantity of each food type below:</p>
                                 <div class="d-flex justify-content-between gap-1">
                                     <div class="form-floating">
-                                        <input type="number" name="proteins" class="form-control">
+                                        <input type="number" name="proteins" class="form-control" disabled>
                                         <label for="proteins" class="form-label">Proteins</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="number" name="fats" class="form-control">
+                                        <input type="number" name="fats" class="form-control" disabled>
                                         <label for="fats" class="form-label">Fats</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="number" name="fruits" class="form-control">
+                                        <input type="number" name="fruits" class="form-control" disabled>
                                         <label for="fruits" class="form-label">Fruits</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="number" name="vegetables" class="form-control">
+                                        <input type="number" name="vegetables" class="form-control" disabled>
                                         <label for="vegetables" class="form-label">Vegetables</label>
                                     </div>
                                 </div>
@@ -221,28 +216,28 @@
             <div class="container bg-white rounded p-3 shadow">
                 <div class="d-flex justify-content-between">
                     <p class="fs-3 text-dark">Dinner</p>
-                    <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropDinner">Edit</button>
+                    <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropDinner">Update</button>
                 </div>
                 <div class="form-floating mb-5">
-                    <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px"></textarea>
+                    <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px" disabled></textarea>
                     <label for="dinner">Dinner meal details</label>
                 </div>
                 <div class="d-flex justify-content-between gap-1">
                     <div class="form-floating">
-                        <input type="number" name="proteins" class="form-control">
-                        <label for="proteins" class="form-label">Proteins</label>
+                        <input type="number" name="proteins" class="form-control" disabled>
+                        <label for="proteins" class="form-label">Proteins (oz)</label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" name="fats" class="form-control">
-                        <label for="fats" class="form-label">Fats</label>
+                        <input type="number" name="fats" class="form-control" disabled>
+                        <label for="fats" class="form-label">Fats (serving)</label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" name="fruits" class="form-control">
-                        <label for="fruits" class="form-label">Fruits</label>
+                        <input type="number" name="fruits" class="form-control" disabled>
+                        <label for="fruits" class="form-label">Fruits (qty)</label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" name="vegetables" class="form-control">
-                        <label for="vegetables" class="form-label">Vegetables</label>
+                        <input type="number" name="vegetables" class="form-control" disabled>
+                        <label for="vegetables" class="form-label">Veggies (qty)</label>
                     </div>
                 </div>
             </div>
@@ -257,24 +252,25 @@
                         <form action="" class="container p-3 my-3">
                             <div class="modal-body">
                                 <div class="form-floating mb-5">
-                                    <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px"></textarea>
-                                    <label for="dinner">Dinner meal details</label>
+                                    <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px" disabled></textarea>
+                                    <label for="dinner">Add your dinner meal details</label>
                                 </div>
+                                <p class="text-primary">Add the quantity of each food type below:</p>
                                 <div class="d-flex justify-content-between gap-1">
                                     <div class="form-floating">
-                                        <input type="number" name="proteins" class="form-control">
+                                        <input type="number" name="proteins" class="form-control" disabled>
                                         <label for="proteins" class="form-label">Proteins</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="number" name="fats" class="form-control">
+                                        <input type="number" name="fats" class="form-control" disabled>
                                         <label for="fats" class="form-label">Fats</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="number" name="fruits" class="form-control">
+                                        <input type="number" name="fruits" class="form-control" disabled>
                                         <label for="fruits" class="form-label">Fruits</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="number" name="vegetables" class="form-control">
+                                        <input type="number" name="vegetables" class="form-control" disabled>
                                         <label for="vegetables" class="form-label">Vegetables</label>
                                     </div>
                                 </div>
@@ -291,28 +287,28 @@
             <div class="container bg-white rounded p-3 shadow">
                 <div class="d-flex justify-content-between">
                     <p class="fs-3 text-dark">Snack</p>
-                    <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropSnack">Edit</button>
+                    <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropSnack">Update</button>
                 </div>
                 <div class="form-floating mb-5">
-                    <textarea class="form-control border border-2 border-secondary" name="snack" style="height: 150px"></textarea>
+                    <textarea class="form-control border border-2 border-secondary" name="snack" style="height: 150px" disabled></textarea>
                     <label for="snack">Snack meal details</label>
                 </div>
                 <div class="d-flex justify-content-between gap-1">
                     <div class="form-floating">
-                        <input type="number" name="proteins" class="form-control">
-                        <label for="proteins" class="form-label">Proteins</label>
+                        <input type="number" name="proteins" class="form-control" disabled>
+                        <label for="proteins" class="form-label">Proteins (oz)</label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" name="fats" class="form-control">
-                        <label for="fats" class="form-label">Fats</label>
+                        <input type="number" name="fats" class="form-control" disabled>
+                        <label for="fats" class="form-label">Fats (serving)</label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" name="fruits" class="form-control">
-                        <label for="fruits" class="form-label">Fruits</label>
+                        <input type="number" name="fruits" class="form-control" disabled>
+                        <label for="fruits" class="form-label">Fruits (qty)</label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" name="vegetables" class="form-control">
-                        <label for="vegetables" class="form-label">Vegetables</label>
+                        <input type="number" name="vegetables" class="form-control" disabled>
+                        <label for="vegetables" class="form-label">Veggies (qty)</label>
                     </div>
                 </div>
             </div>
@@ -328,8 +324,9 @@
                             <div class="modal-body">
                                 <div class="form-floating mb-5">
                                     <textarea class="form-control border border-2 border-secondary" name="snack" style="height: 150px"></textarea>
-                                    <label for="snack">Snack meal details</label>
+                                    <label for="snack">Add your snack details</label>
                                 </div>
+                                <p class="text-primary">Add the quantity of each food type below:</p>
                                 <div class="d-flex justify-content-between gap-1">
                                     <div class="form-floating">
                                         <input type="number" name="proteins" class="form-control">
@@ -358,102 +355,251 @@
                 </div>
             </div>
         </div>
-        
-        <div class="container w-75 mt-5">
-            <h3 class="fw-bold mt-3">Hydrate</h3>
-            <p>Click a water droplet for every 8oz of water water you drink throughout the day!</p>
-            <div class="d-flex justify-items-between">
-                <button type="button" class="btn btn-lg btn-outline-success active mx-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                    </svg>
-                </button>
-                <button type="button" class="btn btn-lg btn-outline-success mx-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                    </svg>
-                </button>
-                <button type="button" class="btn btn-lg btn-outline-success mx-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                    </svg>
-                </button>
-                <button type="button" class="btn btn-lg btn-outline-success mx-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                    </svg>
-                </button>
-                <button type="button" class="btn btn-lg btn-outline-success mx-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                    </svg>
-                </button>
-                <button type="button" class="btn btn-lg btn-outline-success mx-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                    </svg>
-                </button>
-                <button type="button" class="btn btn-lg btn-outline-success mx-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                    </svg>
-                </button>
-                <button type="button" class="btn btn-lg btn-outline-success mx-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                    </svg>
-                </button>
+        <div class="container rounded bg-white shadow p-4 mx-auto w-75 mt-5">
+            <div class="d-flex align-items-center justify-content-between gap-5">
+                <div>
+                    <h3 class="fw-bold mt-3">Weight & Measurements</h3>
+                    <p>Weigh-in and add your daily measurements</p>
+                </div>
+                <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropWeightMeasurements">Update</button>
+            </div>
+            
+            <div>
+                <div class="d-flex align-items-start gap-5">
+                    <div>
+                        <label for="weight" class="form-label">Weight</label>
+                        <div class="mb-3 input-group">
+                            <input type="number" name="weight" class="form-control" disabled>
+                            <span class="input-group-text">lbs</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="bust" class="form-label">Bust</label>
+                        <div class="mb-3 input-group">
+                            <input type="number" name="bust" class="form-control" disabled>
+                            <span class="input-group-text">inches</span>
+                        </div>
+                        <label for="midsection" class="form-label">Waist</label>
+                        <div class="mb-3 input-group">
+                            <input type="number" name="midsection" class="form-control" disabled>
+                            <span class="input-group-text">inches</span>
+                        </div>
+                        <label for="abdomen" class="form-label">Abdomen</label>
+                        <div class="mb-3 input-group">
+                            <input type="number" name="abdomen" class="form-control" disabled>
+                            <span class="input-group-text">inches</span>
+                        </div>
+                        <label for="hips" class="form-label">Hips</label>
+                        <div class="mb-3 input-group">
+                            <input type="number" name="hips" class="form-control" disabled>
+                            <span class="input-group-text">inches</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="right_arm" class="form-label">Right Arm</label>
+                        <div class="mb-3 input-group">
+                            <input type="number" name="right_arm" class="form-control" disabled>
+                            <span class="input-group-text">inches</span>
+                        </div>
+                        <label for="left_arm" class="form-label">Left Arm</label>
+                        <div class="mb-3 input-group">
+                            <input type="number" name="left_arm" class="form-control" disabled>
+                            <span class="input-group-text">inches</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="right_thigh" class="form-label">Right Thigh</label>
+                        <div class="mb-3 input-group">
+                            <input type="number" name="right_thigh" class="form-control" disabled>
+                            <span class="input-group-text">inches</span>
+                        </div>
+                        <label for="left_thigh" class="form-label">Left Thigh</label>
+                        <div class="mb-3 input-group">
+                            <input type="number" name="left_thigh" class="form-control" disabled>
+                            <span class="input-group-text">inches</span>
+                        </div>
+                        <label for="right_calf" class="form-label">Right Calf</label>
+                        <div class="mb-3 input-group">
+                            <input type="number" name="right_calf" class="form-control" disabled>
+                            <span class="input-group-text">inches</span>
+                        </div>
+                        <label for="left_calf" class="form-label">Left Calf</label>
+                        <div class="mb-3 input-group">
+                            <input type="number" name="left_calf" class="form-control" disabled>
+                            <span class="input-group-text">inches</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdropWeightMeasurements" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content bg-light">
+                            <div class="modal-header bg-dark text-light">
+                                <h5 class="modal-title">Daily Weight & Measurements</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="mx-auto">
+                                <form action="" class="container p-3 my-3">
+                                    <label for="weight" class="form-label">Weight</label>
+                                    <div class="mb-3 input-group">
+                                        <input type="number" name="weight" class="form-control">
+                                        <span class="input-group-text">lbs</span>
+                                    </div>
+                                    <label for="bust" class="form-label">Bust</label>
+                                    <div class="mb-3 input-group">
+                                        <input type="number" name="bust" class="form-control">
+                                        <span class="input-group-text">inches</span>
+                                    </div>
+                                    <label for="midsection" class="form-label">Waist</label>
+                                    <div class="mb-3 input-group">
+                                        <input type="number" name="midsection" class="form-control">
+                                        <span class="input-group-text">inches</span>
+                                    </div>
+                                    <label for="abdomen" class="form-label">Abdomen</label>
+                                    <div class="mb-3 input-group">
+                                        <input type="number" name="abdomen" class="form-control">
+                                        <span class="input-group-text">inches</span>
+                                    </div>
+                                    <label for="hips" class="form-label">Hips</label>
+                                    <div class="mb-3 input-group">
+                                        <input type="number" name="hips" class="form-control">
+                                        <span class="input-group-text">inches</span>
+                                    </div>
+                                    <label for="right_arm" class="form-label">Right Arm</label>
+                                    <div class="mb-3 input-group">
+                                        <input type="number" name="right_arm" class="form-control">
+                                        <span class="input-group-text">inches</span>
+                                    </div>
+                                    <label for="left_arm" class="form-label">Left Arm</label>
+                                    <div class="mb-3 input-group">
+                                        <input type="number" name="left_arm" class="form-control">
+                                        <span class="input-group-text">inches</span>
+                                    </div>
+                                    <label for="right_thigh" class="form-label">Right Thigh</label>
+                                    <div class="mb-3 input-group">
+                                        <input type="number" name="right_thigh" class="form-control">
+                                        <span class="input-group-text">inches</span>
+                                    </div>
+                                    <label for="left_thigh" class="form-label">Left Thigh</label>
+                                    <div class="mb-3 input-group">
+                                        <input type="number" name="left_thigh" class="form-control">
+                                        <span class="input-group-text">inches</span>
+                                    </div>
+                                    <label for="right_calf" class="form-label">Right Calf</label>
+                                    <div class="mb-3 input-group">
+                                        <input type="number" name="right_calf" class="form-control">
+                                        <span class="input-group-text">inches</span>
+                                    </div>
+                                    <label for="left_calf" class="form-label">Left Calf</label>
+                                    <div class="mb-3 input-group">
+                                        <input type="number" name="left_calf" class="form-control">
+                                        <span class="input-group-text">inches</span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <input type="submit" value="Save" class="btn btn-tan text-light h-75">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
             </div>
         </div>
-        <div class="container my-5 pb-5 w-75">
-            <input type="checkbox" name="daily_bonus" class="form-check-input fs-2 me-3">
-            <label for="daily_bonus" class="form-check-label fs-3 fw-bold">Flex<sup>TM</sup> Daily Bonus</label>
+        
+        <div class="container rounded bg-white shadow p-4 w-75 mt-5">
+            <h3 class="fw-bold mt-3">Hydration</h3>
+            <p>Click a water droplet for every 8oz of water water you drink throughout the day!</p>
+            <div class="d-flex justify-items-between">
+                <a href="" class="btn btn-lg btn-outline-success active mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </a>
+                <a href="" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </a>
+                <a href="" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </a>
+                <a href="" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </a>
+                <a href="" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </a>
+                <a href="" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </a>
+                <a href="" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </a>
+                <a href="" class="btn btn-lg btn-outline-success mx-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                    </svg>
+                </a>
+            </div>
         </div>
-        <div class="container mb-5 w-75 bg-white shadow p-3 rounded">
+
+        <div class="container my-5 w-75 bg-white shadow p-3 rounded">
             <h3 class="fw-bold">Daily Summary</h3>
             <p>Total macro nutrients for the day.</p>
             <div class="d-flex gap-5">
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                    <div class="card-header bg-tan">Protein</div>
+                <div class="card text-white bg-primary mb-3 w-25">
+                    <div class="card-header fw-bold bg-dark text-tan">Lean Proteins</div>
                     <div class="card-body bg-light text-dark">
-                        <h5 class="card-title">total # protiens</h5>
-                        <p class="card-text">Goal between 20-30 grams</p>
+                        <h5 class="card-title">## protiens</h5>
+                        <p class="card-text">Goal: 8 ounces</p>
                     </div>
                 </div>
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                    <div class="card-header bg-tan">Fats</div>
+                <div class="card text-white bg-primary mb-3 w-25">
+                    <div class="card-header fw-bold bg-dark text-tan">Fats</div>
                     <div class="card-body bg-light text-dark">
-                        <h5 class="card-title">total # fats</h5>
-                        <p class="card-text">Goal between 20-30 grams</p>
+                        <h5 class="card-title">## fats</h5>
+                        <p class="card-text">Goal: 8 servings</p>
                     </div>
                 </div>
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                    <div class="card-header bg-tan">Fruits</div>
+                <div class="card text-white bg-primary mb-3 w-25">
+                    <div class="card-header fw-bold bg-dark text-tan">Fruits</div>
                     <div class="card-body bg-light text-dark">
-                        <h5 class="card-title">total # fruits</h5>
-                        <p class="card-text">Goal between 20-30 grams</p>
+                        <h5 class="card-title">## fruits</h5>
+                        <p class="card-text">Goal: 1 fruit</p>
                     </div>
                 </div>
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                    <div class="card-header bg-tan">Vegetables</div>
+                <div class="card text-white bg-primary mb-3 w-25">
+                    <div class="card-header fw-bold bg-dark text-tan">Vegetables</div>
                     <div class="card-body bg-light text-dark">
-                        <h5 class="card-title">total # veggies</h5>
-                        <p class="card-text">Goal between 20-30 grams</p>
+                        <h5 class="card-title">## veggies</h5>
+                        <p class="card-text">Goal: 6 veggies</p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container mb-5 w-75">
-            <label for="notes" class="form-label fs-3 fw-bold">Notes</label>
-            <textarea name="notes" id="" cols="30" rows="7" class="form-control"></textarea>
+            <div class="container mt-5 pb-5">
+                <input type="checkbox" name="daily_bonus" class="form-check-input fs-2 me-3">
+                <label for="daily_bonus" class="form-check-label fs-3 fw-bold">Flex<sup>TM</sup> Daily Bonus</label>
+            </div>
         </div>
     </main>
     <footer class="bg-dark text-light py-3">
