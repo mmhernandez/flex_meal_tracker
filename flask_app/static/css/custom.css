@@ -204,6 +204,10 @@ border-color: var(--maroon);
     background-size: cover;
 }
 
+.border-bottom-tan {
+    border-bottom: 1.5px solid var(--tan) !important;
+}
+
 .shadow {
     box-shadow: var(--shadow);
 }

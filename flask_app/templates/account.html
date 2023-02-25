@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <a class="nav-link fw-bold py-1 px-0" href="#">Dashboard</a>
-                        <a class="nav-link fw-bold py-1 px-0" href="#">Account</a>
+                        <a class="nav-link fw-bold py-1 px-0 active" href="#">Account</a>
                     </nav>
                 </div>
             </nav>
@@ -64,9 +64,92 @@
     </header>
     <main>
         <h1 class="text-tan fw-bolder text-center my-4">Account</h1>
-        <form action="" class="container w-75 mx-auto mt-4 pt-5 ps-1 bg-light rounded">
-
-        </form>
+        <div class="container w-50 mx-auto px-5 pb-3 bg-white rounded shadow">
+            <div class="d-flex justify-content-end">
+                <a href="" class="btn btn-tan mt-4 text-end">Edit</a>
+            </div>
+            <div class="mb-3">
+                <h3 class="mt-2 mb-4 border-bottom-tan">Personal Information</h3>
+                <div class="d-flex justify-content-between gap-3">
+                    <div class="mb-3 w-50">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="text" name="first_name" class="form-control">
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input type="text" name="last_name" class="form-control">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control">
+                </div>
+            </div>
+            <div class="mt-4">
+                <h3 class="mt-5 mb-4 border-bottom-tan">Starting Weight & Measurements</h3>
+                <div class="d-flex justify-content-between gap-3">
+                    <div class="mb-3 w-50">
+                        <label for="weight" class="form-label">Weight</label>
+                        <input type="number" name="weight" class="form-control">
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="bust" class="form-label">Bust (inches)</label>
+                        <input type="number" name="bust" class="form-control">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between gap-3">
+                    <div class="mb-3 w-50">
+                        <label for="midsection" class="form-label">Midsection (inches)</label>
+                        <input type="number" name="midsection" class="form-control">
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="abdomen" class="form-label">Abdomen (inches)</label>
+                        <input type="number" name="abdomen" class="form-control">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between gap-3">
+                    <div class="mb-3 w-50">
+                        <label for="right_arm" class="form-label">Right Arm (inches)</label>
+                        <input type="number" name="right_arm" class="form-control">
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="left_arm" class="form-label">Left Arm (inches)</label>
+                        <input type="number" name="left_arm" class="form-control">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between gap-3">
+                    <div class="mb-3 w-50">
+                        <label for="right_thigh" class="form-label">Right Thigh (inches)</label>
+                        <input type="number" name="right_thigh" class="form-control">
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="left_thigh" class="form-label">Left Thigh (inches)</label>
+                        <input type="number" name="left_thigh" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a href="" class="btn btn-tan mt-4 text-end">Edit</a>
+            </div>
+        </div>
     </main>
+    <footer class="bg-dark text-light py-3 mt-5">
+        <div class="d-flex w-100 h-100 pt-5 gap-5 cover-container mx-auto">
+            <img src="../static/images/MH-logo-light.png" alt="" class="fload-md-start footer-logo">
+            <div class="float-md-end mx-auto">
+                <p>Created with &#9825 by Melissa Herhandez</p>
+                <p>Source code available on <a class="link text-tan" target="_blank" href="#">GitHub</a></p>
+                <div class="socials">
+                    <p>
+                        <a href="https://github.com/mmhernandez" target="_blank"><img src="https://skillicons.dev/icons?i=github" alt="github" class="footer-social"></a>
+                        <a href="https://www.linkedin.com/in/melissa-dangelo-hernandez/" target="_blank"><img src="https://skillicons.dev/icons?i=linkedin" alt="linkedin" class="footer-social"></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../static/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
