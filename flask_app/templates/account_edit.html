@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+
+    <!-- styling -->
+    <link rel="stylesheet" href="../static/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../static/images/favicon/site.webmanifest">
+</head>
+<body class="bg-light">
+    <header class="bg-dark">
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <nav class="mb-auto">
+                <div>
+                    <a href="/" class="nav nav-link float-md-start fs-4 py-1 text-light">Flex Program</a>
+                    <nav class="nav nav-masthead justify-content-center float-md-end">
+                        <a class="nav-link fw-bold py-1 px-0" href="/">Home</a>
+                        <a class="nav-link fw-bold py-1 px-0" href="/dashboard">Dashboard</a>
+                        <a class="nav-link fw-bold py-1 px-0 active" href="/account">Account</a>
+                        <a class="nav-link fw-bold py-1 px-0" href="/logout">Logout</a>
+                    </nav>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <form action="">
+            <h1 class="text-tan fw-bolder text-center my-4">Account</h1>
+            <div class="container w-50 mx-auto px-5 pb-3 bg-white rounded shadow">
+                <div class="d-flex justify-content-end">
+                    <a href="" class="btn btn-secondary mt-4 text-end me-2">Cancel</a>
+                    <input type="submit" value="Save" class="btn btn-tan mt-4 text-end">
+                </div>
+                <div class="mb-3">
+                    <h3 class="mt-2 mb-4 border-bottom-tan">Personal Information</h3>
+                    <div class="d-flex justify-content-between gap-3">
+                        <div class="mb-3 w-50">
+                            <label for="first_name" class="form-label">First Name</label>
+                            <input type="text" name="first_name" class="form-control">
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label for="last_name" class="form-label">Last Name</label>
+                            <input type="text" name="last_name" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control">
+                    </div>
+                    <!-- Add radio button selection for sex (M/F) -->
+                </div>
+                <div class="mt-4">
+                    <h3 class="mt-5 mb-4 border-bottom-tan">Starting Weight & Measurements</h3>
+                    <div class="d-flex justify-content-between gap-3">
+                        <div class="w-50">
+                            <div class="mb-3">
+                                <label for="weight" class="form-label">Weight <span class="fw-lighter">(lbs)</span></label>
+                                <input type="number" name="weight" class="form-control">
+                            </div>
+                            <p class="fw-lighter fst-italic">Measurements are in inches</p>
+                            <div class="mb-3">
+                                <label for="bust" class="form-label">Bust</label>
+                                <input type="number" name="bust" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="midsection" class="form-label">Waist</label>
+                                <input type="number" name="midsection" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="abdomen" class="form-label">Abdomen</label>
+                                <input type="number" name="abdomen" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="hips" class="form-label">Hips</label>
+                                <input type="number" name="hips" class="form-control">
+                            </div>
+                            <div class="d-flex gap-3">
+                                <div class="mb-3">
+                                    <label for="right_arm" class="form-label">Right Arm</label>
+                                    <input type="number" name="right_arm" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="left_arm" class="form-label">Left Arm</label>
+                                    <input type="number" name="left_arm" class="form-control">
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3">
+                                <div class="mb-3">
+                                    <label for="right_thigh" class="form-label">Right Thigh</label>
+                                    <input type="number" name="right_thigh" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="left_thigh" class="form-label">Left Thigh</label>
+                                    <input type="number" name="left_thigh" class="form-control">
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3">
+                                <div class="mb-3">
+                                    <label for="right_calf" class="form-label">Right Calf</label>
+                                    <input type="number" name="right_calf" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="left_calf" class="form-label">Left Calf</label>
+                                    <input type="number" name="left_calf" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <img src="../static/images/woman-silhoutte-measurements.png" alt="body-measurements-graphic" class="h-50 w-50">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+    <footer class="bg-dark text-light py-3 mt-5">
+        <div class="d-flex w-100 h-100 pt-5 gap-5 cover-container mx-auto">
+            <img src="../static/images/MH-logo-light.png" alt="" class="fload-md-start footer-logo">
+            <div class="float-md-end mx-auto">
+                <p>Created with &#9825 by Melissa Herhandez</p>
+                <p>Source code available on <a class="link text-tan" target="_blank" href="#">GitHub</a></p>
+                <div class="socials">
+                    <p>
+                        <a href="https://github.com/mmhernandez" target="_blank"><img src="https://skillicons.dev/icons?i=github" alt="github" class="footer-social"></a>
+                        <a href="https://www.linkedin.com/in/melissa-dangelo-hernandez/" target="_blank"><img src="https://skillicons.dev/icons?i=linkedin" alt="linkedin" class="footer-social"></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
