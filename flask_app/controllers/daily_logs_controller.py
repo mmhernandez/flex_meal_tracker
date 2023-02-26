@@ -2,7 +2,7 @@ from flask_app import app
 from flask import render_template, session, redirect
 
 # DAILY LOG/TRACKER DISPLAY
-@app.route("/daily_tracker/<date:date>")
+@app.route("/daily_tracker/<date>")
 def daily_tracker():
     if "id" in session:
         return render_template("daily_tracker.html")
