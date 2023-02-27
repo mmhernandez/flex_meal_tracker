@@ -36,25 +36,46 @@
         <h1 class="text-tan fw-bolder text-center my-4">Account</h1>
         <div class="container w-50 mx-auto px-5 pb-3 bg-white rounded shadow">
             <div class="d-flex justify-content-end">
-                <a href="" class="btn btn-secondary mt-4 text-end">Edit</a>
+                <a href="/account/edit" class="btn btn-secondary mt-4 text-end">Edit</a>
             </div>
             <div class="mb-3">
                 <h3 class="mt-2 mb-4 border-bottom-tan">Personal Information</h3>
                 <div class="d-flex justify-content-between gap-3">
                     <div class="mb-3 w-50">
                         <label for="first_name" class="form-label">First Name</label>
-                        <input type="text" name="first_name" class="form-control" disabled>
+                        <input type="text" name="first_name" class="form-control" value="{{user.first_name}}" disabled>
                     </div>
                     <div class="mb-3 w-50">
                         <label for="last_name" class="form-label">Last Name</label>
-                        <input type="text" name="last_name" class="form-control" disabled>
+                        <input type="text" name="last_name" class="form-control" value="{{user.last_name}}" disabled>
                     </div>
                 </div>
                 <div class="mb-4">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" disabled>
+                    <input type="email" name="email" class="form-control" value="{{user.email}}" disabled>
                 </div>
-                <!-- Add radio button selection for sex (M/F) -->
+                <label for="sex" class="mb-2">Sex</label>
+                <div>
+                    {% if user.sex == 0 %}
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sex" value="male" checked disabled>
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sex" value="female" disabled>
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                    {% else %}
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sex" value="male" disabled>
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sex" value="female" checked disabled>
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
             <div class="mt-4">
                 <h3 class="mt-5 mb-4 border-bottom-tan">Starting Weight & Measurements</h3>
@@ -62,53 +83,53 @@
                     <div class="w-50">
                         <div class="mb-3">
                             <label for="weight" class="form-label">Weight <span class="fw-lighter">(lbs)</span></label>
-                            <input type="number" name="weight" class="form-control" disabled>
+                            <input type="number" name="weight" class="form-control" value="{{user.weight}}" disabled>
                         </div>
                         <p class="fw-lighter fst-italic">Measurements are in inches</p>
                         <div class="mb-3">
                             <label for="bust" class="form-label">Bust</label>
-                            <input type="number" name="bust" class="form-control" disabled>
+                            <input type="number" name="bust" class="form-control" value="{{user.bust}}" disabled>
                         </div>
                         <div class="mb-3">
-                            <label for="midsection" class="form-label">Waist</label>
-                            <input type="number" name="midsection" class="form-control" disabled>
+                            <label for="waist" class="form-label">Waist</label>
+                            <input type="number" name="waist" class="form-control" value="{{user.waist}}" disabled>
                         </div>
                         <div class="mb-3">
                             <label for="abdomen" class="form-label">Abdomen</label>
-                            <input type="number" name="abdomen" class="form-control" disabled>
+                            <input type="number" name="abdomen" class="form-control" value="{{user.abdomen}}" disabled>
                         </div>
                         <div class="mb-3">
                             <label for="hips" class="form-label">Hips</label>
-                            <input type="number" name="hips" class="form-control" disabled>
+                            <input type="number" name="hips" class="form-control" value="{{user.hips}}" disabled>
                         </div>
                         <div class="d-flex gap-3">
                             <div class="mb-3">
                                 <label for="right_arm" class="form-label">Right Arm</label>
-                                <input type="number" name="right_arm" class="form-control" disabled>
+                                <input type="number" name="right_arm" class="form-control" value="{{user.right_arm}}" disabled>
                             </div>
                             <div class="mb-3">
                                 <label for="left_arm" class="form-label">Left Arm</label>
-                                <input type="number" name="left_arm" class="form-control" disabled>
+                                <input type="number" name="left_arm" class="form-control" value="{{user.left_arm}}" disabled>
                             </div>
                         </div>
                         <div class="d-flex gap-3">
                             <div class="mb-3">
                                 <label for="right_thigh" class="form-label">Right Thigh</label>
-                                <input type="number" name="right_thigh" class="form-control" disabled>
+                                <input type="number" name="right_thigh" class="form-control" value="{{user.right_thigh}}" disabled>
                             </div>
                             <div class="mb-3">
                                 <label for="left_thigh" class="form-label">Left Thigh</label>
-                                <input type="number" name="left_thigh" class="form-control" disabled>
+                                <input type="number" name="left_thigh" class="form-control" value="{{user.left_thigh}}" disabled>
                             </div>
                         </div>
                         <div class="d-flex gap-3">
                             <div class="mb-3">
                                 <label for="right_calf" class="form-label">Right Calf</label>
-                                <input type="number" name="right_calf" class="form-control" disabled>
+                                <input type="number" name="right_calf" class="form-control" value="{{user.right_calf}}" disabled>
                             </div>
                             <div class="mb-3">
                                 <label for="left_calf" class="form-label">Left Calf</label>
-                                <input type="number" name="left_calf" class="form-control" disabled>
+                                <input type="number" name="left_calf" class="form-control" value="{{user.left_calf}}" disabled>
                             </div>
                         </div>
                     </div>

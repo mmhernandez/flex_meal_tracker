@@ -11,6 +11,8 @@ To Do List:
     (show weight over time and display target/goal weight)
     (show how many inches lost over time)
 
+- Conditional on login/signup page, if logged in user navs to these pages they are not presented with login/signup pages
+
 - Create "About" page that can be located from the "Home" tab (maybe also chaange that to say "About" instead)
 
 - Add sex to Account page.
