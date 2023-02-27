@@ -15,8 +15,7 @@ def login():
         "password": request.form["password"]
     }
     if user.User.validate_login(login_data):
-            user_info = user.User.get_by_email(login_data)
-            session["id"] = user_info.id
+            session["id"] = user.User.get_id_by_email(login_data)
             return redirect ("/dashboard")
     else:
         return redirect("/")
@@ -54,20 +53,21 @@ def show_dashboard():
 @app.route("/account")
 def show_account():
     if "id" in session:
-        user_info = user.User.get_by_id({"id": session["id"]})
+        user_info = user.User.get_all_by_id({"id": session["id"]})
         return render_template("account.html", user=user_info)
     return redirect("/")
 
 @app.route("/account/edit")
 def edit_account():
     if "id" in session:
-        user_info = user.User.get_by_id({"id": session["id"]})
+        user_info = user.User.get_all_by_id({"id": session["id"]})
         return render_template("account_edit.html", user=user_info)
     return redirect("/")
 
 @app.route("/account/update", methods=["POST"])
 def update_account():
     if "id" in session:
+        print(request.form)
         account_info = {
             "id": session["id"],
             "first_name": request.form["first_name"],
@@ -85,17 +85,18 @@ def update_account():
             "right_calf": request.form["right_calf"],
             "left_calf": request.form["left_calf"]
         }
-        user_info = user.User.get_by_id({"id": session["id"]})
+        user_info = user.User.get_all_by_id({"id": session["id"]})
         if request.form["email"] != user_info.email:
             account_info["email"] == request.form["email"]   
         
         if user.User.validate_account_info(account_info):
-        #   if valid, update user info
-        #       pop any saved session info 
+            user.User.update(account_info)
             if "first_name" in session:
                 session.pop("first_name")
             if "last_name" in session:
                 session.pop("last_name")
+            if "email" in session:
+                session.pop("email")
             if "sex" in session:
                 session.pop("sex")
             if "weight" in session:
@@ -120,7 +121,7 @@ def update_account():
                 session.pop("right_calf")
             if "left_calf" in session: 
                 session.pop("left_calf")
-
+                
             return redirect("/account")
         else:
             session["first_name"] = account_info["first_name"]

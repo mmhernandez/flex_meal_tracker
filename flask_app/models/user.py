@@ -9,7 +9,7 @@ db = "flex_program"
 email_regex = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 name_regex = re.compile(r'^[a-zA-Z ,.\'-]+$')
 password_regex = re.compile(r'^(^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$)?(^(?=.*\d)(?=.*[a-z])(?=.*[@#$%^&+=]).*$)?(^(?=.*\d)(?=.*[A-Z])(?=.*[@#$%^&+=]).*$)?(^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$)?$')
-number_regex = re.compile(r'^[0-9]*$')
+number_regex = re.compile(r'^[1-9]\d*(\.\d+)?$')
 
 class User:
     def __init__(self, data):
@@ -68,7 +68,7 @@ class User:
             elif not email_regex.match(data["email"]):
                 flash("Invalid email", "email")
                 is_valid = False
-            elif User.get_by_email(data):
+            elif User.get_id_by_email(data):
                 flash("Email already in use", "email")
                 is_valid = False
         
@@ -94,14 +94,15 @@ class User:
     @staticmethod
     def validate_login(data):
         is_valid = True
-        user_info = User.get_by_email(data)
+        user_pw_dict = User.get_pw_by_email(data)
 
-        if not user_info:
+        if not user_pw_dict:
             flash("Email and/or password incorrect", "login")
             is_valid = False
-        elif not bcrypt.check_password_hash(user_info.password, data['password']):
+        elif not bcrypt.check_password_hash(user_pw_dict['password'], data['password']):
             flash("Email and/or password incorrect", "login")
             is_valid = False
+        
         return is_valid
 
     @staticmethod
@@ -117,7 +118,7 @@ class User:
             flash("Invalid weight", "weight")
             is_valid = False
         if len(data["weight"]) > 1:
-            if int(data["weight"]) > 700:
+            if float(data["weight"]) > 700:
                 flash("Invalid weight, cannot exceed 700lbs", "weight")
                 is_valid = False
 
@@ -126,7 +127,7 @@ class User:
             flash("Invalid bust measurement", "bust")
             is_valid = False
         if len(data["bust"]) > 1:
-            if int(data["bust"]) > 70:
+            if float(data["bust"]) > 70:
                 flash("Invalid bust measurement, cannot exceed 70 inches", "bust")
                 is_valid = False
 
@@ -135,7 +136,7 @@ class User:
             flash("Invalid waist measurement", "waist")
             is_valid = False
         if len(data["waist"]) > 1:
-            if int(data["waist"]) > 100:
+            if float(data["waist"]) > 100:
                 flash("Invalid waist measurement, cannot exceed 100 inches", "waist")
                 is_valid = False
 
@@ -144,7 +145,7 @@ class User:
             flash("Invalid abdomen measurement", "abdomen")
             is_valid = False
         if len(data["abdomen"]) > 1:
-            if int(data["abdomen"]) > 100:
+            if float(data["abdomen"]) > 100:
                 flash("Invalid abdomen measurement, cannot exceed 100 inches", "abdomen")
                 is_valid = False
 
@@ -153,7 +154,7 @@ class User:
             flash("Invalid hip measurement", "hips")
             is_valid = False
         if len(data["hips"]) > 1:
-            if int(data["hips"]) > 100:
+            if float(data["hips"]) > 100:
                 flash("Invalid hip measurement, cannot exceed 100 inches", "hips")
                 is_valid = False
         
@@ -162,7 +163,7 @@ class User:
             flash("Invalid arm measurement", "right_arm")
             is_valid = False
         if len(data["right_arm"]) > 1:
-            if int(data["right_arm"]) > 30:
+            if float(data["right_arm"]) > 30:
                 flash("Invalid arm measurement, cannot exceed 30 inches", "right_arm")
                 is_valid = False
 
@@ -171,7 +172,7 @@ class User:
             flash("Invalid arm measurement", "left_arm")
             is_valid = False
         if len(data["left_arm"]) > 1:
-            if int(data["left_arm"]) > 30:
+            if float(data["left_arm"]) > 30:
                 flash("Invalid arm measurement, cannot exceed 30 inches", "left_arm")
                 is_valid = False
 
@@ -180,7 +181,7 @@ class User:
             flash("Invalid thigh measurement", "right_thigh")
             is_valid = False
         if len(data["right_thigh"]) > 1:
-            if int(data["right_thigh"]) > 40:
+            if float(data["right_thigh"]) > 40:
                 flash("Invalid thigh measurement, cannot exceed 40 inches", "right_thigh")
                 is_valid = False
 
@@ -189,7 +190,7 @@ class User:
             flash("Invalid thigh measurement", "left_thigh")
             is_valid = False
         if len(data["left_thigh"]) > 1:
-            if int(data["left_thigh"]) > 40:
+            if float(data["left_thigh"]) > 40:
                 flash("Invalid thigh measurement, cannot exceed 40 inches", "left_thigh")
                 is_valid = False
 
@@ -198,7 +199,7 @@ class User:
             flash("Invalid calf measurement", "right_calf")
             is_valid = False
         if len(data["right_calf"]) > 1:
-            if int(data["right_calf"]) > 40:
+            if float(data["right_calf"]) > 40:
                 flash("Invalid calf measurement, cannot exceed 40 inches", "right_calf")
                 is_valid = False
 
@@ -207,32 +208,48 @@ class User:
             flash("Invalid calf measurement", "left_calf")
             is_valid = False
         if len(data["left_calf"]) > 1:
-            if int(data["left_calf"]) > 40:
+            if float(data["left_calf"]) > 40:
                 flash("Invalid calf measurement, cannot exceed 40 inches", "left_calf")
                 is_valid = False
         
         return is_valid
     
     @classmethod
-    def get_by_email(cls, data):
+    def get_id_by_email(cls, data):
+        # returns the int id value
         query = '''
-            SELECT *
+            SELECT id
             FROM users
             WHERE email = %(email)s;
         '''
         results = connectToMySQL(db).query_db(query, data)
         if len(results) < 1:
             return False
-        return cls(results[0])
+        return results[0]["id"]
 
     @classmethod
-    def get_by_id(cls, data):
+    def get_pw_by_email(cls, data):
+        # returns a dictionary with the user's pw
         query = '''
-            SELECT * 
+            SELECT password
+            FROM users
+            WHERE email = %(email)s;
+        '''
+        results = connectToMySQL(db).query_db(query, data)
+        if len(results) < 1:
+            return False
+        return results[0]
+
+    @classmethod
+    def get_all_by_id(cls, data):
+        # gets all user data by id, then blanks out the pw
+        query = '''
+            SELECT *
             FROM users
             WHERE id = %(id)s;
         '''
         results = connectToMySQL(db).query_db(query, data)
+        results[0]["password"] = ""
         return cls(results[0])
     
     @classmethod
@@ -247,22 +264,44 @@ class User:
 
     @classmethod
     def update(cls, data):
-        query = '''
-            UPDATE users
-            SET first_name = %(first_name)s,
-                last_name = %(last_name)s,
-                email = %(email)s,
-                sex = %(sex)s,
-                starting_weight = %(starting_weight)s,
-                starting_bust = %(starting_bust)s,
-                starting_waist = %(starting_waist)s,
-                starting_abdomen = %(starting_abdomen)s,
-                starting_hips = %(starting_hips)s,
-                starting_right_arm = %(starting_right_arm)s,
-                starting_left_arm = %(starting_left_arm)s,
-                starting_right_thigh = %(starting_right_thigh)s,
-                starting_left_thigh = %(starting_left_thigh)s,
-                starting_right_calf = %(starting_right_calf)s,
-                starting_left_calf = %(starting_left_calf)s
-            WHERE id = %(id)s;
-        '''
+
+        if "email" in data:
+            query = '''
+                UPDATE users
+                SET first_name = %(first_name)s,
+                    last_name = %(last_name)s,
+                    email = %(email)s,
+                    sex = %(sex)s,
+                    starting_weight = %(weight)s,
+                    starting_bust = %(bust)s,
+                    starting_waist = %(waist)s,
+                    starting_abdomen = %(abdomen)s,
+                    starting_hips = %(hips)s,
+                    starting_right_arm = %(right_arm)s,
+                    starting_left_arm = %(left_arm)s,
+                    starting_right_thigh = %(right_thigh)s,
+                    starting_left_thigh = %(left_thigh)s,
+                    starting_right_calf = %(right_calf)s,
+                    starting_left_calf = %(left_calf)s
+                WHERE id = %(id)s;
+            '''
+        else:
+                query = '''
+                UPDATE users
+                SET first_name = %(first_name)s,
+                    last_name = %(last_name)s,
+                    sex = %(sex)s,
+                    starting_weight = %(weight)s,
+                    starting_bust = %(bust)s,
+                    starting_waist = %(waist)s,
+                    starting_abdomen = %(abdomen)s,
+                    starting_hips = %(hips)s,
+                    starting_right_arm = %(right_arm)s,
+                    starting_left_arm = %(left_arm)s,
+                    starting_right_thigh = %(right_thigh)s,
+                    starting_left_thigh = %(left_thigh)s,
+                    starting_right_calf = %(right_calf)s,
+                    starting_left_calf = %(left_calf)s
+                WHERE id = %(id)s;
+            '''
+        connectToMySQL(db).query_db(query, data)
