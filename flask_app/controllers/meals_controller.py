@@ -6,6 +6,7 @@ from flask import session, redirect
 @app.route("/meal/update/<date>/<meal_type>", methods=["POST"])
 def update_meal(date, meal_type):
     if "id" in session:
-        print(date)
+        # validate meal entry
+        #   if valid, determine if new entry (insert) or updated entry (update)
         return redirect(f"/daily_tracker/{date}")
     return redirect("/")
