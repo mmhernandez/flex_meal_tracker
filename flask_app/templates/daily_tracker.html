@@ -23,7 +23,9 @@
                 <div>
                     <a href="/" class="nav nav-link float-md-start fs-4 py-1 text-light">Flex Program</a>
                     <nav class="nav nav-masthead justify-content-center float-md-end">
+
                         <a class="nav-link fw-bold py-1 px-0 me-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" >Calendar</a>
+                        <!-- Calendar off-canvas pop-out -->
                         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                             <div class="offcanvas-header">
                                 <h5 id="offcanvasRightLabel">Calendar</h5>
@@ -60,6 +62,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <a class="nav-link fw-bold py-1 px-0" href="#">Dashboard</a>
                         <a class="nav-link fw-bold py-1 px-0" href="#">Account</a>
                         <a class="nav-link fw-bold py-1 px-0" href="/logout">Logout</a>
@@ -70,342 +73,376 @@
     </header>
     <main>
         <div class="d-flex justify-content-between w-75 mx-auto mt-4 mb-5 pt-5 ps-1 bg-tan rounded">
-            <h1 class="text-dark fw-bolder">flex</br>DAILY MEAL TRACKER</h1>
+            <h1 class="text-dark fw-bolder me-2">flex</br>DAILY MEAL TRACKER</h1>
             <p class="fs-1 text-white pe-3">{{day.strftime('%b %d, %Y')}}</p>
         </div>
-        
+
+        <!-- Daily Summary -->
         <div class="container my-5 w-75 ">
             <h3 class="fw-bold">Daily Summary</h3>
             <p>Total macro nutrients for the day.</p>
-            <div class="d-flex gap-4">
-                <div class="card text-white bg-primary mb-3 w-25">
-                    <div class="card-header fw-bold bg-dark text-tan">Lean Proteins</div>
-                    <div class="card-body bg-white text-dark">
-                        <h5 class="card-title">## protiens</h5>
-                        <p class="card-text">Goal: 8 ounces</p>
+            <div class="d-flex gap-4 flx-summary">
+                <div class="d-flex gap-4 flx-summary-block">
+                    <div class="card text-white bg-primary mb-3 flx-summary-items">
+                        <div class="card-header fw-bold bg-dark text-tan">Lean Proteins</div>
+                        <div class="card-body bg-white text-dark">
+                            <h5 class="card-title">## protiens</h5>
+                            <p class="card-text">Goal: 8 ounces</p>
+                        </div>
+                    </div>
+                    <div class="card text-white bg-primary mb-3 flx-summary-items">
+                        <div class="card-header fw-bold bg-dark text-tan">Fats</div>
+                        <div class="card-body bg-white text-dark">
+                            <h5 class="card-title">## fats</h5>
+                            <p class="card-text">Goal: 8 servings</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card text-white bg-primary mb-3 w-25">
-                    <div class="card-header fw-bold bg-dark text-tan">Fats</div>
-                    <div class="card-body bg-white text-dark">
-                        <h5 class="card-title">## fats</h5>
-                        <p class="card-text">Goal: 8 servings</p>
+                <div class="d-flex gap-4 flx-summary-block">
+                    <div class="card text-white bg-primary mb-3 flx-summary-items">
+                        <div class="card-header fw-bold bg-dark text-tan">Fruits</div>
+                        <div class="card-body bg-white text-dark">
+                            <h5 class="card-title">## fruits</h5>
+                            <p class="card-text">Goal: 1 fruit</p>
+                        </div>
                     </div>
-                </div>
-                <div class="card text-white bg-primary mb-3 w-25">
-                    <div class="card-header fw-bold bg-dark text-tan">Fruits</div>
-                    <div class="card-body bg-white text-dark">
-                        <h5 class="card-title">## fruits</h5>
-                        <p class="card-text">Goal: 1 fruit</p>
-                    </div>
-                </div>
-                <div class="card text-white bg-primary mb-3 w-25">
-                    <div class="card-header fw-bold bg-dark text-tan">Vegetables</div>
-                    <div class="card-body bg-white text-dark">
-                        <h5 class="card-title">## veggies</h5>
-                        <p class="card-text">Goal: 6 veggies</p>
+                    <div class="card text-white bg-primary mb-3 flx-summary-items">
+                        <div class="card-header fw-bold bg-dark text-tan">Vegetables</div>
+                        <div class="card-body bg-white text-dark">
+                            <h5 class="card-title">## veggies</h5>
+                            <p class="card-text">Goal: 6 veggies</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         
+        <!-- Meal Details -->
         <div class="container w-75 mx-auto">
             <h3 class="fw-bold mb-3">Meal Details</h3>
-            <div class="d-flex justify-content-between gap-3 ">
-                <!-- Breakfast -->
-                <div class="container bg-white rounded p-3 shadow">
-                    <div class="d-flex justify-content-between">
-                        <p class="fs-3 text-dark">Breakfast</p>
-                        <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropBreakfast">Update</button>
-                    </div>
-                    <div class="form-floating mb-5">
-                        <textarea class="form-control border border-2 border-secondary" name="breakfast" style="height: 150px" disabled></textarea>
-                        <label for="breakfast">Breakfast meal details</label>
-                    </div>
-                    <div class="d-flex justify-content-between gap-1 lg">
-                        <div class="form-floating">
-                            <input type="number" name="proteins" class="form-control" disabled>
-                            <label for="proteins" class="form-label">Proteins (oz)</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" name="fats" class="form-control" disabled>
-                            <label for="fats" class="form-label">Fats (serving)</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" name="fruits" class="form-control" disabled>
-                            <label for="fruits" class="form-label">Fruits (qty)</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" name="vegetables" class="form-control" disabled>
-                            <label for="vegetables" class="form-label">Veggies (qty)</label>
-                        </div>
-                    </div>
-                </div>
-                <!-- Breakfast Modal -->
-                <div class="modal fade" id="staticBackdropBreakfast" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content bg-light">
-                            <div class="modal-header bg-dark text-light">
-                                <h5 class="modal-title">Breakfast</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="meal-details">
+                <div class="d-flex justify-content-between gap-3 meal-block">
+                    <!-- Breakfast -->
+                    <div class="meal-items">
+                        <div class="container bg-white rounded p-3 shadow">
+                            <div class="d-flex justify-content-between">
+                                <p class="fs-3 text-dark">Breakfast</p>
+                                <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropBreakfast">Update</button>
                             </div>
-                            <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/breakfast" method="post" class="container p-3 my-3">
-                                <div class="modal-body">
-                                    <div class="form-floating mb-5">
-                                        <textarea class="form-control border border-2 border-secondary" name="breakfast" style="height: 150px"></textarea>
-                                        <label for="breakfast">Add your breakfast meal details</label>
-                                    </div>
-                                    <p class="text-primary">Add the quantity of each food type below:</p>
-                                    <div class="d-flex justify-content-between gap-1">
-                                        <div class="form-floating">
-                                            <input type="number" name="proteins" class="form-control">
-                                            <label for="proteins" class="form-label">Proteins</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="number" name="fats" class="form-control">
-                                            <label for="fats" class="form-label">Fats</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="number" name="fruits" class="form-control">
-                                            <label for="fruits" class="form-label">Fruits</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="number" name="vegetables" class="form-control">
-                                            <label for="vegetables" class="form-label">Vegetables</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <input type="submit" value="Save" class="btn btn-tan text-light h-75">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- Lunch -->
-                <div class="container bg-white rounded p-3 shadow">
-                    <div class="d-flex justify-content-between">
-                        <p class="fs-3 text-dark">Lunch</p>
-                        <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropLunch">Update</button>
-                    </div>
-                    <div class="form-floating mb-5">
-                        <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px" disabled></textarea>
-                        <label for="lunch">Lunch meal details</label>
-                    </div>
-                    <div class="d-flex justify-content-between gap-1 lg">
-                        <div class="form-floating">
-                            <input type="number" name="proteins" class="form-control" disabled>
-                            <label for="proteins" class="form-label">Proteins (oz)</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" name="fats" class="form-control" disabled>
-                            <label for="fats" class="form-label">Fats (serving)</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" name="fruits" class="form-control" disabled>
-                            <label for="fruits" class="form-label">Fruits (qty)</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" name="vegetables" class="form-control" disabled>
-                            <label for="vegetables" class="form-label">Veggies (qty)</label>
-                        </div>
-                    </div>
-                </div>
-                <!-- Lunch Modal -->
-                <div class="modal fade" id="staticBackdropLunch" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content bg-light">
-                            <div class="modal-header bg-dark text-light">
-                                <h5 class="modal-title">Lunch</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="form-floating mb-5">
+                                <textarea class="form-control border border-2 border-secondary" name="breakfast" style="height: 150px" disabled></textarea>
+                                <label for="breakfast">Breakfast meal details</label>
                             </div>
-                            <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/lunch" method="post" class="container p-3 my-3">
-                                <div class="modal-body">
-                                    <div class="form-floating mb-5">
-                                        <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px" disabled></textarea>
-                                        <label for="lunch">Add your lunch meal details</label>
+                            <div class="d-flex justify-content-between gap-1 meal-items-section">
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="proteins" class="form-control" disabled>
+                                        <label for="proteins" class="form-label">Proteins (oz)</label>
                                     </div>
-                                    <p class="text-primary">Add the quantity of each food type below:</p>
-                                    <div class="d-flex justify-content-between gap-1">
-                                        <div class="form-floating">
-                                            <input type="number" name="proteins" class="form-control" disabled>
-                                            <label for="proteins" class="form-label">Proteins</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="number" name="fats" class="form-control" disabled>
-                                            <label for="fats" class="form-label">Fats</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="number" name="fruits" class="form-control" disabled>
-                                            <label for="fruits" class="form-label">Fruits</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="number" name="vegetables" class="form-control" disabled>
-                                            <label for="vegetables" class="form-label">Vegetables</label>
-                                        </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="fats" class="form-control" disabled>
+                                        <label for="fats" class="form-label">Fats (serving)</label>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <input type="submit" value="Save" class="btn btn-tan text-light h-75">
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="fruits" class="form-control" disabled>
+                                        <label for="fruits" class="form-label">Fruits (qty)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="vegetables" class="form-control" disabled>
+                                        <label for="vegetables" class="form-label">Veggies (qty)</label>
+                                    </div>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex justify-content-between gap-3 mt-3">
-                <!-- Dinner -->
-                <div class="container bg-white rounded p-3 shadow">
-                    <div class="d-flex justify-content-between">
-                        <p class="fs-3 text-dark">Dinner</p>
-                        <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropDinner">Update</button>
-                    </div>
-                    <div class="form-floating mb-5">
-                        <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px" disabled></textarea>
-                        <label for="dinner">Dinner meal details</label>
-                    </div>
-                    <div class="d-flex justify-content-between gap-1 lg">
-                        <div class="form-floating">
-                            <input type="number" name="proteins" class="form-control" disabled>
-                            <label for="proteins" class="form-label">Proteins (oz)</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" name="fats" class="form-control" disabled>
-                            <label for="fats" class="form-label">Fats (serving)</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" name="fruits" class="form-control" disabled>
-                            <label for="fruits" class="form-label">Fruits (qty)</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" name="vegetables" class="form-control" disabled>
-                            <label for="vegetables" class="form-label">Veggies (qty)</label>
-                        </div>
-                    </div>
-                </div>
-                <!-- Dinner Modal -->
-                <div class="modal fade" id="staticBackdropDinner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content bg-light">
-                            <div class="modal-header bg-dark text-light">
-                                <h5 class="modal-title">Dinner</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/dinner" method="post" class="container p-3 my-3">
-                                <div class="modal-body">
-                                    <div class="form-floating mb-5">
-                                        <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px" disabled></textarea>
-                                        <label for="dinner">Add your dinner meal details</label>
+                        </div>
+                        <!-- Breakfast Edit Modal -->
+                        <div class="modal fade" id="staticBackdropBreakfast" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content bg-light">
+                                    <div class="modal-header bg-dark text-light">
+                                        <h5 class="modal-title">Breakfast</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <p class="text-primary">Add the quantity of each food type below:</p>
-                                    <div class="d-flex justify-content-between gap-1">
-                                        <div class="form-floating">
-                                            <input type="number" name="proteins" class="form-control" disabled>
-                                            <label for="proteins" class="form-label">Proteins</label>
+                                    <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/breakfast" method="post" class="container p-3 my-3">
+                                        <div class="modal-body">
+                                            <div class="form-floating mb-5">
+                                                <textarea class="form-control border border-2 border-secondary" name="breakfast" style="height: 150px"></textarea>
+                                                <label for="breakfast">Add your breakfast meal details</label>
+                                            </div>
+                                            <p class="text-primary">Add the quantity of each food type below:</p>
+                                            <div class="d-flex justify-content-between gap-1">
+                                                <div class="form-floating">
+                                                    <input type="number" name="proteins" class="form-control">
+                                                    <label for="proteins" class="form-label">Proteins</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="number" name="fats" class="form-control">
+                                                    <label for="fats" class="form-label">Fats</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="number" name="fruits" class="form-control">
+                                                    <label for="fruits" class="form-label">Fruits</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="number" name="vegetables" class="form-control">
+                                                    <label for="vegetables" class="form-label">Veg</label>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-floating">
-                                            <input type="number" name="fats" class="form-control" disabled>
-                                            <label for="fats" class="form-label">Fats</label>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <input type="submit" value="Save" class="btn btn-tan text-light h-75">
                                         </div>
-                                        <div class="form-floating">
-                                            <input type="number" name="fruits" class="form-control" disabled>
-                                            <label for="fruits" class="form-label">Fruits</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="number" name="vegetables" class="form-control" disabled>
-                                            <label for="vegetables" class="form-label">Vegetables</label>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <input type="submit" value="Save" class="btn btn-tan text-light h-75">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- Snack -->
-                <div class="container bg-white rounded p-3 shadow">
-                    <div class="d-flex justify-content-between">
-                        <p class="fs-3 text-dark">Snack</p>
-                        <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropSnack">Update</button>
-                    </div>
-                    <div class="form-floating mb-5">
-                        <textarea class="form-control border border-2 border-secondary" name="snack" style="height: 150px" disabled></textarea>
-                        <label for="snack">Snack meal details</label>
-                    </div>
-                    <div class="d-flex justify-content-between gap-1 lg">
-                        <div class="form-floating">
-                            <input type="number" name="proteins" class="form-control" disabled>
-                            <label for="proteins" class="form-label">Proteins (oz)</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" name="fats" class="form-control" disabled>
-                            <label for="fats" class="form-label">Fats (serving)</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" name="fruits" class="form-control" disabled>
-                            <label for="fruits" class="form-label">Fruits (qty)</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" name="vegetables" class="form-control" disabled>
-                            <label for="vegetables" class="form-label">Veggies (qty)</label>
-                        </div>
-                    </div>
-                </div>
-                <!-- Snack Modal -->
-                <div class="modal fade" id="staticBackdropSnack" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content bg-light">
-                            <div class="modal-header bg-dark text-light">
-                                <h5 class="modal-title">Snack</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/snack" method="post" class="container p-3 my-3">
-                                <div class="modal-body">
-                                    <div class="form-floating mb-5">
-                                        <textarea class="form-control border border-2 border-secondary" name="snack" style="height: 150px"></textarea>
-                                        <label for="snack">Add your snack details</label>
+                        </div>
+                    </div>
+                    <!-- Lunch -->
+                    <div class="meal-items">
+                        <div class="container bg-white rounded p-3 shadow">
+                            <div class="d-flex justify-content-between">
+                                <p class="fs-3 text-dark">Lunch</p>
+                                <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropLunch">Update</button>
+                            </div>
+                            <div class="form-floating mb-5">
+                                <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px" disabled></textarea>
+                                <label for="lunch">Lunch meal details</label>
+                            </div>
+                            <div class="d-flex justify-content-between gap-1 meal-items-section">
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="proteins" class="form-control" disabled>
+                                        <label for="proteins" class="form-label">Proteins (oz)</label>
                                     </div>
-                                    <p class="text-primary">Add the quantity of each food type below:</p>
-                                    <div class="d-flex justify-content-between gap-1">
-                                        <div class="form-floating">
-                                            <input type="number" name="proteins" class="form-control">
-                                            <label for="proteins" class="form-label">Proteins</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="number" name="fats" class="form-control">
-                                            <label for="fats" class="form-label">Fats</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="number" name="fruits" class="form-control">
-                                            <label for="fruits" class="form-label">Fruits</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="number" name="vegetables" class="form-control">
-                                            <label for="vegetables" class="form-label">Vegetables</label>
-                                        </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="fats" class="form-control" disabled>
+                                        <label for="fats" class="form-label">Fats (serving)</label>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <input type="submit" value="Save" class="btn btn-tan text-light h-75">
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="fruits" class="form-control" disabled>
+                                        <label for="fruits" class="form-label">Fruits (qty)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="vegetables" class="form-control" disabled>
+                                        <label for="vegetables" class="form-label">Veggies (qty)</label>
+                                    </div>
                                 </div>
-                            </form>
+                            </div>
+                        </div>
+                        <!-- Lunch Edit Modal -->
+                        <div class="modal fade" id="staticBackdropLunch" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content bg-light">
+                                    <div class="modal-header bg-dark text-light">
+                                        <h5 class="modal-title">Lunch</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/lunch" method="post" class="container p-3 my-3">
+                                        <div class="modal-body">
+                                            <div class="form-floating mb-5">
+                                                <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px" disabled></textarea>
+                                                <label for="lunch">Add your lunch meal details</label>
+                                            </div>
+                                            <p class="text-primary">Add the quantity of each food type below:</p>
+                                            <div class="d-flex justify-content-between gap-1">
+                                                <div class="form-floating">
+                                                    <input type="number" name="proteins" class="form-control" disabled>
+                                                    <label for="proteins" class="form-label">Proteins</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="number" name="fats" class="form-control" disabled>
+                                                    <label for="fats" class="form-label">Fats</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="number" name="fruits" class="form-control" disabled>
+                                                    <label for="fruits" class="form-label">Fruits</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="number" name="vegetables" class="form-control" disabled>
+                                                    <label for="vegetables" class="form-label">Veg</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <input type="submit" value="Save" class="btn btn-tan text-light h-75">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between gap-3 mt-3 meal-block">
+                    <!-- Dinner -->
+                    <div class="meal-items">
+                        <div class="container bg-white rounded p-3 shadow">
+                            <div class="d-flex justify-content-between">
+                                <p class="fs-3 text-dark">Dinner</p>
+                                <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropDinner">Update</button>
+                            </div>
+                            <div class="form-floating mb-5">
+                                <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px" disabled></textarea>
+                                <label for="dinner">Dinner meal details</label>
+                            </div>
+                            <div class="d-flex justify-content-between gap-1 meal-items-section">
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="proteins" class="form-control" disabled>
+                                        <label for="proteins" class="form-label">Proteins (oz)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="fats" class="form-control" disabled>
+                                        <label for="fats" class="form-label">Fats (serving)</label>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="fruits" class="form-control" disabled>
+                                        <label for="fruits" class="form-label">Fruits (qty)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="vegetables" class="form-control" disabled>
+                                        <label for="vegetables" class="form-label">Veggies (qty)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Dinner Edit Modal -->
+                        <div class="modal fade" id="staticBackdropDinner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content bg-light">
+                                    <div class="modal-header bg-dark text-light">
+                                        <h5 class="modal-title">Dinner</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/dinner" method="post" class="container p-3 my-3">
+                                        <div class="modal-body">
+                                            <div class="form-floating mb-5">
+                                                <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px" disabled></textarea>
+                                                <label for="dinner">Add your dinner meal details</label>
+                                            </div>
+                                            <p class="text-primary">Add the quantity of each food type below:</p>
+                                            <div class="d-flex justify-content-between gap-1">
+                                                <div class="form-floating">
+                                                    <input type="number" name="proteins" class="form-control" disabled>
+                                                    <label for="proteins" class="form-label">Proteins</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="number" name="fats" class="form-control" disabled>
+                                                    <label for="fats" class="form-label">Fats</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="number" name="fruits" class="form-control" disabled>
+                                                    <label for="fruits" class="form-label">Fruits</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="number" name="vegetables" class="form-control" disabled>
+                                                    <label for="vegetables" class="form-label">Veg</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <input type="submit" value="Save" class="btn btn-tan text-light h-75">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Snack -->
+                    <div class="meal-items">
+                        <div class="container bg-white rounded p-3 shadow">
+                            <div class="d-flex justify-content-between">
+                                <p class="fs-3 text-dark">Snack</p>
+                                <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropSnack">Update</button>
+                            </div>
+                            <div class="form-floating mb-5">
+                                <textarea class="form-control border border-2 border-secondary" name="snack" style="height: 150px" disabled></textarea>
+                                <label for="snack">Snack meal details</label>
+                            </div>
+                            <div class="d-flex justify-content-between gap-1 meal-items-section">
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="proteins" class="form-control" disabled>
+                                        <label for="proteins" class="form-label">Proteins (oz)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="fats" class="form-control" disabled>
+                                        <label for="fats" class="form-label">Fats (serving)</label>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="fruits" class="form-control" disabled>
+                                        <label for="fruits" class="form-label">Fruits (qty)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="vegetables" class="form-control" disabled>
+                                        <label for="vegetables" class="form-label">Veggies (qty)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Snack Edit Modal -->
+                        <div class="modal fade" id="staticBackdropSnack" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content bg-light">
+                                    <div class="modal-header bg-dark text-light">
+                                        <h5 class="modal-title">Snack</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/snack" method="post" class="container p-3 my-3">
+                                        <div class="modal-body">
+                                            <div class="form-floating mb-5">
+                                                <textarea class="form-control border border-2 border-secondary" name="snack" style="height: 150px"></textarea>
+                                                <label for="snack">Add your snack details</label>
+                                            </div>
+                                            <p class="text-primary">Add the quantity of each food type below:</p>
+                                            <div class="d-flex justify-content-between gap-1">
+                                                <div class="form-floating">
+                                                    <input type="number" name="proteins" class="form-control">
+                                                    <label for="proteins" class="form-label">Proteins</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="number" name="fats" class="form-control">
+                                                    <label for="fats" class="form-label">Fats</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="number" name="fruits" class="form-control">
+                                                    <label for="fruits" class="form-label">Fruits</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="number" name="vegetables" class="form-control">
+                                                    <label for="vegetables" class="form-label">Veg</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <input type="submit" value="Save" class="btn btn-tan text-light h-75">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Daily Checks -->
         <div class="container rounded bg-white shadow p-4 w-75 mt-5">
             <div class="d-flex justify-content-between">
                 <h3 class="fw-bold mt-3">Daily Checks</h3>
                 <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropChecks">Update</button>
             </div>
+            <!-- Water/Hydration Info -->
             <div>
                 <p>Click a water droplet for every 8oz of water water you drink throughout the day!</p>
                 <div class="d-flex justify-items-between gap-3 flex-wrap">
@@ -471,6 +508,7 @@
                     </a>
                 </div>
             </div>
+            <!-- Other Daily Check Checkboxes -->
             <div class="mt-4">
                 <p>Check the appropriate boxes when the activities occur each day.</p>
                 <div class="container">
@@ -482,7 +520,7 @@
                     <label for="exercise" class="form-check-label pt-1 fs-5">30+ Minute Exercise</label>
                 </div>
             </div>
-            <!-- Modal -->
+            <!-- Edit Modal -->
             <div class="modal fade" id="staticBackdropChecks" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content bg-light">
@@ -520,81 +558,85 @@
                     </div>
                 </div>
             </div>
-            <!-- End Modal -->
         </div>
 
+        <!-- Weight & Measurements -->
         <div class="container rounded bg-white shadow p-4 mx-auto w-75 my-5">
-            <div class="d-flex justify-content-between gap-5">
+            <div class="d-flex justify-content-between">
                 <div>
                     <h3 class="fw-bold mt-3">Weight & Measurements</h3>
                     <p>Weigh-in and add your daily measurements</p>
                 </div>
                 <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropWeightMeasurements">Update</button>
             </div>
-            
+            <!-- Fields List -->
             <div>
-                <div class="d-flex align-items-start gap-5">
-                    <div>
-                        <label for="weight" class="form-label">Weight</label>
-                        <div class="mb-3 input-group">
-                            <input type="number" name="weight" class="form-control" disabled>
-                            <span class="input-group-text">lbs</span>
+                <div class="d-flex align-items-start gap-5 flx-wm">
+                    <div class="d-flex gap-5 flx-wm-block">
+                        <div>
+                            <label for="weight" class="form-label">Weight</label>
+                            <div class="mb-3 input-group">
+                                <input type="number" name="weight" class="form-control" disabled>
+                                <span class="input-group-text">lbs</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="bust" class="form-label">Bust</label>
+                            <div class="mb-3 input-group">
+                                <input type="number" name="bust" class="form-control" disabled>
+                                <span class="input-group-text">inches</span>
+                            </div>
+                            <label for="midsection" class="form-label">Waist</label>
+                            <div class="mb-3 input-group">
+                                <input type="number" name="midsection" class="form-control" disabled>
+                                <span class="input-group-text">inches</span>
+                            </div>
+                            <label for="abdomen" class="form-label">Abdomen</label>
+                            <div class="mb-3 input-group">
+                                <input type="number" name="abdomen" class="form-control" disabled>
+                                <span class="input-group-text">inches</span>
+                            </div>
+                            <label for="hips" class="form-label">Hips</label>
+                            <div class="mb-3 input-group">
+                                <input type="number" name="hips" class="form-control" disabled>
+                                <span class="input-group-text">inches</span>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label for="bust" class="form-label">Bust</label>
-                        <div class="mb-3 input-group">
-                            <input type="number" name="bust" class="form-control" disabled>
-                            <span class="input-group-text">inches</span>
+                    <div class=" d-flex gap-5 flx-wm-block">
+                        <div>
+                            <label for="right_arm" class="form-label">Right Arm</label>
+                            <div class="mb-3 input-group">
+                                <input type="number" name="right_arm" class="form-control" disabled>
+                                <span class="input-group-text">inches</span>
+                            </div>
+                            <label for="left_arm" class="form-label">Left Arm</label>
+                            <div class="mb-3 input-group">
+                                <input type="number" name="left_arm" class="form-control" disabled>
+                                <span class="input-group-text">inches</span>
+                            </div>
                         </div>
-                        <label for="midsection" class="form-label">Waist</label>
-                        <div class="mb-3 input-group">
-                            <input type="number" name="midsection" class="form-control" disabled>
-                            <span class="input-group-text">inches</span>
-                        </div>
-                        <label for="abdomen" class="form-label">Abdomen</label>
-                        <div class="mb-3 input-group">
-                            <input type="number" name="abdomen" class="form-control" disabled>
-                            <span class="input-group-text">inches</span>
-                        </div>
-                        <label for="hips" class="form-label">Hips</label>
-                        <div class="mb-3 input-group">
-                            <input type="number" name="hips" class="form-control" disabled>
-                            <span class="input-group-text">inches</span>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="right_arm" class="form-label">Right Arm</label>
-                        <div class="mb-3 input-group">
-                            <input type="number" name="right_arm" class="form-control" disabled>
-                            <span class="input-group-text">inches</span>
-                        </div>
-                        <label for="left_arm" class="form-label">Left Arm</label>
-                        <div class="mb-3 input-group">
-                            <input type="number" name="left_arm" class="form-control" disabled>
-                            <span class="input-group-text">inches</span>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="right_thigh" class="form-label">Right Thigh</label>
-                        <div class="mb-3 input-group">
-                            <input type="number" name="right_thigh" class="form-control" disabled>
-                            <span class="input-group-text">inches</span>
-                        </div>
-                        <label for="left_thigh" class="form-label">Left Thigh</label>
-                        <div class="mb-3 input-group">
-                            <input type="number" name="left_thigh" class="form-control" disabled>
-                            <span class="input-group-text">inches</span>
-                        </div>
-                        <label for="right_calf" class="form-label">Right Calf</label>
-                        <div class="mb-3 input-group">
-                            <input type="number" name="right_calf" class="form-control" disabled>
-                            <span class="input-group-text">inches</span>
-                        </div>
-                        <label for="left_calf" class="form-label">Left Calf</label>
-                        <div class="mb-3 input-group">
-                            <input type="number" name="left_calf" class="form-control" disabled>
-                            <span class="input-group-text">inches</span>
+                        <div>
+                            <label for="right_thigh" class="form-label">Right Thigh</label>
+                            <div class="mb-3 input-group">
+                                <input type="number" name="right_thigh" class="form-control" disabled>
+                                <span class="input-group-text">inches</span>
+                            </div>
+                            <label for="left_thigh" class="form-label">Left Thigh</label>
+                            <div class="mb-3 input-group">
+                                <input type="number" name="left_thigh" class="form-control" disabled>
+                                <span class="input-group-text">inches</span>
+                            </div>
+                            <label for="right_calf" class="form-label">Right Calf</label>
+                            <div class="mb-3 input-group">
+                                <input type="number" name="right_calf" class="form-control" disabled>
+                                <span class="input-group-text">inches</span>
+                            </div>
+                            <label for="left_calf" class="form-label">Left Calf</label>
+                            <div class="mb-3 input-group">
+                                <input type="number" name="left_calf" class="form-control" disabled>
+                                <span class="input-group-text">inches</span>
+                            </div>
                         </div>
                     </div>
                 </div>
