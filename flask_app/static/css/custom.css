@@ -599,6 +599,16 @@ pre {
 
 
 /* media queries */
+@media screen and (max-width: 1500px) {
+    .lg {
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 1030px) {
+    /* .stack {
+        flex-direction: column;
+    } */
+}
 @media screen and (max-width: 900px) {
     .sm {
         flex-direction: column;
