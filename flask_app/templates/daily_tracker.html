@@ -71,7 +71,7 @@
     <main>
         <div class="d-flex justify-content-between w-75 mx-auto mt-4 mb-5 pt-5 ps-1 bg-tan rounded">
             <h1 class="text-dark fw-bolder">flex</br>DAILY MEAL TRACKER</h1>
-            <p class="fs-1 text-white pe-1">**date here**</p>
+            <p class="fs-1 text-white pe-3">{{day.strftime('%b %d, %Y')}}</p>
         </div>
         
         <div class="container my-5 w-75 ">
@@ -149,10 +149,7 @@
                                 <h5 class="modal-title">Breakfast</h5>
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-
-                            <!-- need to pass date to update methods -->
-
-                            <form action="/meal/update/DATE/breakfast" class="container p-3 my-3">
+                            <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/breakfast" method="post" class="container p-3 my-3">
                                 <div class="modal-body">
                                     <div class="form-floating mb-5">
                                         <textarea class="form-control border border-2 border-secondary" name="breakfast" style="height: 150px"></textarea>
@@ -223,7 +220,7 @@
                                 <h5 class="modal-title">Lunch</h5>
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="" class="container p-3 my-3">
+                            <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/lunch" method="post" class="container p-3 my-3">
                                 <div class="modal-body">
                                     <div class="form-floating mb-5">
                                         <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px" disabled></textarea>
@@ -296,7 +293,7 @@
                                 <h5 class="modal-title">Dinner</h5>
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="" class="container p-3 my-3">
+                            <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/dinner" method="post" class="container p-3 my-3">
                                 <div class="modal-body">
                                     <div class="form-floating mb-5">
                                         <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px" disabled></textarea>
@@ -367,7 +364,7 @@
                                 <h5 class="modal-title">Snack</h5>
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="" class="container p-3 my-3">
+                            <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/snack" method="post" class="container p-3 my-3">
                                 <div class="modal-body">
                                     <div class="form-floating mb-5">
                                         <textarea class="form-control border border-2 border-secondary" name="snack" style="height: 150px"></textarea>
@@ -411,7 +408,7 @@
             </div>
             <div>
                 <p>Click a water droplet for every 8oz of water water you drink throughout the day!</p>
-                <div class="d-flex justify-items-between gap-3">
+                <div class="d-flex justify-items-between gap-3 flex-wrap">
                     <a href="" class="btn btn-lg btn-outline-success active mx-1 disabled">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
@@ -493,7 +490,7 @@
                             <h5 class="modal-title">Daily Checks</h5>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="">
+                        <form action="/daily_checks/update/{{day.strftime('%Y-%m-%d')}}" method="post">
                             <div class="mx-auto p-3 my-3">
                                 <h5>Hydration</h3>
                                 <div>

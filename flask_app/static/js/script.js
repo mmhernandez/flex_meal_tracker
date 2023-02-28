@@ -1,5 +1,5 @@
+// CALENDAR FUNCTIONALITY
 let calendar = document.querySelector('.calendar')
-
 const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 isLeapYear = (year) => {
@@ -11,10 +11,8 @@ getFebDays = (year) => {
 }
 
 generateCalendar = (month, year) => {
-
     let calendar_days = calendar.querySelector('.calendar-days')
     let calendar_header_year = calendar.querySelector('#year')
-
     let days_of_month = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
     calendar_days.innerHTML = ''
@@ -28,13 +26,13 @@ generateCalendar = (month, year) => {
     calendar_header_year.innerHTML = year
 
     // get first day of month
-    
     let first_day = new Date(year, month, 1)
 
     for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
-        let day = document.createElement('div')
+        let day = document.createElement('a')
         if (i >= first_day.getDay()) {
             day.classList.add('calendar-day-hover')
+            day.href = `/daily_tracker/${year}-${month+1}-${i-first_day.getDay()+1}`
             day.innerHTML = i - first_day.getDay() + 1
             day.innerHTML += `<span></span>
                             <span></span>
@@ -68,7 +66,6 @@ month_picker.onclick = () => {
 }
 
 let currDate = new Date()
-
 let curr_month = {value: currDate.getMonth()}
 let curr_year = {value: currDate.getFullYear()}
 

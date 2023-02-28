@@ -288,7 +288,7 @@ pre {
     /* color: var(--color-txt); */
 }
 
-.calendar-days div {
+.calendar-days a {
     width: 43px;
     height: 43px;
     display: flex;
@@ -298,9 +298,11 @@ pre {
     position: relative;
     cursor: pointer;
     animation: to-top 1s forwards;
+    text-decoration: none;
+    color: #000;
 }
 
-.calendar-days div span {
+.calendar-days a span {
     position: absolute;
 }
 
@@ -342,7 +344,7 @@ pre {
     width: 100%;
     background-color: var(--blue);
 } */
-.calendar-days div:hover {
+.calendar-days a:hover {
     background-color: var(--calendar-hover);
     border-radius: 50%;
 }
@@ -369,13 +371,13 @@ pre {
     transition-delay: 0.6s;
 } */
 
-.calendar-days div.curr-date {
+.calendar-days a.curr-date {
     background-color: var(--tan);
     color: #fff;
     border-radius: 50%;
 }
 
-.calendar-days div.curr-date:hover {
+.calendar-days a.curr-date:hover {
     background-color: var(--light-maroon);
     color: #fff;
     border-radius: 50%;

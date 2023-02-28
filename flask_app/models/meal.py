@@ -23,17 +23,42 @@ class Meal:
     def validate_meal(data):
         is_valid = True
 
+        #proteins validation
         if not number_regex.match(data["proteins"]):
             flash("Invalid proteins")
             is_valid = False
+        if len(data["proteins"]) > 1:
+            if float(data["proteins"]) > 100:
+                flash("Invalid entry, proteins cannot exceed 100 oz")
+                is_valid = False
+
+        #fats validation
         if not number_regex.match(data["fats"]):
-            flash("Invalid proteins")
+            flash("Invalid fats")
             is_valid = False
+        if len(data["fats"]) > 1:
+            if float(data["fats"]) > 100:
+                flash("Invalid entry, fats cannot exceed 100 servings")
+                is_valid = False
+
+        #fruits validation
         if not number_regex.match(data["fruits"]):
-            flash("Invalid proteins")
+            flash("Invalid fruits")
             is_valid = False
+        if len(data["fruits"]) > 1:
+            if float(data["fruits"]) > 50:
+                flash("Invalid entry, cannot exceed qty of 50 fruits")
+                is_valid = False
+
+        #vegetables validation
         if not number_regex.match(data["vegetables"]):
-            flash("Invalid proteins")
+            flash("Invalid vegetables")
             is_valid = False
+        if len(data["vegetables"]) > 1:
+            if float(data["vegetables"]) > 50:
+                flash("Invalid entry, cannot exceed qty of 50 vegetables")
+                is_valid = False
         
         return is_valid
+    
+    
