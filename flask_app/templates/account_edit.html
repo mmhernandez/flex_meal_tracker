@@ -35,15 +35,15 @@
     <main>
         <form action="/account/update" method="post">
             <h1 class="text-tan fw-bolder text-center my-4">Account</h1>
-            <div class="container w-50 mx-auto px-5 pb-3 bg-white rounded shadow">
+            <div class="container flx-pg mx-auto px-5 pb-3 bg-white rounded shadow">
                 <div class="d-flex justify-content-end">
                     <a href="/account" class="btn btn-secondary mt-4 text-end me-2">Cancel</a>
                     <input type="submit" value="Save" class="btn btn-tan mt-4 text-end">
                 </div>
                 <div class="mb-3">
                     <h3 class="mt-2 mb-4 border-bottom-tan">Personal Information</h3>
-                    <div class="d-flex justify-content-between gap-3">
-                        <div class="mb-3 w-50">
+                    <div class="d-flex justify-content-between gap-3 sm">
+                        <div class="flx">
                             <label for="first_name" class="form-label">First Name</label>
                             {% if "first_name" in session %}
                                 <input type="text" name="first_name" class="form-control" value="{{session['first_name']}}">
@@ -58,7 +58,7 @@
                                 {% endif %}
                             {% endwith %}
                         </div>
-                        <div class="mb-3 w-50">
+                        <div class="mb-3 flx">
                             <label for="last_name" class="form-label">Last Name</label>
                             {% if "last_name" in session %}
                                 <input type="text" name="last_name" class="form-control" value="{{session['last_name']}}">
@@ -137,7 +137,7 @@
                 <div class="mt-4">
                     <h3 class="mt-5 mb-4 border-bottom-tan">Starting Weight & Measurements</h3>
                     <div class="d-flex justify-content-between gap-3">
-                        <div class="w-50">
+                        <div class="flx">
                             <div class="mb-3">
                                 <label for="weight" class="form-label">Weight <span class="fw-lighter">(lbs)</span></label>
                                 {% if "weight" in session %}
@@ -311,7 +311,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="../static/images/woman-silhoutte-measurements.png" alt="body-measurements-graphic" class="h-50 w-50">
+                        <img src="../static/images/woman-silhoutte-measurements.png" alt="body-measurements-graphic" class="h-50 w-50 hide">
                     </div>
                 </div>
             </div>

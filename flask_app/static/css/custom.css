@@ -583,6 +583,12 @@ pre {
 }
 
 
+.flx {
+    width: 50%;;
+}
+.flx-pg {
+    width: 50%;;
+}
 
 /* footer */
 .footer-logo{
@@ -590,3 +596,23 @@ pre {
     height: 120px;
 }
 .footer-social { width: 30px; }
+
+
+/* media queries */
+@media screen and (max-width: 900px) {
+    .sm {
+        flex-direction: column;
+    }
+    .flx {
+        width: 100%;
+    }
+    
+    .hide {
+        display: none;
+    }
+}
+@media screen and (max-width: 700px) {
+    .flx-pg {
+        width: 100%; 
+    }
+}
