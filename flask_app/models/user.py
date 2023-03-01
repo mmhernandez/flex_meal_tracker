@@ -9,7 +9,7 @@ db = "flex_program"
 email_regex = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 name_regex = re.compile(r'^[a-zA-Z ,.\'-]+$')
 password_regex = re.compile(r'^(^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$)?(^(?=.*\d)(?=.*[a-z])(?=.*[@#$%^&+=]).*$)?(^(?=.*\d)(?=.*[A-Z])(?=.*[@#$%^&+=]).*$)?(^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$)?$')
-number_regex = re.compile(r'^[1-9]\d*(\.\d+)?$')
+number_regex = re.compile(r'^[0-9]\d*(\.\d+)?$')
 
 class User:
     def __init__(self, data):

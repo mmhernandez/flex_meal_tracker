@@ -244,25 +244,25 @@
                                     <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/lunch" method="post" class="container p-3 my-3">
                                         <div class="modal-body">
                                             <div class="form-floating mb-5">
-                                                <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px" disabled></textarea>
+                                                <textarea class="form-control border border-2 border-secondary" name="lunch" style="height: 150px"></textarea>
                                                 <label for="lunch">Add your lunch meal details</label>
                                             </div>
                                             <p class="text-primary">Add the quantity of each food type below:</p>
                                             <div class="d-flex justify-content-between gap-1">
                                                 <div class="form-floating">
-                                                    <input type="number" name="proteins" class="form-control" disabled>
+                                                    <input type="number" name="proteins" class="form-control">
                                                     <label for="proteins" class="form-label">Proteins</label>
                                                 </div>
                                                 <div class="form-floating">
-                                                    <input type="number" name="fats" class="form-control" disabled>
+                                                    <input type="number" name="fats" class="form-control">
                                                     <label for="fats" class="form-label">Fats</label>
                                                 </div>
                                                 <div class="form-floating">
-                                                    <input type="number" name="fruits" class="form-control" disabled>
+                                                    <input type="number" name="fruits" class="form-control">
                                                     <label for="fruits" class="form-label">Fruits</label>
                                                 </div>
                                                 <div class="form-floating">
-                                                    <input type="number" name="vegetables" class="form-control" disabled>
+                                                    <input type="number" name="vegetables" class="form-control">
                                                     <label for="vegetables" class="form-label">Veg</label>
                                                 </div>
                                             </div>
@@ -323,25 +323,25 @@
                                     <form action="/meal/update/{{day.strftime('%Y-%m-%d')}}/dinner" method="post" class="container p-3 my-3">
                                         <div class="modal-body">
                                             <div class="form-floating mb-5">
-                                                <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px" disabled></textarea>
+                                                <textarea class="form-control border border-2 border-secondary" name="dinner" style="height: 150px"></textarea>
                                                 <label for="dinner">Add your dinner meal details</label>
                                             </div>
                                             <p class="text-primary">Add the quantity of each food type below:</p>
                                             <div class="d-flex justify-content-between gap-1">
                                                 <div class="form-floating">
-                                                    <input type="number" name="proteins" class="form-control" disabled>
+                                                    <input type="number" name="proteins" class="form-control">
                                                     <label for="proteins" class="form-label">Proteins</label>
                                                 </div>
                                                 <div class="form-floating">
-                                                    <input type="number" name="fats" class="form-control" disabled>
+                                                    <input type="number" name="fats" class="form-control">
                                                     <label for="fats" class="form-label">Fats</label>
                                                 </div>
                                                 <div class="form-floating">
-                                                    <input type="number" name="fruits" class="form-control" disabled>
+                                                    <input type="number" name="fruits" class="form-control">
                                                     <label for="fruits" class="form-label">Fruits</label>
                                                 </div>
                                                 <div class="form-floating">
-                                                    <input type="number" name="vegetables" class="form-control" disabled>
+                                                    <input type="number" name="vegetables" class="form-control">
                                                     <label for="vegetables" class="form-label">Veg</label>
                                                 </div>
                                             </div>
@@ -440,87 +440,56 @@
         <div class="container rounded bg-white shadow p-4 w-75 mt-5">
             <div class="d-flex justify-content-between">
                 <h3 class="fw-bold mt-3">Daily Checks</h3>
-                <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropChecks">Update</button>
+                {% if log_info.is_daily_checks == "True" %}
+                    <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropChecks">Update</button>
+                {% else %}
+                    <button type="button" class="btn btn-tan h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropChecks">Add</button>
+                {% endif %}
             </div>
             <!-- Water/Hydration Info -->
             <div>
                 <p>Click a water droplet for every 8oz of water water you drink throughout the day!</p>
                 <div class="d-flex justify-items-between gap-3 flex-wrap">
-                    <a href="" class="btn btn-lg btn-outline-success active mx-1 disabled">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                            <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                        </svg>
-                    </a>
-                    <a href="" class="btn btn-lg btn-outline-success mx-1 disabled">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                            <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                        </svg>
-                    </a>
-                    <a href="" class="btn btn-lg btn-outline-success mx-1 disabled">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                            <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                        </svg>
-                    </a>
-                    <a href="" class="btn btn-lg btn-outline-success mx-1 disabled">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                            <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                        </svg>
-                    </a>
-                    <a href="" class="btn btn-lg btn-outline-success mx-1 disabled">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                            <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                        </svg>
-                    </a>
-                    <a href="" class="btn btn-lg btn-outline-success mx-1 disabled">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                            <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                        </svg>
-                    </a>
-                    <a href="" class="btn btn-lg btn-outline-success mx-1 disabled">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                            <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                        </svg>
-                    </a>
-                    <a href="" class="btn btn-lg btn-outline-success mx-1 disabled">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                            <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                        </svg>
-                    </a>
-                    <a href="" class="btn btn-lg btn-outline-success mx-1 disabled">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                            <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                        </svg>
-                    </a>
-                    <a href="" class="btn btn-lg btn-outline-success mx-1 disabled">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
-                            <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
-                        </svg>
-                    </a>
+                    {% for i in range(1,11) %}
+                        {% if (log_info.id) and (log_info.water >= i) %}
+                            <a href="" class="btn btn-lg btn-outline-success active mx-1 disabled">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                                    <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                                </svg>
+                            </a>
+                        {% else %}
+                            <a href="" class="btn btn-lg btn-outline-success mx-1 disabled">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                                    <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                                </svg>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
             <!-- Other Daily Check Checkboxes -->
             <div class="mt-4">
                 <p>Check the appropriate boxes when the activities occur each day.</p>
                 <div class="container">
-                    <input type="checkbox" name="daily_bonus" class="form-check-input fs-4 me-3" disabled>
+                    {% if (log_info.id) and (log_info.flex_daily_bonus) == 1 %}
+                        <input type="checkbox" name="daily_bonus" class="form-check-input fs-4 me-3" value="{{log_info.flex_daily_bonus}}" checked disabled>
+                    {% else %}
+                        <input type="checkbox" name="daily_bonus" class="form-check-input fs-4 me-3" disabled>
+                    {% endif %}
                     <label for="daily_bonus" class="form-check-label fs-5">Flex<sup>TM</sup> Daily Bonus</label>
                 </div>
                 <div class="container mt-2">
-                    <input type="checkbox" name="exercise" class="form-check-input me-3 fs-4" disabled>
+                    {% if (log_info.id) and (log_info.exercise == 1) %}
+                        <input type="checkbox" name="exercise" class="form-check-input me-3 fs-4" value="{{log_info.exercise}}" checked disabled>
+                    {% else %}
+                        <input type="checkbox" name="exercise" class="form-check-input me-3 fs-4" disabled>
+                    {% endif %}
                     <label for="exercise" class="form-check-label pt-1 fs-5">30+ Minute Exercise</label>
                 </div>
             </div>
-            <!-- Edit Modal -->
+            <!-- Add/Update Modal -->
             <div class="modal fade" id="staticBackdropChecks" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content bg-light">
@@ -528,12 +497,27 @@
                             <h5 class="modal-title">Daily Checks</h5>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="/daily_checks/update/{{day.strftime('%Y-%m-%d')}}" method="post">
+                        {% if log_info %}
+                            <form action="/daily_checks/update/{{day.strftime('%Y-%m-%d')}}" method="post">
+                        {% else %}
+                            <form action="/daily_checks/add/{{day.strftime('%Y-%m-%d')}}" method="post">
+                        {% endif %}
                             <div class="mx-auto p-3 my-3">
                                 <h5>Hydration</h3>
                                 <div>
                                     <label for="water" class="form-label">How much water have you had today? Input the number of 8oz glasses below:</label>
-                                    <input type="number" name="water" class="form-control w-50">
+                                    {% if log_info %}
+                                        <input type="number" name="water" class="form-control w-50" value="{{log_info.water}}">
+                                    {% else %}
+                                        <input type="number" name="water" class="form-control w-50">
+                                    {% endif %}
+                                    {% with messages = get_flashed_messages(category_filter = ["water"])%}
+                                        {% if messages %}
+                                            {% for msg in messages %}
+                                                <p class="text-danger">{{msg}}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endwith %}
                                 </div>
                             </div>
                             <div class="p-3 my-3">
@@ -541,11 +525,19 @@
                                 <div>
                                     <p>Check the appropriate boxes when the activities occur each day.</p>
                                     <div class="container">
-                                        <input type="checkbox" name="daily_bonus" class="form-check-input fs-4 me-3">
+                                        {% if (log_info) and log_info.flex_daily_bonus == 1 %}
+                                            <input type="checkbox" name="daily_bonus" class="form-check-input fs-4 me-3" value="{{log_info.flex_daily_bonus}}" checked>
+                                        {% else %}
+                                            <input type="checkbox" name="daily_bonus" class="form-check-input fs-4 me-3">
+                                        {% endif %}
                                         <label for="daily_bonus" class="form-check-label fs-5">Flex<sup>TM</sup> Daily Bonus</label>
                                     </div>
                                     <div class="container mt-2">
-                                        <input type="checkbox" name="exercise" class="form-check-input me-3 fs-4">
+                                        {% if (log_info) and log_info.exercise == 1 %}
+                                            <input type="checkbox" name="exercise" class="form-check-input me-3 fs-4" value="{{log_info.exercise}}" checked>
+                                        {% else %}
+                                            <input type="checkbox" name="exercise" class="form-check-input me-3 fs-4">
+                                        {% endif %}   
                                         <label for="exercise" class="form-check-label pt-1 fs-5">30+ Minute Exercise</label>
                                     </div>
                                 </div>
@@ -567,7 +559,11 @@
                     <h3 class="fw-bold mt-3">Weight & Measurements</h3>
                     <p>Weigh-in and add your daily measurements</p>
                 </div>
-                <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropWeightMeasurements">Update</button>
+                {% if log_info.is_weight_measurements == "True" %}
+                    <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropWeightMeasurements">Update</button>
+                {% else %}
+                    <button type="button" class="btn btn-tan h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropWeightMeasurements">Add</button>
+                {% endif %}
             </div>
             <!-- Fields List -->
             <div>

@@ -5,7 +5,8 @@ from flask_app.config.mysqlconnection import connectToMySQL
 import re
 
 db = "flex_program"
-number_regex = re.compile(r'^[1-9]\d*(\.\d+)?$')
+num_regex = re.compile(r'^[0-9]\d*$')
+number_regex = re.compile(r'^[0-9]\d*(\.\d+)?$')
 
 class DailyLog:
     def __init__(self, data):
@@ -31,17 +32,23 @@ class DailyLog:
         self.user_id = data["user_id"]
         self.user = None
         self.meals = []
+        self.is_breakfast = True
+        self.is_lunch = True
+        self.is_dinner = True
+        self.is_snacks = True
+        self.is_daily_checks = True
+        self.is_weight_measurements = True
 
     @staticmethod
     def validate_daily_checks(data):
         is_valid = True
 
         #water validation
-        if not number_regex.match(data["water"]):
-            flash("Invalid hydration entry", "water")
-            is_valid = False
-        if len(data["water"]) > 1:
-            if float(data["water"]) > 30:
+        if "water" in data:
+            if not num_regex.match(str(data["water"])):
+                flash("Invalid hydration entry", "water")
+                is_valid = False
+            if int(data["water"]) > 30:
                 flash("Invalid hydration entry, cannot exceed 30 glasses of water", "water")
                 is_valid = False
 
@@ -153,11 +160,61 @@ class DailyLog:
         return is_valid
     
     @classmethod
-    def get_all_by_date(cls, data):
+    def get_id_by_date(cls, data):
         query = '''
-            SELECT * 
+            SELECT id 
             FROM daily_logs
-            WHERE date = %()s;
+            WHERE date = %(date)s;
         '''
         results = connectToMySQL(db).query_db(query, data)
-        return cls(results[0])
+        if len(results) < 1:
+            return False
+        return results[0]["id"]
+    
+    @classmethod
+    def get_all_by_id(cls, data):
+        query = '''
+            SELECT *,
+                CASE
+                    WHEN flex_daily_bonus IS NOT NULL or exercise IS NOT NULL or water IS NOT NULL
+                        THEN 'True'
+                    ELSE 'False'
+                END AS is_daily_checks,
+                CASE
+                    WHEN weight IS NOT NULL or 
+                        bust IS NOT NULL or waist IS NOT NULL or 
+                        abdomen IS NOT NULL or hips IS NOT NULL or 
+                        right_arm IS NOT NULL or left_arm IS NOT NULL or 
+                        right_thigh IS NOT NULL or left_thigh IS NOT NULL or 
+                        right_calf IS NOT NULL or left_calf IS NOT NULL
+                        THEN 'true'
+                    ELSE 'False'
+                    END AS is_weight_measurements
+            FROM daily_logs
+            WHERE id = %(id)s;
+        '''
+        results = connectToMySQL(db).query_db(query, data)
+        log = cls(results[0])
+        log.is_daily_checks = results[0]["is_daily_checks"]
+        log.is_weight_measurements = results[0]["is_weight_measurements"]
+        return log
+
+    @classmethod
+    def insert_daily_checks(cls, data):
+        query = '''
+            INSERT INTO daily_logs (date, flex_daily_bonus, exercise, water, user_id)
+            VALUES (%(date)s, %(flex_daily_bonus)s, %(exercise)s, %(water)s, %(user_id)s);
+        '''
+        connectToMySQL(db).query_db(query, data)
+
+    @classmethod
+    def update_daily_checks(cls, data):
+        query = '''
+            UPDATE daily_logs
+            SET water = %(water)s,
+                flex_daily_bonus = %(flex_daily_bonus)s,
+                exercise = %(exercise)s
+            WHERE id = %(id)s
+                and user_id = %(user_id)s;
+        '''
+        connectToMySQL(db).query_db(query, data)
