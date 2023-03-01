@@ -29,7 +29,7 @@ def daily_checks_add(date):
         if len(request.form["water"]) < 1:
             daily_check_info["water"] = 0
         else:
-            daily_check_info["water"] = 0
+            daily_check_info["water"] = request.form["water"]
         if "daily_bonus" in request.form:
             daily_check_info["flex_daily_bonus"] = 1
         else:

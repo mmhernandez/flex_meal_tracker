@@ -63,8 +63,8 @@
                             </div>
                         </div>
 
-                        <a class="nav-link fw-bold py-1 px-0" href="#">Dashboard</a>
-                        <a class="nav-link fw-bold py-1 px-0" href="#">Account</a>
+                        <a class="nav-link fw-bold py-1 px-0" href="/dashboard">Dashboard</a>
+                        <a class="nav-link fw-bold py-1 px-0" href="/account">Account</a>
                         <a class="nav-link fw-bold py-1 px-0" href="/logout">Logout</a>
                     </nav>
                 </div>
@@ -497,7 +497,7 @@
                             <h5 class="modal-title">Daily Checks</h5>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        {% if log_info %}
+                        {% if log_info.is_daily_checks == "True" %}
                             <form action="/daily_checks/update/{{day.strftime('%Y-%m-%d')}}" method="post">
                         {% else %}
                             <form action="/daily_checks/add/{{day.strftime('%Y-%m-%d')}}" method="post">
@@ -506,7 +506,7 @@
                                 <h5>Hydration</h3>
                                 <div>
                                     <label for="water" class="form-label">How much water have you had today? Input the number of 8oz glasses below:</label>
-                                    {% if log_info %}
+                                    {% if log_info.water %}
                                         <input type="number" name="water" class="form-control w-50" value="{{log_info.water}}">
                                     {% else %}
                                         <input type="number" name="water" class="form-control w-50">
