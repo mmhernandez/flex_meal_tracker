@@ -1,3 +1,18 @@
+// DAILY CHECKS MODAL FORM OVERRIDE
+// let daily_check_add_form = document.getElementById("daily_check_add");
+
+// daily_check_add_form.onsubmit = function(e) {
+//     e.preventDefault()
+
+//     let form = new FormData(daily_check_add_form);
+//     let current_date = document.getElementById("current_date");
+
+//     fetch(`http://localhost:5000/daily_checks/add/${current_date}`, {method: "POST", body: form})
+//         .then( response => response.json() )
+//         .then( data => console.log(data))
+// }
+
+
 // CALENDAR FUNCTIONALITY
 let calendar = document.querySelector('.calendar')
 const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']

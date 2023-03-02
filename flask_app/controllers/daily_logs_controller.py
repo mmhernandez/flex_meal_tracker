@@ -22,6 +22,7 @@ def daily_tracker(date):
 @app.route("/daily_checks/add/<date>", methods=["POST"])
 def daily_checks_add(date):
     if "id" in session:
+        # date_obj = datetime.strptime(date, '%Y-%m-%d')
         daily_check_info = {
             "date": date,
             "user_id": session["id"]
