@@ -4,6 +4,7 @@
     --dark: #202B27;
     --grey: #a6a9a2;
     --tan: #dac8b6;
+    --tapue: #d5d5d3;
     --calendar-bg-main: #fdfdfd;
     --calendar-hover: #efeeee;
     --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -172,6 +173,10 @@
     color: #fff;
     background-color: var(--tan);
     border-color: var(--tan);
+}
+
+.bg-taupe {
+    background-color: var(--tapue) !important;
 }
 
 

@@ -14,7 +14,7 @@ def daily_tracker(date):
             daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
         else: 
             daily_log_info = False
-        return render_template("daily_tracker.html", day=date_obj, log_info=daily_log_info)
+        return render_template("test.html", day=date_obj, log_info=daily_log_info)
     return redirect("/")
 
 
@@ -83,3 +83,42 @@ def daily_checks_update(date):
     return redirect("/")
 
 
+# WEIGHTS & MEASUREMENTS ADD/EDIT
+@app.route("/weight_measurements/add/<date>")
+def weights_measurements_add(date):
+    if "id" in session:
+        date_obj = datetime.strptime(date, '%Y-%m-%d')
+        return render_template("weight_measurements.html", day=date_obj, type='add')
+    return redirect("/")
+
+@app.route("/weight_measurements/insert/<date>", methods=["POST"])
+def weights_measurements_insert(date):
+    if "id" in session:
+        #get form data
+        #validate form input
+        #  if valid, call insert method
+        return redirect(f"/daily_tracker/{date}")
+        #if not valid
+        #  save fields in session
+        #  redirect back to add route w/ error messages
+    return redirect("/")
+
+@app.route("/weight_measurements/edit/<date>")
+def weights_measurements_edit(date):
+    if "id" in session:
+        date_obj = datetime.strptime(date, '%Y-%m-%d')
+        # pull weights and measurements and pass to html
+        return render_template("weight_measurements.html", day=date_obj, type='edit')
+    return redirect("/")
+
+@app.route("/weight_measurements/update/<date>", methods=["POST"])
+def weights_measurements_update(date):
+    if "id" in session:
+        #get form data
+        #validate form input
+        #  if valid, call update method
+        return redirect(f"/daily_tracker/{date}")
+        #if not valid
+        #  save fields in session
+        #  redirect back to edit route w/ error messages
+    return redirect("/")

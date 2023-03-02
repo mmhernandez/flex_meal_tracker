@@ -20,3 +20,5 @@ To Do List:
 - Look at the AJAX chapter (https://login.codingdojo.com/m/506/12469/87490) for info on how to sign-up and log-in w/o page refresh
 
 - Turn "?" help text into alert/pop up with password requirements (might look better HTML formatted)
+
+- Clear session when cancelling form submissions
