@@ -585,6 +585,16 @@ pre {
     background-image: url(../images/weights.jpg);
 }
 
+.home-img-1 {
+    background-image: url(../images/cabbage.jpg);
+}
+.home-img-2 {
+    background-image: url(../images/exercise.jpg);
+}
+.home-img-3 {
+    background-image: url(../images/water.jpg);
+}
+
 .rounded-4 { border-radius: .5rem; }
 .rounded-5 { border-radius: 1rem; }
 
@@ -599,6 +609,16 @@ pre {
 }
 
 
+/* footer */
+.footer-logo{
+    width: 120px;
+    height: 120px;
+}
+.footer-social { width: 30px; }
+
+
+/* responsiveness */
+
 .flx {
     width: 50%;;
 }
@@ -611,13 +631,6 @@ pre {
 .flx-summary-items, .meal-items {
     width: 100%;
 }
-
-/* footer */
-.footer-logo{
-    width: 120px;
-    height: 120px;
-}
-.footer-social { width: 30px; }
 
 
 /* media queries */

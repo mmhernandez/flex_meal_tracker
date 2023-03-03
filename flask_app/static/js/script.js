@@ -1,42 +1,4 @@
 
-
-// LOGIN MODAL OVERRIDE W/ VALIDATION
-let login_form = document.getElementById("login");
-
-login_form.onsubmit = async function(e) {
-    e.preventDefault();
-
-    let form = new FormData(login_form);
-    let login_response = await fetch("http://localhost:5000/login", {method: "POST", body: form});
-    let login_data = await login_response.json();
-
-    console.log(login_data)
-
-    if (login_data) {
-        console.log(login_data["message"][0]["login"])
-        login_error = login_data["message"][0]["login"]
-        
-        // use JQuery insert error message
-        $("#login-btn").text(function(){
-            $("p.login_error").text(login_error);
-        });
-    }
-    else {
-        console.log("in else");
-        let xhttp_login = new XMLHttpRequest();
-        xhttp_login.open('POST', "http://localhost:5000/login", true);
-        xhttp_login.send(login_form);
-
-        // clear_text = "";
-        // $("p.login_error").text(clear_text);
-        // fetch("http://localhost:5000/dashboard");
-        // login_form.submit();
-        // login_form.submit(form);
-        // this.template.querySelector('#login').submit();
-        // $(this).trigger(e);
-    }
-}
-
 // CALENDAR FUNCTIONALITY
 let calendar = document.querySelector('.calendar')
 const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']

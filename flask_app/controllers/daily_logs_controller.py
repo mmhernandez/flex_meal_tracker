@@ -88,12 +88,17 @@ def daily_checks_update(date):
 def weights_measurements_add(date):
     if "id" in session:
         date_obj = datetime.strptime(date, '%Y-%m-%d')
-        return render_template("weight_measurements.html", day=date_obj, type='add')
+        return render_template("weight_measurements_add.html", day=date_obj, type='add')
     return redirect("/")
 
 @app.route("/weight_measurements/insert/<date>", methods=["POST"])
 def weights_measurements_insert(date):
     if "id" in session:
+        daily_check_info = {
+            "date": date,
+            "user_id": session["id"]
+        }
+        
         #get form data
         #validate form input
         #  if valid, call insert method
@@ -108,7 +113,7 @@ def weights_measurements_edit(date):
     if "id" in session:
         date_obj = datetime.strptime(date, '%Y-%m-%d')
         # pull weights and measurements and pass to html
-        return render_template("weight_measurements.html", day=date_obj, type='edit')
+        return render_template("weight_measurements_update.html", day=date_obj, type='edit')
     return redirect("/")
 
 @app.route("/weight_measurements/update/<date>", methods=["POST"])
