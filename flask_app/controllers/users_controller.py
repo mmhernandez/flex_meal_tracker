@@ -1,5 +1,5 @@
 from flask_app import app   
-from flask import render_template, session, redirect, request
+from flask import render_template, session, redirect, request, jsonify
 from flask_app.models import user
 
 
@@ -9,17 +9,32 @@ def home():
 
 
 # LOGIN AND SIGN UP
+# @app.route("/login", methods=["POST"])
+# def login():
+#     login_data = {
+#         "email": request.form["email"],
+#         "password": request.form["password"]
+#     }
+#     if user.User.validate_login(login_data):
+#             session["id"] = user.User.get_id_by_email(login_data)
+#             return redirect ("/dashboard")
+#     else:
+#         return redirect("/")
 @app.route("/login", methods=["POST"])
 def login():
     login_data = {
         "email": request.form["email"],
         "password": request.form["password"]
     }
-    if user.User.validate_login(login_data):
+    validation_response = user.User.validate_login(login_data)
+    if validation_response == "valid":
+            print("Form is valid!")
             session["id"] = user.User.get_id_by_email(login_data)
-            return redirect ("/dashboard")
+            print(f'session user id has been set to {session["id"]}')
+            # return jsonify()
+            return redirect("/dashboard")
     else:
-        return redirect("/")
+        return jsonify(message=validation_response)
 
 @app.route("/sign_up", methods=["POST"])
 def sign_up():
@@ -44,9 +59,12 @@ def sign_up():
 # DASHBOARD
 @app.route("/dashboard")
 def show_dashboard():
+    print("I'm in the dashboard route")
     if "id" in session:
+        print("trying to render template")
         # pull in user's calculated info and pass to page
         return render_template("dashboard.html")
+    print("being redirected :()")
     return redirect("/")
 
 
@@ -68,7 +86,6 @@ def edit_account():
 @app.route("/account/update", methods=["POST"])
 def update_account():
     if "id" in session:
-        print(request.form)
         account_info = {
             "id": session["id"],
             "first_name": request.form["first_name"],

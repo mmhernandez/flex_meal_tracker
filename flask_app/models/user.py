@@ -91,19 +91,33 @@ class User:
 
         return is_valid
 
+    # @staticmethod
+    # def validate_login(data):
+    #     is_valid = True
+    #     user_pw_dict = User.get_pw_by_email(data)
+
+    #     if not user_pw_dict:
+    #         flash("Email and/or password incorrect", "login")
+    #         is_valid = False
+    #     elif not bcrypt.check_password_hash(user_pw_dict['password'], data['password']):
+    #         flash("Email and/or password incorrect", "login")
+    #         is_valid = False
+        
+    #     return is_valid
+    
     @staticmethod
     def validate_login(data):
-        is_valid = True
+        login_validation_errors = []
         user_pw_dict = User.get_pw_by_email(data)
 
         if not user_pw_dict:
-            flash("Email and/or password incorrect", "login")
-            is_valid = False
+            login_validation_errors.append({"login": "Email and/or password incorrect"})
         elif not bcrypt.check_password_hash(user_pw_dict['password'], data['password']):
-            flash("Email and/or password incorrect", "login")
-            is_valid = False
+            login_validation_errors.append({"login": "Email and/or password incorrect"})
         
-        return is_valid
+        if login_validation_errors:
+            return login_validation_errors
+        return "valid"
 
     @staticmethod
     def validate_account_info(data):
