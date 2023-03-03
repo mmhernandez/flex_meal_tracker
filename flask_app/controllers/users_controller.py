@@ -5,38 +5,31 @@ from flask_app.models import user
 
 @app.route("/")
 def home():
-    return render_template("login_signup.html")
+    return render_template("home.html")
 
 
 # LOGIN AND SIGN UP
-# @app.route("/login", methods=["POST"])
-# def login():
-#     login_data = {
-#         "email": request.form["email"],
-#         "password": request.form["password"]
-#     }
-#     if user.User.validate_login(login_data):
-#             session["id"] = user.User.get_id_by_email(login_data)
-#             return redirect ("/dashboard")
-#     else:
-#         return redirect("/")
+@app.route("/log_in")
+def login_page():
+    return render_template("login.html")
+
 @app.route("/login", methods=["POST"])
 def login():
     login_data = {
         "email": request.form["email"],
         "password": request.form["password"]
     }
-    validation_response = user.User.validate_login(login_data)
-    if validation_response == "valid":
-            print("Form is valid!")
+    if user.User.validate_login(login_data):
             session["id"] = user.User.get_id_by_email(login_data)
-            print(f'session user id has been set to {session["id"]}')
-            # return jsonify()
-            return redirect("/dashboard")
+            return redirect ("/dashboard")
     else:
-        return jsonify(message=validation_response)
+        return redirect("/log_in")
 
-@app.route("/sign_up", methods=["POST"])
+@app.route("/sign_up")
+def signup_page():
+    return render_template("signup.html")
+
+@app.route("/signup", methods=["POST"])
 def sign_up():
     signup_data = {
         "first_name": request.form["first_name"],
@@ -53,7 +46,7 @@ def sign_up():
         session["first_name"] = signup_data["first_name"]
         session["last_name"] = signup_data["last_name"]
         session["email"] = signup_data["email"]
-        return redirect("/")
+        return redirect("/sign_up")
 
 
 # DASHBOARD

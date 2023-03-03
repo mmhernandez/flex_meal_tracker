@@ -10,6 +10,17 @@
     --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+/* home page */
+.hero {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../images/body_under_construction.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 /* header */
 .cover-container {
     max-width: 42em;

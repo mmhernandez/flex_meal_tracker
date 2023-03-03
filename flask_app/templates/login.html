@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Program</title>
+
+    <!-- styling -->
+    <link rel="stylesheet" href="../static/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../static/images/favicon/site.webmanifest">
+</head>
+<body>
+    <section class="hero">
+        <div class="d-flex justify-content-end align-items-start">
+            <a href="sign_up" class="btn btn-lg btn-outline-light my-3">Sign up</a>
+            <a href="" class="btn btn-lg btn-dark my-3 ms-2 me-5">Log in</a>
+        </div>
+        <div class="container mx-auto px-5 py-3 my-5 bg-light rounded shadow w-25">
+            <!-- NEED TO MAKE THIS FROM RESPONSIVE -->
+            <h1 class="my-5 text-center">Welcome back!</h1>
+            <form action="/login" method="post">
+                {% with messages = get_flashed_messages(category_filter = ["login"])%}
+                    {% if messages %}
+                        {% for msg in messages %}
+                            <p class="text-danger">{{msg}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <p class="login_error text-danger"></p>
+                <div class="form-floating mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="name@example.com">
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" name="password" class="form-control" placeholder="********">
+                    <label for="password">Password</label>
+                </div>
+                <div class="d-flex justify-content-end mt-4">
+                    <input type="submit" value="Log In" class="btn btn-dark text-light" id="login-btn">
+                </div>
+            </form>
+            <p class="my-5 text-center">Don't have an account? <a href="/sign_up">Sign Up</a></p>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light py-3">
+        <div class="d-flex w-100 h-100 pt-5 gap-5 cover-container mx-auto align-items-center">
+            <img src="../static/images/MH-logo-light.png" alt="" class="fload-md-start footer-logo">
+            <p>Created with &#9825 by Melissa Herhandez</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
