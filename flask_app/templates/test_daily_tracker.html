@@ -451,7 +451,7 @@
                 <p>Click a water droplet for every 8oz of water water you drink throughout the day!</p>
                 <div class="d-flex justify-items-between gap-3 flex-wrap">
                     {% for i in range(1,11) %}
-                        {% if (log_info.id) and (log_info.water >= i) %}
+                        {% if (log_info.water) and (log_info.water >= i) %}
                             <a href="" class="btn btn-lg btn-outline-success active mx-1 disabled">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
@@ -572,29 +572,49 @@
                         <div>
                             <label for="weight" class="form-label">Weight</label>
                             <div class="mb-3 input-group">
-                                <input type="number" name="weight" class="form-control" disabled>
+                                {% if log_info.weight %}
+                                    <input type="number" name="weight" class="form-control" value="{{log_info.weight}}" disabled>
+                                {% else %}
+                                    <input type="number" name="weight" class="form-control" disabled>
+                                {% endif %}
                                 <span class="input-group-text">lbs</span>
                             </div>
                         </div>
                         <div>
                             <label for="bust" class="form-label">Bust</label>
                             <div class="mb-3 input-group">
-                                <input type="number" name="bust" class="form-control" disabled>
+                                {% if log_info.bust %}
+                                    <input type="number" name="bust" class="form-control" value="{{log_info.bust}}" disabled>
+                                {% else %}
+                                    <input type="number" name="bust" class="form-control" disabled>
+                                {% endif %}
                                 <span class="input-group-text">inches</span>
                             </div>
-                            <label for="midsection" class="form-label">Waist</label>
+                            <label for="waist" class="form-label">Waist</label>
                             <div class="mb-3 input-group">
-                                <input type="number" name="midsection" class="form-control" disabled>
+                                {% if log_info.waist %}
+                                    <input type="number" name="waist" class="form-control" value="{{log_info.waist}}" disabled>
+                                {% else %}
+                                    <input type="number" name="waist" class="form-control" disabled>
+                                {% endif %}
                                 <span class="input-group-text">inches</span>
                             </div>
                             <label for="abdomen" class="form-label">Abdomen</label>
                             <div class="mb-3 input-group">
-                                <input type="number" name="abdomen" class="form-control" disabled>
+                                {% if log_info.abdomen %}
+                                    <input type="number" name="abdomen" class="form-control" value="{{log_info.abdomen}}" disabled>
+                                {% else %}
+                                    <input type="number" name="abdomen" class="form-control" disabled>
+                                {% endif %}
                                 <span class="input-group-text">inches</span>
                             </div>
                             <label for="hips" class="form-label">Hips</label>
                             <div class="mb-3 input-group">
-                                <input type="number" name="hips" class="form-control" disabled>
+                                {% if log_info.right_arm %}
+                                    <input type="number" name="hips" class="form-control" value="{{log_info.right_arm}}" disabled>
+                                {% else %}
+                                    <input type="number" name="hips" class="form-control" disabled>
+                                {% endif %}
                                 <span class="input-group-text">inches</span>
                             </div>
                         </div>
@@ -603,34 +623,58 @@
                         <div>
                             <label for="right_arm" class="form-label">Right Arm</label>
                             <div class="mb-3 input-group">
-                                <input type="number" name="right_arm" class="form-control" disabled>
+                                {% if log_info.right_arm %}
+                                    <input type="number" name="right_arm" class="form-control" value="{{log_info.right_arm}}" disabled>
+                                {% else %}
+                                    <input type="number" name="right_arm" class="form-control" disabled>
+                                {% endif %}
                                 <span class="input-group-text">inches</span>
                             </div>
                             <label for="left_arm" class="form-label">Left Arm</label>
                             <div class="mb-3 input-group">
-                                <input type="number" name="left_arm" class="form-control" disabled>
+                                {% if log_info.left_arm %}
+                                    <input type="number" name="left_arm" class="form-control" value="{{log_info.left_arm}}" disabled>
+                                {% else %}
+                                    <input type="number" name="left_arm" class="form-control" disabled>
+                                {% endif %}
                                 <span class="input-group-text">inches</span>
                             </div>
                         </div>
                         <div>
                             <label for="right_thigh" class="form-label">Right Thigh</label>
                             <div class="mb-3 input-group">
-                                <input type="number" name="right_thigh" class="form-control" disabled>
+                                {% if log_info.right_thigh %}
+                                    <input type="number" name="right_thigh" class="form-control" value="{{log_info.right_thigh}}" disabled>
+                                {% else %}
+                                    <input type="number" name="right_thigh" class="form-control" disabled>
+                                {% endif %}
                                 <span class="input-group-text">inches</span>
                             </div>
                             <label for="left_thigh" class="form-label">Left Thigh</label>
                             <div class="mb-3 input-group">
-                                <input type="number" name="left_thigh" class="form-control" disabled>
+                                {% if log_info.left_thigh %}
+                                    <input type="number" name="left_thigh" class="form-control" value="{{log_info.left_thigh}}" disabled>
+                                {% else %}
+                                    <input type="number" name="left_thigh" class="form-control" disabled>
+                                {% endif %}
                                 <span class="input-group-text">inches</span>
                             </div>
                             <label for="right_calf" class="form-label">Right Calf</label>
                             <div class="mb-3 input-group">
-                                <input type="number" name="right_calf" class="form-control" disabled>
+                                {% if log_info.right_calf %}
+                                    <input type="number" name="right_calf" class="form-control" value="{{log_info.right_calf}}" disabled>
+                                {% else %}
+                                    <input type="number" name="right_calf" class="form-control" disabled>
+                                {% endif %}
                                 <span class="input-group-text">inches</span>
                             </div>
                             <label for="left_calf" class="form-label">Left Calf</label>
                             <div class="mb-3 input-group">
-                                <input type="number" name="left_calf" class="form-control" disabled>
+                                {% if log_info.left_calf %}
+                                    <input type="number" name="left_calf" class="form-control" value="{{log_info.left_calf}}" disabled>
+                                {% else %}
+                                    <input type="number" name="left_calf" class="form-control" disabled>
+                                {% endif %}
                                 <span class="input-group-text">inches</span>
                             </div>
                         </div>

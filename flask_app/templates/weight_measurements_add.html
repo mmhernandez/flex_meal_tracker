@@ -74,7 +74,7 @@
         </div>
     </header>
     <main>
-        <form action="" method="post">
+        <form action="/weight_measurements/insert/{{day.strftime('%Y-%m-%d')}}" method="post">
             <div class="container flx-pg mx-auto px-5 py-3 my-5 bg-white rounded shadow">
                 <h1 class="text-tan fw-bolder text-center mt-4">Add Weight & Measurements</h1>
                 <p class="text-tan mt-2 text-center fs-5">for {{day.strftime('%b %d, %Y')}}</p>
