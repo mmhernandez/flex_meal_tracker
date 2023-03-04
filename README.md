@@ -3,22 +3,28 @@
 
 To Do List:
 
-- Get the hydrate buttons to remain active for each "glass" of water consumed
+MUST HAVE:
+- Find a way to incorporate the DELETE part of CRUD (maybe deleting a daily log - in case the user added info to the wrong day?)
 
+
+NICE TO HAVE:
 - Upon sign-up, redirect to Account Page with banner/alert to setup initial weight/measurements (only present to user if this data doesn't exist in the db yet)
 
 - Graphs in python to display in a dashboard/stats page
     (show weight over time and display target/goal weight)
     (show how many inches lost over time)
 
-- Conditional on login/signup page, if logged in user navs to these pages they are not presented with login/signup pages (amybe a jinja session conditional to present different nav bar options)
+- Conditional on login/signup page, if logged in user navs to these pages they are not presented with login/signup pages (maybe a jinja session conditional to present the dashboard page)
 
-- Create "About" page that can be located from the "Home" tab (maybe also chaange that to say "About" instead)
-
-- Consider using M/F sex selection in the account to present info on the dashboard (maybe use an API to pull in helpful articles or motivational stuff)
-
-- Look at the AJAX chapter (https://login.codingdojo.com/m/506/12469/87490) for info on how to sign-up and log-in w/o page refresh
+- Consider using M/F sex selection in the account to present info on the dashboard (use an API with AJAX to pull in helpful articles or motivational stuff and place on the dashboard)
 
 - Turn "?" help text into alert/pop up with password requirements (might look better HTML formatted)
 
 - Clear session when cancelling form submissions
+
+- Add light/dark mode toggle to Account page
+
+- Allow users to upload an account/profile image
+
+
+
