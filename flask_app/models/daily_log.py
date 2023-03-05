@@ -1,7 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models import user, meal
 from flask import flash
-from flask_app.config.mysqlconnection import connectToMySQL
 import re
 
 db = "flex_program"
@@ -59,103 +58,92 @@ class DailyLog:
         is_valid = True
 
         #weight validation
-        if len(data["weight"]) > 1:
-            if not number_regex.match(data["weight"]):
+        if not number_regex.match(str(data["weight"])):
                 flash("Invalid weight", "weight")
                 is_valid = False
-            elif float(data["weight"]) > 700:
-                flash("Invalid weight, cannot exceed 700lbs", "weight")
-                is_valid = False
+        elif float(data["weight"]) > 700:
+            flash("Invalid weight, cannot exceed 700lbs", "weight")
+            is_valid = False
 
         #bust validation
-        if len(data["bust"]) > 1:
-            if not number_regex.match(data["bust"]):
+        if not number_regex.match(str(data["bust"])):
                 flash("Invalid bust measurement", "bust")
                 is_valid = False
-            if float(data["bust"]) > 70:
-                flash("Invalid bust measurement, cannot exceed 70 inches", "bust")
-                is_valid = False
+        elif float(data["bust"]) > 70:
+            flash("Invalid bust measurement, cannot exceed 70 inches", "bust")
+            is_valid = False
 
         #waist validation
-        if len(data["waist"]) > 1:
-            if not number_regex.match(data["waist"]):
+        if not number_regex.match(str(data["waist"])):
                 flash("Invalid waist measurement", "waist")
                 is_valid = False
-            if float(data["waist"]) > 100:
-                flash("Invalid waist measurement, cannot exceed 100 inches", "waist")
-                is_valid = False
+        elif float(data["waist"]) > 100:
+            flash("Invalid waist measurement, cannot exceed 100 inches", "waist")
+            is_valid = False
 
         #abdomen validation
-        if len(data["abdomen"]) > 1:
-            if not number_regex.match(data["abdomen"]):
+        if not number_regex.match(str(data["abdomen"])):
                 flash("Invalid abdomen measurement", "abdomen")
                 is_valid = False
-            if float(data["abdomen"]) > 100:
-                flash("Invalid abdomen measurement, cannot exceed 100 inches", "abdomen")
-                is_valid = False
+        elif float(data["abdomen"]) > 100:
+            flash("Invalid abdomen measurement, cannot exceed 100 inches", "abdomen")
+            is_valid = False
 
         #hips validation
-        if len(data["hips"]) > 1:
-            if not number_regex.match(data["hips"]):
+        if not number_regex.match(str(data["hips"])):
                 flash("Invalid hip measurement", "hips")
                 is_valid = False
-            if float(data["hips"]) > 100:
-                flash("Invalid hip measurement, cannot exceed 100 inches", "hips")
-                is_valid = False
+        elif float(data["hips"]) > 100:
+            flash("Invalid hip measurement, cannot exceed 100 inches", "hips")
+            is_valid = False
         
         #right arm validation
-        if len(data["right_arm"]) > 1:
-            if not number_regex.match(data["right_arm"]):
-                flash("Invalid arm measurement", "right_arm")
-                is_valid = False
-            if float(data["right_arm"]) > 30:
-                flash("Invalid arm measurement, cannot exceed 30 inches", "right_arm")
-                is_valid = False
+        if not number_regex.match(str(data["right_arm"])):
+            flash("Invalid arm measurement", "right_arm")
+            is_valid = False
+        elif float(data["right_arm"]) > 30:
+            flash("Invalid arm measurement, cannot exceed 30 inches", "right_arm")
+            is_valid = False
 
         #left arm validation
-        if len(data["left_arm"]) > 1:
-            if not number_regex.match(data["left_arm"]):
-                flash("Invalid arm measurement", "left_arm")
-                is_valid = False
-            if float(data["left_arm"]) > 30:
-                flash("Invalid arm measurement, cannot exceed 30 inches", "left_arm")
-                is_valid = False
+        if not number_regex.match(str(data["left_arm"])):
+            flash("Invalid arm measurement", "left_arm")
+            is_valid = False
+        elif float(data["left_arm"]) > 30:
+            flash("Invalid arm measurement, cannot exceed 30 inches", "left_arm")
+            is_valid = False
 
         #right thigh validation
-        if len(data["right_thigh"]) > 1:
-            if not number_regex.match(data["right_thigh"]):
+        if not number_regex.match(str(data["right_thigh"])):
                 flash("Invalid thigh measurement", "right_thigh")
                 is_valid = False
-            if float(data["right_thigh"]) > 40:
-                flash("Invalid thigh measurement, cannot exceed 40 inches", "right_thigh")
-                is_valid = False
+        elif float(data["right_thigh"]) > 40:
+            flash("Invalid thigh measurement, cannot exceed 40 inches", "right_thigh")
+            is_valid = False
 
         #left thigh validation
-        if len(data["left_thigh"]) > 1:
-            if not number_regex.match(data["left_thigh"]):
+        if not number_regex.match(str(data["left_thigh"])):
                 flash("Invalid thigh measurement", "left_thigh")
                 is_valid = False
-            if float(data["left_thigh"]) > 40:
-                flash("Invalid thigh measurement, cannot exceed 40 inches", "left_thigh")
-                is_valid = False
+        elif float(data["left_thigh"]) > 40:
+            flash("Invalid thigh measurement, cannot exceed 40 inches", "left_thigh")
+            is_valid = False
 
         #right calf validation
-        if len(data["right_calf"]) > 1:
-            if not number_regex.match(data["right_calf"]):
+        if not number_regex.match(str(data["right_calf"])):
                 flash("Invalid calf measurement", "right_calf")
                 is_valid = False
-            if float(data["right_calf"]) > 40:
-                flash("Invalid calf measurement, cannot exceed 40 inches", "right_calf")
-                is_valid = False
+        elif float(data["right_calf"]) > 40:
+            flash("Invalid calf measurement, cannot exceed 40 inches", "right_calf")
+            is_valid = False
 
         #left calf validation
-        if len(data["left_calf"]) > 1:
-            if not number_regex.match(data["left_calf"]):
+        if not number_regex.match(str(data["left_calf"])):
                 flash("Invalid calf measurement", "left_calf")
                 is_valid = False
-            if float(data["left_calf"]) > 40:
-                flash("Invalid calf measurement, cannot exceed 40 inches", "left_calf")
-                is_valid = False
+        elif float(data["left_calf"]) > 40:
+            flash("Invalid calf measurement, cannot exceed 40 inches", "left_calf")
+            is_valid = False
 
         return is_valid
     
@@ -224,5 +212,24 @@ class DailyLog:
         query = '''
             INSERT INTO daily_logs (date, user_id, weight, bust, waist, abdomen, hips, right_arm, left_arm, right_thigh, left_thigh, right_calf, left_calf)
             VALUES (%(date)s, %(user_id)s, %(weight)s, %(bust)s, %(waist)s, %(abdomen)s, %(hips)s, %(right_arm)s, %(left_arm)s, %(right_thigh)s, %(left_thigh)s, %(right_calf)s, %(left_calf)s);
+        '''
+        connectToMySQL(db).query_db(query, data)
+
+    @classmethod
+    def update_weights_measurements(cls, data):
+        query = '''
+            UPDATE daily_logs
+            SET weight = %(weight)s,
+                bust = %(bust)s,
+                waist = %(waist)s,
+                abdomen = %(abdomen)s,
+                hips = %(hips)s,
+                right_arm = %(right_arm)s,
+                left_arm = %(left_arm)s,
+                right_thigh = %(right_thigh)s,
+                left_thigh = %(left_thigh)s,
+                right_calf = %(right_calf)s,
+                left_calf = %(left_calf)s
+            WHERE id = %(id)s
         '''
         connectToMySQL(db).query_db(query, data)

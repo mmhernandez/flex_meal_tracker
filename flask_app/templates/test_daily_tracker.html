@@ -440,7 +440,7 @@
         <div class="container rounded bg-white shadow p-4 w-75 mt-5">
             <div class="d-flex justify-content-between">
                 <h3 class="fw-bold mt-3">Daily Checks</h3>
-                {% if log_info.is_daily_checks == "True" %}
+                {% if log_info.is_daily_checks %}
                     <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropChecks">Update</button>
                 {% else %}
                     <button type="button" class="btn btn-tan h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropChecks">Add</button>
@@ -559,7 +559,7 @@
                     <h3 class="fw-bold mt-3">Weight & Measurements</h3>
                     <p>Weigh-in and add your daily measurements</p>
                 </div>
-                {% if log_info.is_weight_measurements == "True" %}
+                {% if log_info.is_weight_measurements %}
                     <a href="/weight_measurements/edit/{{day.strftime('%Y-%m-%d')}}" class="btn btn-secondary h-75 text-light py-2">Update</a>
                 {% else %}
                     <a href="/weight_measurements/add/{{day.strftime('%Y-%m-%d')}}" class="btn btn-tan h-75 text-light py-2">Add</a>

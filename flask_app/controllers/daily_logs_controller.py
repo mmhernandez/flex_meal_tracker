@@ -85,8 +85,8 @@ def daily_checks_update(date):
 @app.route("/weight_measurements/add/<date>")
 def weights_measurements_add(date):
     if "id" in session:
-        date_obj = datetime.strptime(date, '%Y-%m-%d')
-        return render_template("weight_measurements_add.html", day=date_obj, type='add')
+        date_obj = datetime.strptime(date,'%Y-%m-%d')
+        return render_template("weight_measurements.html", day=date_obj)
     return redirect("/")
 
 @app.route("/weight_measurements/insert/<date>", methods=["POST"])
@@ -96,87 +96,65 @@ def weights_measurements_insert(date):
             "date": date,
             "user_id": session["id"]
         }
-        if "weight" in request.form:
+        if len(request.form["weight"]) < 1:
+            wm_info["weight"] = 0
+        else: 
             wm_info["weight"] = request.form["weight"]
-        else:
-            wm_info["weight"] = None
-        if "bust" in request.form:
+        if len(request.form["bust"]) < 1:
+            wm_info["bust"] = 0
+        else: 
             wm_info["bust"] = request.form["bust"]
-        else:
-            wm_info["bust"] = None
-        if "waist" in request.form:
+        if len(request.form["waist"]) < 1:
+            wm_info["waist"] = 0
+        else: 
             wm_info["waist"] = request.form["waist"]
-        else:
-            wm_info["waist"] = None
-        if "abdomen" in request.form:
+        if len(request.form["abdomen"]) < 1:
+            wm_info["abdomen"] = 0
+        else: 
             wm_info["abdomen"] = request.form["abdomen"]
-        else:
-            wm_info["abdomen"] = None
-        if "hips" in request.form:
+        if len(request.form["hips"]) < 1:
+            wm_info["hips"] = 0
+        else: 
             wm_info["hips"] = request.form["hips"]
-        else:
-            wm_info["hips"] = None
-        if "right_arm" in request.form:
+        if len(request.form["right_arm"]) < 1:
+            wm_info["right_arm"] = 0
+        else: 
             wm_info["right_arm"] = request.form["right_arm"]
-        else:
-            wm_info["right_arm"] = None
-        if "left_arm" in request.form:
+        if len(request.form["left_arm"]) < 1:
+            wm_info["left_arm"] = 0
+        else: 
             wm_info["left_arm"] = request.form["left_arm"]
-        else:
-            wm_info["left_arm"] = None
-        if "right_thigh" in request.form:
+        if len(request.form["right_thigh"]) < 1:
+            wm_info["right_thigh"] = 0
+        else: 
             wm_info["right_thigh"] = request.form["right_thigh"]
-        else:
-            wm_info["right_thigh"] = None
-        if "left_thigh" in request.form:
+        if len(request.form["left_thigh"]) < 1:
+            wm_info["left_thigh"] = 0
+        else: 
             wm_info["left_thigh"] = request.form["left_thigh"]
-        else:
-            wm_info["left_thigh"] = None
-        if "right_calf" in request.form:
+        if len(request.form["right_calf"]) < 1:
+            wm_info["right_calf"] = 0
+        else: 
             wm_info["right_calf"] = request.form["right_calf"]
-        else:
-            wm_info["right_calf"] = None
-        if "left_calf" in request.form:
+        if len(request.form["left_calf"]) < 1:
+            wm_info["left_calf"] = 0
+        else: 
             wm_info["left_calf"] = request.form["left_calf"]
-        else:
-            wm_info["left_calf"] = None
 
         print(f'wm_info = {wm_info}')
 
         if daily_log.DailyLog.validate_daily_weights_measurements(wm_info):
             daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date})
             if daily_log_id:
-                daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
-                # call update method for daily logs
+                # daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
+                wm_info["id"] = daily_log_id
+                daily_log.DailyLog.update_weights_measurements(wm_info)
                 
                 temp = session["id"]
                 session.clear()
                 session["id"] = temp
                 return redirect(f"/daily_tracker/{date}")
             else: 
-                if len(wm_info["weight"]) < 1:
-                    wm_info["weight"] = 0
-                if len(wm_info["bust"]) < 1:
-                    wm_info["bust"] = 0
-                if len(wm_info["waist"]) < 1:
-                    wm_info["waist"] = 0
-                if len(wm_info["abdomen"]) < 1:
-                    wm_info["abdomen"] = 0
-                if len(wm_info["hips"]) < 1:
-                    wm_info["hips"] = 0
-                if len(wm_info["right_arm"]) < 1:
-                    wm_info["right_arm"] = 0
-                if len(wm_info["left_arm"]) < 1:
-                    wm_info["left_arm"] = 0
-                if len(wm_info["right_thigh"]) < 1:
-                    wm_info["right_thigh"] = 0
-                if len(wm_info["left_thigh"]) < 1:
-                    wm_info["left_thigh"] = 0
-                if len(wm_info["right_calf"]) < 1:
-                    wm_info["right_calf"] = 0
-                if len(wm_info["left_calf"]) < 1:
-                    wm_info["left_calf"] = 0
-
                 daily_log.DailyLog.insert_weights_measurements(wm_info)
                 
                 temp = session["id"]
@@ -203,8 +181,15 @@ def weights_measurements_insert(date):
 def weights_measurements_edit(date):
     if "id" in session:
         date_obj = datetime.strptime(date, '%Y-%m-%d')
+
+        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date})
+        if daily_log_id:
+            daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
+        else: 
+            daily_log_info = False
+
         # pull weights and measurements and pass to html
-        return render_template("weight_measurements_update.html", day=date_obj, type='edit')
+        return render_template("weight_measurements.html", day=date_obj, log_info=daily_log_info)
     return redirect("/")
 
 @app.route("/weight_measurements/update/<date>", methods=["POST"])
