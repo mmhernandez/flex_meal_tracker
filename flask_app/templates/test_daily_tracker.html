@@ -440,10 +440,10 @@
         <div class="container rounded bg-white shadow p-4 w-75 mt-5">
             <div class="d-flex justify-content-between">
                 <h3 class="fw-bold mt-3">Daily Checks</h3>
-                {% if log_info.is_daily_checks %}
-                    <button type="button" class="btn btn-secondary h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropChecks">Update</button>
+                {% if log_info.daily_checks_flag == "Yes" %}
+                    <a href="/daily_checks/edit/{{day.strftime('%Y-%m-%d')}}" class="btn btn-secondary h-75 text-light py-2">Update</a>
                 {% else %}
-                    <button type="button" class="btn btn-tan h-75 text-light py-2" data-bs-toggle="modal" data-bs-target="#staticBackdropChecks">Add</button>
+                    <a href="/daily_checks/add/{{day.strftime('%Y-%m-%d')}}" class="btn btn-tan h-75 text-light py-2">Add</a>
                 {% endif %}
             </div>
             <!-- Water/Hydration Info -->
@@ -489,67 +489,6 @@
                     <label for="exercise" class="form-check-label pt-1 fs-5">30+ Minute Exercise</label>
                 </div>
             </div>
-            <!-- Add/Update Modal -->
-            <div class="modal fade" id="staticBackdropChecks" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content bg-light">
-                        <div class="modal-header bg-dark text-light">
-                            <h5 class="modal-title">Daily Checks</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        {% if log_info.is_daily_checks == "True" %}
-                            <form action="/daily_checks/update/{{day.strftime('%Y-%m-%d')}}" method="post">
-                        {% else %}
-                            <form action="/daily_checks/add/{{day.strftime('%Y-%m-%d')}}" method="post">
-                        {% endif %}
-                            <div class="mx-auto p-3 my-3">
-                                <h5>Hydration</h3>
-                                <div>
-                                    <label for="water" class="form-label">How much water have you had today? Input the number of 8oz glasses below:</label>
-                                    {% if log_info.water %}
-                                        <input type="number" name="water" class="form-control w-50" value="{{log_info.water}}">
-                                    {% else %}
-                                        <input type="number" name="water" class="form-control w-50">
-                                    {% endif %}
-                                    {% with messages = get_flashed_messages(category_filter = ["water"])%}
-                                        {% if messages %}
-                                            {% for msg in messages %}
-                                                <p class="text-danger">{{msg}}</p>
-                                            {% endfor %}
-                                        {% endif %}
-                                    {% endwith %}
-                                </div>
-                            </div>
-                            <div class="p-3 my-3">
-                                <h5 class="mt-4">Daily Checks</h3>
-                                <div>
-                                    <p>Check the appropriate boxes when the activities occur each day.</p>
-                                    <div class="container">
-                                        {% if (log_info) and log_info.flex_daily_bonus == 1 %}
-                                            <input type="checkbox" name="daily_bonus" class="form-check-input fs-4 me-3" value="{{log_info.flex_daily_bonus}}" checked>
-                                        {% else %}
-                                            <input type="checkbox" name="daily_bonus" class="form-check-input fs-4 me-3">
-                                        {% endif %}
-                                        <label for="daily_bonus" class="form-check-label fs-5">Flex<sup>TM</sup> Daily Bonus</label>
-                                    </div>
-                                    <div class="container mt-2">
-                                        {% if (log_info) and log_info.exercise == 1 %}
-                                            <input type="checkbox" name="exercise" class="form-check-input me-3 fs-4" value="{{log_info.exercise}}" checked>
-                                        {% else %}
-                                            <input type="checkbox" name="exercise" class="form-check-input me-3 fs-4">
-                                        {% endif %}   
-                                        <label for="exercise" class="form-check-label pt-1 fs-5">30+ Minute Exercise</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <input type="submit" value="Save" class="btn btn-tan text-light h-75">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- Weight & Measurements -->
@@ -559,7 +498,7 @@
                     <h3 class="fw-bold mt-3">Weight & Measurements</h3>
                     <p>Weigh-in and add your daily measurements</p>
                 </div>
-                {% if log_info.is_weight_measurements %}
+                {% if log_info.weight_measurements_flag == "Yes" %}
                     <a href="/weight_measurements/edit/{{day.strftime('%Y-%m-%d')}}" class="btn btn-secondary h-75 text-light py-2">Update</a>
                 {% else %}
                     <a href="/weight_measurements/add/{{day.strftime('%Y-%m-%d')}}" class="btn btn-tan h-75 text-light py-2">Add</a>

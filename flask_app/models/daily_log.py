@@ -165,9 +165,9 @@ class DailyLog:
             SELECT *,
                 CASE
                     WHEN flex_daily_bonus IS NOT NULL or exercise IS NOT NULL or water IS NOT NULL
-                        THEN 'True'
-                    ELSE 'False'
-                END AS is_daily_checks,
+                        THEN 'Yes'
+                    ELSE 'No'
+                END AS daily_checks_flag,
                 CASE
                     WHEN weight IS NOT NULL or 
                         bust IS NOT NULL or waist IS NOT NULL or 
@@ -175,16 +175,16 @@ class DailyLog:
                         right_arm IS NOT NULL or left_arm IS NOT NULL or 
                         right_thigh IS NOT NULL or left_thigh IS NOT NULL or 
                         right_calf IS NOT NULL or left_calf IS NOT NULL
-                        THEN 'true'
-                    ELSE 'False'
-                    END AS is_weight_measurements
+                        THEN 'Yes'
+                    ELSE 'No'
+                    END AS weight_measurements_flag
             FROM daily_logs
             WHERE id = %(id)s;
         '''
         results = connectToMySQL(db).query_db(query, data)
         log = cls(results[0])
-        log.is_daily_checks = results[0]["is_daily_checks"]
-        log.is_weight_measurements = results[0]["is_weight_measurements"]
+        log.daily_checks_flag = results[0]["daily_checks_flag"]
+        log.weight_measurements_flag = results[0]["weight_measurements_flag"]
         return log
 
     @classmethod

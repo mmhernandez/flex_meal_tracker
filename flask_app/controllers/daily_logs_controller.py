@@ -19,11 +19,16 @@ def daily_tracker(date):
 
 
 # DAILY CHECKS ADD/EDIT
-# need to rework this section like the weights & measures section below!
-@app.route("/daily_checks/add/<date>", methods=["POST"])
+@app.route("/daily_checks/add/<date>")
 def daily_checks_add(date):
     if "id" in session:
-        # date_obj = datetime.strptime(date, '%Y-%m-%d')
+        date_obj = datetime.strptime(date,'%Y-%m-%d')
+        return render_template("daily_checks.html", day=date_obj)
+    return redirect("/")
+
+@app.route("/daily_checks/action/<date>", methods=["POST"])
+def daily_checks_action(date):
+    if "id" in session:
         daily_check_info = {
             "date": date,
             "user_id": session["id"]
@@ -41,43 +46,41 @@ def daily_checks_add(date):
         else:
             daily_check_info["exercise"] = 0
         
+        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date})
         if daily_log.DailyLog.validate_daily_checks(daily_check_info):
-            daily_log.DailyLog.insert_daily_checks(daily_check_info)
-            # pop any stored session values for this section
-            return redirect(f"/daily_tracker/{date}")
+            if daily_log_id:
+                daily_check_info["id"] = daily_log_id
+                daily_log.DailyLog.update_daily_checks(daily_check_info)
+                
+                temp = session["id"]
+                session.clear()
+                session["id"] = temp
+                return redirect(f"/daily_tracker/{date}")
+            else: 
+                daily_log.DailyLog.insert_daily_checks(daily_check_info)
+                
+                temp = session["id"]
+                session.clear()
+                session["id"] = temp
+                return redirect(f"/daily_tracker/{date}")
         else:
-            # store values in session
-            # need to redirect to the modal pop-up to display error for resumbission
-            return redirect(f"/daily_tracker/{date}")
+            session["water"] = daily_check_info["water"]
+            session["flex_daily_bonus"] = daily_check_info["flex_daily_bonus"]
+            session["exercise"] = daily_check_info["exercise"]
+            
+            if daily_log_id:
+                return redirect(f'/daily_checks/edit/{date}')
+            else:
+                return redirect(f'/daily_checks/add/{date}')
     return redirect("/")
 
-@app.route("/daily_checks/update/<date>", methods=["POST"])
+@app.route("/daily_checks/edit/<date>")
 def daily_checks_update(date):
     if "id" in session:
+        date_obj = datetime.strptime(date,'%Y-%m-%d')
         daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date})
-
-        daily_check_info = {
-            "user_id": session["id"],
-            "water": request.form["water"],
-            "id": daily_log_id
-        }
-        if ("daily_bonus" in request.form) and request.form["daily_bonus"] == 'on':
-            daily_check_info["flex_daily_bonus"] = 1
-        else:
-            daily_check_info["flex_daily_bonus"] = 0
-        if ("exercise" in request.form) and request.form["exercise"] == 'on':
-            daily_check_info["exercise"] = 1
-        else:
-            daily_check_info["exercise"] = 0
-
-        if daily_log.DailyLog.validate_daily_checks(daily_check_info):
-            daily_log.DailyLog.update_daily_checks(daily_check_info)
-            # pop any stored session values for this section
-            return redirect(f"/daily_tracker/{date}")
-        else:
-            # store values in session
-            # # need to redirect to the modal pop-up to display error for resumbission
-            return redirect(f"/daily_tracker/{date}")
+        daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
+        return render_template("daily_checks.html", day=date_obj, log_info=daily_log_info)
     return redirect("/")
 
 
@@ -89,8 +92,8 @@ def weights_measurements_add(date):
         return render_template("weight_measurements.html", day=date_obj)
     return redirect("/")
 
-@app.route("/weight_measurements/insert/<date>", methods=["POST"])
-def weights_measurements_insert(date):
+@app.route("/weight_measurements/action/<date>", methods=["POST"])
+def weights_measurements_action(date):
     if "id" in session:
         wm_info = {
             "date": date,
@@ -141,12 +144,9 @@ def weights_measurements_insert(date):
         else: 
             wm_info["left_calf"] = request.form["left_calf"]
 
-        print(f'wm_info = {wm_info}')
-
+        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date})
         if daily_log.DailyLog.validate_daily_weights_measurements(wm_info):
-            daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date})
             if daily_log_id:
-                # daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
                 wm_info["id"] = daily_log_id
                 daily_log.DailyLog.update_weights_measurements(wm_info)
                 
@@ -174,32 +174,17 @@ def weights_measurements_insert(date):
             session["right_calf"] = wm_info["right_calf"]
             session["left_calf"] = wm_info["left_calf"]
             
-            return redirect(f'/weight_measurements/add/{date}')
+            if daily_log_id:
+                return redirect(f'/weight_measurements/edit/{date}')
+            else:
+                return redirect(f'/weight_measurements/add/{date}')
     return redirect("/")
 
 @app.route("/weight_measurements/edit/<date>")
 def weights_measurements_edit(date):
     if "id" in session:
-        date_obj = datetime.strptime(date, '%Y-%m-%d')
-
+        date_obj = datetime.strptime(date,'%Y-%m-%d')
         daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date})
-        if daily_log_id:
-            daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
-        else: 
-            daily_log_info = False
-
-        # pull weights and measurements and pass to html
+        daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
         return render_template("weight_measurements.html", day=date_obj, log_info=daily_log_info)
-    return redirect("/")
-
-@app.route("/weight_measurements/update/<date>", methods=["POST"])
-def weights_measurements_update(date):
-    if "id" in session:
-        #get form data
-        #validate form input
-        #  if valid, call update method
-        return redirect(f"/daily_tracker/{date}")
-        #if not valid
-        #  save fields in session
-        #  redirect back to edit route w/ error messages
     return redirect("/")

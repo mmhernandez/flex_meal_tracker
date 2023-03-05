@@ -74,10 +74,10 @@
         </div>
     </header>
     <main>
-        <form action="/weight_measurements/insert/{{day.strftime('%Y-%m-%d')}}" method="post">
+        <form action="/weight_measurements/action/{{day.strftime('%Y-%m-%d')}}" method="post">
             <div class="container flx-pg mx-auto px-5 py-3 my-5 bg-white rounded shadow">
-                {% if log_info and log_info.is_weight_measurements %}
-                    <h1 class="text-tan fw-bolder text-center mt-4">Update Weight & Measurements</h1>
+                {% if log_info and log_info.weight_measurements_flag %}
+                    <h1 class="text-tan fw-bolder text-center mt-4">Edit Weight & Measurements</h1>
                 {% else %}
                     <h1 class="text-tan fw-bolder text-center mt-4">Add Weight & Measurements</h1>
                 {% endif %}
