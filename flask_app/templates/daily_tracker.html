@@ -124,8 +124,7 @@
                     <h3 class="fw-bold mt-3">Meal Details</h3>
                     <p>Add meal details, including amounts of proteins, fats, fruits, and vegetables enjoyed during each meal.</p>
                 </div>
-        <!-- NEED TO UPDATE for meal details conditional -->
-                {% if log_info.weight_measurements_flag == "Yes" %}
+                {% if log_info.meal_details_flag == "Yes" %}
                     <a href="/meal_details/edit/{{day.strftime('%Y-%m-%d')}}" class="btn btn-secondary h-75 text-light py-2">Update</a>
                 {% else %}
                     <a href="/meal_details/add/{{day.strftime('%Y-%m-%d')}}" class="btn btn-tan h-75 text-light py-2">Add</a>
@@ -137,27 +136,27 @@
                     <div class="container rounded p-3">
                         <p class="fs-3 text-tan">Breakfast</p>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" name="breakfast" style="height: 150px" disabled></textarea>
+                            <textarea class="form-control" name="breakfast_details" style="height: 150px" disabled></textarea>
                             <label for="breakfast">Breakfast meal details</label>
                         </div>
                         <div class="d-flex justify-content-between gap-1 meal-items-section">
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="proteins" class="form-control" disabled>
+                                    <input type="number" name="breakfast_proteins" class="form-control" disabled>
                                     <label for="proteins" class="form-label">Proteins (oz)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="fats" class="form-control" disabled>
+                                    <input type="number" name="breakfast_fats" class="form-control" disabled>
                                     <label for="fats" class="form-label">Fats (serving)</label>
                                 </div>
                             </div>
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="fruits" class="form-control" disabled>
+                                    <input type="number" name="breakfast_fruits" class="form-control" disabled>
                                     <label for="fruits" class="form-label">Fruits (qty)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="vegetables" class="form-control" disabled>
+                                    <input type="number" name="breakfast_vegetables" class="form-control" disabled>
                                     <label for="vegetables" class="form-label">Veggies (qty)</label>
                                 </div>
                             </div>
@@ -169,27 +168,27 @@
                     <div class="container rounded p-3">
                         <p class="fs-3 text-tan">Lunch</p>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" name="lunch" style="height: 150px" disabled></textarea>
+                            <textarea class="form-control" name="lunch_details" style="height: 150px" disabled></textarea>
                             <label for="lunch">Lunch meal details</label>
                         </div>
                         <div class="d-flex justify-content-between gap-1 meal-items-section">
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="proteins" class="form-control" disabled>
+                                    <input type="number" name="lunch_proteins" class="form-control" disabled>
                                     <label for="proteins" class="form-label">Proteins (oz)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="fats" class="form-control" disabled>
+                                    <input type="number" name="lunch_fats" class="form-control" disabled>
                                     <label for="fats" class="form-label">Fats (serving)</label>
                                 </div>
                             </div>
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="fruits" class="form-control" disabled>
+                                    <input type="number" name="lunch_fruits" class="form-control" disabled>
                                     <label for="fruits" class="form-label">Fruits (qty)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="vegetables" class="form-control" disabled>
+                                    <input type="number" name="lunch_vegetables" class="form-control" disabled>
                                     <label for="vegetables" class="form-label">Veggies (qty)</label>
                                 </div>
                             </div>
@@ -203,27 +202,27 @@
                     <div class="container rounded p-3">
                         <p class="fs-3 text-tan">Dinner</p>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" name="dinner" style="height: 150px" disabled></textarea>
+                            <textarea class="form-control" name="dinner_details" style="height: 150px" disabled></textarea>
                             <label for="dinner">Dinner meal details</label>
                         </div>
                         <div class="d-flex justify-content-between gap-1 meal-items-section">
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="proteins" class="form-control" disabled>
+                                    <input type="number" name="dinner_proteins" class="form-control" disabled>
                                     <label for="proteins" class="form-label">Proteins (oz)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="fats" class="form-control" disabled>
+                                    <input type="number" name="dinner_fats" class="form-control" disabled>
                                     <label for="fats" class="form-label">Fats (serving)</label>
                                 </div>
                             </div>
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="fruits" class="form-control" disabled>
+                                    <input type="number" name="dinner_fruits" class="form-control" disabled>
                                     <label for="fruits" class="form-label">Fruits (qty)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="vegetables" class="form-control" disabled>
+                                    <input type="number" name="dinner_vegetables" class="form-control" disabled>
                                     <label for="vegetables" class="form-label">Veggies (qty)</label>
                                 </div>
                             </div>
@@ -235,27 +234,27 @@
                     <div class="container rounded p-3">
                         <p class="fs-3 text-tan">Snack</p>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" name="snack" style="height: 150px" disabled></textarea>
+                            <textarea class="form-control" name="snack_details" style="height: 150px" disabled></textarea>
                             <label for="snack">Snack meal details</label>
                         </div>
                         <div class="d-flex justify-content-between gap-1 meal-items-section">
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="proteins" class="form-control" disabled>
+                                    <input type="number" name="snack_proteins" class="form-control" disabled>
                                     <label for="proteins" class="form-label">Proteins (oz)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="fats" class="form-control" disabled>
+                                    <input type="number" name="snack_fats" class="form-control" disabled>
                                     <label for="fats" class="form-label">Fats (serving)</label>
                                 </div>
                             </div>
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="fruits" class="form-control" disabled>
+                                    <input type="number" name="snack_fruits" class="form-control" disabled>
                                     <label for="fruits" class="form-label">Fruits (qty)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="vegetables" class="form-control" disabled>
+                                    <input type="number" name="snack_vegetables" class="form-control" disabled>
                                     <label for="vegetables" class="form-label">Veggies (qty)</label>
                                 </div>
                             </div>

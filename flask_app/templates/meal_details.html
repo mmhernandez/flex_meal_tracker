@@ -74,18 +74,145 @@
     <main>
         <form action="/meal_details/action/{{day.strftime('%Y-%m-%d')}}" method="post">
             <div class="container flx-pg mx-auto px-5 py-3 my-5 bg-white rounded shadow">
-                {% if log_info and log_info.daily_checks_flag == "Yes" %}
+                {% if log_info and log_info.meal_details_flag == "Yes" %}
                     <h1 class="text-tan fw-bolder text-center mt-4">Edit Meal Details</h1>
                 {% else %}
                     <h1 class="text-tan fw-bolder text-center mt-4">Add Meal Details</h1>
                 {% endif %}
                 <p class="text-tan mt-2 text-center fs-5">for {{day.strftime('%b %d, %Y')}}</p>
                 <div class="d-flex justify-content-end py-4 border-bottom-tan">
-                    <a href="/meal_details/{{day.strftime('%Y-%m-%d')}}" class="btn btn-secondary mt-4 text-end me-2">Cancel</a>
+                    <a href="/daily_tracker/{{day.strftime('%Y-%m-%d')}}" class="btn btn-secondary mt-4 text-end me-2">Cancel</a>
                     <input type="submit" value="Save" class="btn btn-tan mt-4 text-end">
                 </div>
                 <div class="mt-4">
-                    
+                    <!-- Breakfast -->
+                    <div class="meal-items">
+                        <div class="container rounded p-3">
+                            <p class="fs-3 text-tan">Breakfast</p>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" name="breakfast_details" style="height: 150px"></textarea>
+                                <label for="breakfast">Breakfast meal details</label>
+                            </div>
+                            <div class="d-flex justify-content-between gap-1 meal-items-section">
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="breakfast_proteins" class="form-control">
+                                        <label for="proteins" class="form-label">Proteins (oz)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="breakfast_fats" class="form-control">
+                                        <label for="fats" class="form-label">Fats (serving)</label>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="breakfast_fruits" class="form-control">
+                                        <label for="fruits" class="form-label">Fruits (qty)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="breakfast_vegetables" class="form-control">
+                                        <label for="vegetables" class="form-label">Veggies (qty)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lunch -->
+                    <div class="meal-items">
+                        <div class="container rounded p-3">
+                            <p class="fs-3 text-tan">Lunch</p>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" name="lunch_details" style="height: 150px"></textarea>
+                                <label for="lunch">Lunch meal details</label>
+                            </div>
+                            <div class="d-flex justify-content-between gap-1 meal-items-section">
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="lunch_proteins" class="form-control">
+                                        <label for="proteins" class="form-label">Proteins (oz)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="lunch_fats" class="form-control">
+                                        <label for="fats" class="form-label">Fats (serving)</label>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="lunch_fruits" class="form-control">
+                                        <label for="fruits" class="form-label">Fruits (qty)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="lunch_vegetables" class="form-control">
+                                        <label for="vegetables" class="form-label">Veggies (qty)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Dinner -->
+                    <div class="meal-items">
+                        <div class="container rounded p-3">
+                            <p class="fs-3 text-tan">Dinner</p>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" name="dinner_details" style="height: 150px"></textarea>
+                                <label for="dinner">Dinner meal details</label>
+                            </div>
+                            <div class="d-flex justify-content-between gap-1 meal-items-section">
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="dinner_proteins" class="form-control">
+                                        <label for="proteins" class="form-label">Proteins (oz)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="dinner_fats" class="form-control">
+                                        <label for="fats" class="form-label">Fats (serving)</label>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="dinner_fruits" class="form-control">
+                                        <label for="fruits" class="form-label">Fruits (qty)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="dinner_vegetables" class="form-control">
+                                        <label for="vegetables" class="form-label">Veggies (qty)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Snack -->
+                    <div class="meal-items">
+                        <div class="container rounded p-3">
+                            <p class="fs-3 text-tan">Snack</p>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" name="snack_details" style="height: 150px"></textarea>
+                                <label for="snack">Snack meal details</label>
+                            </div>
+                            <div class="d-flex justify-content-between gap-1 meal-items-section">
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="snack_proteins" class="form-control">
+                                        <label for="proteins" class="form-label">Proteins (oz)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="snack_fats" class="form-control">
+                                        <label for="fats" class="form-label">Fats (serving)</label>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-1 meal-items-block">
+                                    <div class="form-floating">
+                                        <input type="number" name="snack_fruits" class="form-control">
+                                        <label for="fruits" class="form-label">Fruits (qty)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="snack_vegetables" class="form-control">
+                                        <label for="vegetables" class="form-label">Veggies (qty)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>

@@ -18,28 +18,6 @@ def daily_tracker(date):
     return redirect("/")
 
 
-# MEAL DETAILS ADD/EDIT
-@app.route("/meal_details/add/<date>")
-def meal_details_add(date):
-    if "id" in session:
-        date_obj = datetime.strptime(date,'%Y-%m-%d')
-        return render_template("meal_details.html", day=date_obj)
-    return redirect("/")
-
-@app.route("/meal_details/action/<date>", methods=["POST"])
-def meal_details_action(date):
-    pass
-
-@app.route("/meal_details/edit/<date>")
-def meal_details_update(date):
-    if "id" in session:
-        date_obj = datetime.strptime(date,'%Y-%m-%d')
-        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date, "user_id": session["id"]})
-        daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
-        return render_template("meal_detailss.html", day=date_obj, log_info=daily_log_info)
-    return redirect("/")
-
-
 # DAILY CHECKS ADD/EDIT
 @app.route("/daily_checks/add/<date>")
 def daily_checks_add(date):

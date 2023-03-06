@@ -1,5 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models import user, meal
+from flask_app.models import meal
 from flask import flash
 import re
 
@@ -31,12 +31,9 @@ class DailyLog:
         self.user_id = data["user_id"]
         self.user = None
         self.meals = []
-        self.is_breakfast = True
-        self.is_lunch = True
-        self.is_dinner = True
-        self.is_snacks = True
-        self.is_daily_checks = True
-        self.is_weight_measurements = True
+        self.meal_details_flag = None
+        self.daily_checks_flag = None
+        self.weight_measurements_flag = None
 
     @staticmethod
     def validate_daily_checks(data):
@@ -180,14 +177,42 @@ class DailyLog:
                         right_calf IS NOT NULL or left_calf IS NOT NULL
                         THEN 'Yes'
                     ELSE 'No'
-                    END AS weight_measurements_flag
-            FROM daily_logs
-            WHERE id = %(id)s;
+                    END AS weight_measurements_flag,
+                CASE
+                    WHEN M.id IS NOT NULL 
+                        THEN 'Yes'
+                    ELSE 'No'
+                    END AS meal_details_flag
+            FROM daily_logs DL
+            LEFT JOIN meals M on DL.id = M.daily_log_id
+            WHERE DL.id = %(id)s;
         '''
         results = connectToMySQL(db).query_db(query, data)
         log = cls(results[0])
+
         log.daily_checks_flag = results[0]["daily_checks_flag"]
         log.weight_measurements_flag = results[0]["weight_measurements_flag"]
+        log.meal_details_flag = results[0]["meal_details_flag"]
+
+        print(f'log.meal_details_flag = {log.meal_details_flag}')
+
+        if log.meal_details_flag == "Yes":
+            for row in results:
+                meal_info = {
+                    "id": row["id"],
+                    "meal_type": row["meal_type"],
+                    "details": row["details"],
+                    "proteins": row["proteins"],
+                    "fats": row["fats"],
+                    "fruits": row["fruits"],
+                    "vegetables": row["vegetables"],
+                    "created_at": row["created_at"],
+                    "updated_at": row["updated_at"],
+                    "daily_log_id": row["daily_log_id"]
+                }
+                meal_obj = meal.Meal(meal_info)
+                log.meals.append(meal_obj)
+        
         return log
 
     @classmethod
