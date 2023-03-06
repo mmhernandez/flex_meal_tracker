@@ -9,12 +9,34 @@ from flask_app.models import daily_log
 def daily_tracker(date):
     if "id" in session:
         date_obj = datetime.strptime(date, '%Y-%m-%d')
-        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date})
+        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date, "user_id": session["id"]})
         if daily_log_id:
             daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
         else: 
             daily_log_info = False
-        return render_template("test_daily_tracker.html", day=date_obj, log_info=daily_log_info)
+        return render_template("daily_tracker.html", day=date_obj, log_info=daily_log_info)
+    return redirect("/")
+
+
+# MEAL DETAILS ADD/EDIT
+@app.route("/meal_details/add/<date>")
+def meal_details_add(date):
+    if "id" in session:
+        date_obj = datetime.strptime(date,'%Y-%m-%d')
+        return render_template("meal_details.html", day=date_obj)
+    return redirect("/")
+
+@app.route("/meal_details/action/<date>", methods=["POST"])
+def meal_details_action(date):
+    pass
+
+@app.route("/meal_details/edit/<date>")
+def meal_details_update(date):
+    if "id" in session:
+        date_obj = datetime.strptime(date,'%Y-%m-%d')
+        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date, "user_id": session["id"]})
+        daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
+        return render_template("meal_detailss.html", day=date_obj, log_info=daily_log_info)
     return redirect("/")
 
 
@@ -46,7 +68,7 @@ def daily_checks_action(date):
         else:
             daily_check_info["exercise"] = 0
         
-        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date})
+        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date, "user_id": session["id"]})
         if daily_log.DailyLog.validate_daily_checks(daily_check_info):
             if daily_log_id:
                 daily_check_info["id"] = daily_log_id
@@ -78,7 +100,7 @@ def daily_checks_action(date):
 def daily_checks_update(date):
     if "id" in session:
         date_obj = datetime.strptime(date,'%Y-%m-%d')
-        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date})
+        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date, "user_id": session["id"]})
         daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
         return render_template("daily_checks.html", day=date_obj, log_info=daily_log_info)
     return redirect("/")
@@ -144,7 +166,7 @@ def weights_measurements_action(date):
         else: 
             wm_info["left_calf"] = request.form["left_calf"]
 
-        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date})
+        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date, "user_id": session["id"]})
         if daily_log.DailyLog.validate_daily_weights_measurements(wm_info):
             if daily_log_id:
                 wm_info["id"] = daily_log_id
@@ -184,7 +206,8 @@ def weights_measurements_action(date):
 def weights_measurements_edit(date):
     if "id" in session:
         date_obj = datetime.strptime(date,'%Y-%m-%d')
-        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date})
+        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date, "user_id": session["id"]})
         daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
         return render_template("weight_measurements.html", day=date_obj, log_info=daily_log_info)
     return redirect("/")
+

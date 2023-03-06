@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+
+    <!-- styling -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../static/images/favicon/site.webmanifest">
+</head>
+<body class="bg-taupe">
+    <header class="bg-dark">
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <nav class="mb-auto">
+                <div>
+                    <p class="float-md-start fs-4 py-1 text-light">Flex Program</p>
+                    <nav class="nav nav-masthead justify-content-center float-md-end">
+                        
+                        <!-- Calendar Offcanvas-->
+                        <a class="nav-link fw-bold py-1 px-0 me-3 disabled" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" >Calendar</a>
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                            <div class="offcanvas-header">
+                                <h5 id="offcanvasRightLabel">Calendar</h5>
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body bg-light">
+                                <p class="my-3">Select a date to view the daily tracker.</p>
+                                <div class="calendar ms-2">
+                                    <div class="calendar-header">
+                                        <span class="month-picker" id="month-picker">April</span>
+                                        <div class="year-picker">
+                                            <span class="year-change" id="prev-year">
+                                                <pre><</pre>
+                                            </span>
+                                            <span id="year">2022</span>
+                                            <span class="year-change" id="next-year">
+                                                <pre>></pre>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="calendar-body">
+                                        <div class="calendar-week-day">
+                                            <div>Sun</div>
+                                            <div>Mon</div>
+                                            <div>Tue</div>
+                                            <div>Wed</div>
+                                            <div>Thu</div>
+                                            <div>Fri</div>
+                                            <div>Sat</div>
+                                        </div>
+                                        <div class="calendar-days"></div>
+                                    </div>
+                                    <div class="month-list"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a class="nav-link fw-bold py-1 px-0 disabled" href="/dashboard">Dashboard</a>
+                        <a class="nav-link fw-bold py-1 px-0 disabled" href="/account">Account</a>
+                        <a class="nav-link fw-bold py-1 px-0" href="/logout">Logout</a>
+                    </nav>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <form action="/meal_details/action/{{day.strftime('%Y-%m-%d')}}" method="post">
+            <div class="container flx-pg mx-auto px-5 py-3 my-5 bg-white rounded shadow">
+                {% if log_info and log_info.daily_checks_flag == "Yes" %}
+                    <h1 class="text-tan fw-bolder text-center mt-4">Edit Meal Details</h1>
+                {% else %}
+                    <h1 class="text-tan fw-bolder text-center mt-4">Add Meal Details</h1>
+                {% endif %}
+                <p class="text-tan mt-2 text-center fs-5">for {{day.strftime('%b %d, %Y')}}</p>
+                <div class="d-flex justify-content-end py-4 border-bottom-tan">
+                    <a href="/meal_details/{{day.strftime('%Y-%m-%d')}}" class="btn btn-secondary mt-4 text-end me-2">Cancel</a>
+                    <input type="submit" value="Save" class="btn btn-tan mt-4 text-end">
+                </div>
+                <div class="mt-4">
+                    
+                </div>
+            </div>
+        </form>
+    </main>
+    <footer class="bg-dark text-light py-3 mt-5">
+        <div class="d-flex w-100 h-100 pt-5 gap-5 cover-container mx-auto">
+            <img src="{{ url_for('static', filename='images/MH-logo-light.png') }}" alt="logo" class="fload-md-start footer-logo">
+            <div class="float-md-end mx-auto">
+                <p>Created with &#9825 by Melissa Hernandez</p>
+                <p>Source code available on <a class="link text-tan" target="_blank" href="https://github.com/mmhernandez/flex_meal_tracker">GitHub</a></p>
+                <div class="socials">
+                    <p>
+                        <a href="https://github.com/mmhernandez" target="_blank"><img src="https://skillicons.dev/icons?i=github" alt="github" class="footer-social"></a>
+                        <a href="https://www.linkedin.com/in/melissa-dangelo-hernandez/" target="_blank"><img src="https://skillicons.dev/icons?i=linkedin" alt="linkedin" class="footer-social"></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

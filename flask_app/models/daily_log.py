@@ -59,40 +59,40 @@ class DailyLog:
 
         #weight validation
         if not number_regex.match(str(data["weight"])):
-                flash("Invalid weight", "weight")
-                is_valid = False
+            flash("Invalid weight", "weight")
+            is_valid = False
         elif float(data["weight"]) > 700:
             flash("Invalid weight, cannot exceed 700lbs", "weight")
             is_valid = False
 
         #bust validation
         if not number_regex.match(str(data["bust"])):
-                flash("Invalid bust measurement", "bust")
-                is_valid = False
+            flash("Invalid bust measurement", "bust")
+            is_valid = False
         elif float(data["bust"]) > 70:
             flash("Invalid bust measurement, cannot exceed 70 inches", "bust")
             is_valid = False
 
         #waist validation
         if not number_regex.match(str(data["waist"])):
-                flash("Invalid waist measurement", "waist")
-                is_valid = False
+            flash("Invalid waist measurement", "waist")
+            is_valid = False
         elif float(data["waist"]) > 100:
             flash("Invalid waist measurement, cannot exceed 100 inches", "waist")
             is_valid = False
 
         #abdomen validation
         if not number_regex.match(str(data["abdomen"])):
-                flash("Invalid abdomen measurement", "abdomen")
-                is_valid = False
+            flash("Invalid abdomen measurement", "abdomen")
+            is_valid = False
         elif float(data["abdomen"]) > 100:
             flash("Invalid abdomen measurement, cannot exceed 100 inches", "abdomen")
             is_valid = False
 
         #hips validation
         if not number_regex.match(str(data["hips"])):
-                flash("Invalid hip measurement", "hips")
-                is_valid = False
+            flash("Invalid hip measurement", "hips")
+            is_valid = False
         elif float(data["hips"]) > 100:
             flash("Invalid hip measurement, cannot exceed 100 inches", "hips")
             is_valid = False
@@ -115,32 +115,32 @@ class DailyLog:
 
         #right thigh validation
         if not number_regex.match(str(data["right_thigh"])):
-                flash("Invalid thigh measurement", "right_thigh")
-                is_valid = False
+            flash("Invalid thigh measurement", "right_thigh")
+            is_valid = False
         elif float(data["right_thigh"]) > 40:
             flash("Invalid thigh measurement, cannot exceed 40 inches", "right_thigh")
             is_valid = False
 
         #left thigh validation
         if not number_regex.match(str(data["left_thigh"])):
-                flash("Invalid thigh measurement", "left_thigh")
-                is_valid = False
+            flash("Invalid thigh measurement", "left_thigh")
+            is_valid = False
         elif float(data["left_thigh"]) > 40:
             flash("Invalid thigh measurement, cannot exceed 40 inches", "left_thigh")
             is_valid = False
 
         #right calf validation
         if not number_regex.match(str(data["right_calf"])):
-                flash("Invalid calf measurement", "right_calf")
-                is_valid = False
+            flash("Invalid calf measurement", "right_calf")
+            is_valid = False
         elif float(data["right_calf"]) > 40:
             flash("Invalid calf measurement, cannot exceed 40 inches", "right_calf")
             is_valid = False
 
         #left calf validation
         if not number_regex.match(str(data["left_calf"])):
-                flash("Invalid calf measurement", "left_calf")
-                is_valid = False
+            flash("Invalid calf measurement", "left_calf")
+            is_valid = False
         elif float(data["left_calf"]) > 40:
             flash("Invalid calf measurement, cannot exceed 40 inches", "left_calf")
             is_valid = False
@@ -149,12 +149,15 @@ class DailyLog:
     
     @classmethod 
     def get_id_by_date(cls, data):
+        print(f'data = {data}')
         query = '''
             SELECT id 
             FROM daily_logs
-            WHERE date = %(date)s;
+            WHERE date = %(date)s
+                AND user_id = %(user_id)s;
         '''
         results = connectToMySQL(db).query_db(query, data)
+        print(f'results = {results}')
         if len(results) < 1:
             return False
         return results[0]["id"]
