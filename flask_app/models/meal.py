@@ -60,4 +60,10 @@ class Meal:
         
         return is_valid
     
-    
+    @classmethod
+    def insert_meal_details(cls, data):
+        query = '''
+            INSERT INTO meals (daily_log_id, meal_type, details, proteins, fats, fruits, vegetables)
+            VALUES (%(daily_log_id)s, %(meal_type)s, %(details)s, %(proteins)s, %(fats)s, %(fruits)s, %(vegetables)s);
+        '''
+        connectToMySQL(db).query_db(query, data)

@@ -64,7 +64,7 @@
                         </div>
 
                         <a class="nav-link fw-bold py-1 px-0" href="/dashboard">Dashboard</a>
-                        <a class="nav-link fw-bold py-1 px-0 active" href="#">Account</a>
+                        <a class="nav-link fw-bold py-1 px-0 active" href="">Account</a>
                         <a class="nav-link fw-bold py-1 px-0" href="/logout">Logout</a>
                     </nav>
                 </div>
@@ -98,6 +98,15 @@
                     {% if user.sex == 0 %}
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="sex" value="0" checked disabled>
+                        <label class="form-check-label" for="0">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sex" value="1" disabled>
+                        <label class="form-check-label" for="1">Female</label>
+                    </div>
+                    {% elif not user.sex %}
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sex" value="0" disabled>
                         <label class="form-check-label" for="0">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
