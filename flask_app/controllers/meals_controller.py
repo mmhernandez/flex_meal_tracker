@@ -68,8 +68,7 @@ def meal_details_action(date):
 
         if is_breakast_valid and is_lunch_valid and is_dinner_valid and is_snack_valid:
             if daily_log_id:
-                meal_detal_info["id"] = daily_log_id
-                # daily_log.DailyLog.update_daily_checks(daily_check_info)
+                # update 
                 
                 temp = session["id"]
                 session.clear()
@@ -84,25 +83,25 @@ def meal_details_action(date):
                 session["id"] = temp
                 return redirect(f"/daily_tracker/{date}")
         else:
-            session["breakfast_details"] = breakfast_meal_info["details"],
-            session["breakfast_proteins"] = breakfast_meal_info["proteins"],
-            session["breakfast_fats"] = breakfast_meal_info["fats"],
-            session["breakfast_fruits"] = breakfast_meal_info["fruits"],
-            session["breakfast_vegetables"] = breakfast_meal_info["vegetables"],
-            session["lunch_details"] = lunch_meal_info["details"],
-            session["lunch_proteins"] = lunch_meal_info["proteins"],
-            session["lunch_fats"] = lunch_meal_info["fats"],
-            session["lunch_fruits"] = lunch_meal_info["fruits"],
-            session["lunch_vegetables"] = lunch_meal_info["vegetables"],
-            session["dinner_details"] = dinner_meal_info["details"],
-            session["dinner_proteins"] = dinner_meal_info["proteins"],
-            session["dinner_fats"] = dinner_meal_info["fats"],
-            session["dinner_fruits"] = dinner_meal_info["fruits"],
-            session["dinner_vegetables"] = dinner_meal_info["vegetables"],
-            session["snack_details"] = snack_meal_info["details"],
-            session["snack_proteins"] = snack_meal_info["proteins"],
-            session["snack_fats"] = snack_meal_info["fats"],
-            session["snack_fruits"] = snack_meal_info["fruits"],
+            session["breakfast_details"] = breakfast_meal_info["details"]
+            session["breakfast_proteins"] = breakfast_meal_info["proteins"]
+            session["breakfast_fats"] = breakfast_meal_info["fats"]
+            session["breakfast_fruits"] = breakfast_meal_info["fruits"]
+            session["breakfast_vegetables"] = breakfast_meal_info["vegetables"]
+            session["lunch_details"] = lunch_meal_info["details"]
+            session["lunch_proteins"] = lunch_meal_info["proteins"]
+            session["lunch_fats"] = lunch_meal_info["fats"]
+            session["lunch_fruits"] = lunch_meal_info["fruits"]
+            session["lunch_vegetables"] = lunch_meal_info["vegetables"]
+            session["dinner_details"] = dinner_meal_info["details"]
+            session["dinner_proteins"] = dinner_meal_info["proteins"]
+            session["dinner_fats"] = dinner_meal_info["fats"]
+            session["dinner_fruits"] = dinner_meal_info["fruits"]
+            session["dinner_vegetables"] = dinner_meal_info["vegetables"]
+            session["snack_details"] = snack_meal_info["details"]
+            session["snack_proteins"] = snack_meal_info["proteins"]
+            session["snack_fats"] = snack_meal_info["fats"]
+            session["snack_fruits"] = snack_meal_info["fruits"]
             session["snack_vegetables"] = snack_meal_info["vegetables"]
             
             if daily_log_id:

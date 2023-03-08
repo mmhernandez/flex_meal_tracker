@@ -24,38 +24,38 @@ class Meal:
 
         #proteins validation
         if not number_regex.match(data["proteins"]):
-            flash("Invalid proteins")
+            flash("Invalid proteins", data["meal_type"])
             is_valid = False
         if len(data["proteins"]) > 1:
             if float(data["proteins"]) > 100:
-                flash("Invalid entry, proteins cannot exceed 100 oz")
+                flash("Invalid entry, proteins cannot exceed 100 oz", data["meal_type"])
                 is_valid = False
 
         #fats validation
         if not number_regex.match(data["fats"]):
-            flash("Invalid fats")
+            flash("Invalid fats", data["meal_type"])
             is_valid = False
-        if len(data["fats"]) > 1:
+        elif len(data["fats"]) > 1:
             if float(data["fats"]) > 100:
-                flash("Invalid entry, fats cannot exceed 100 servings")
+                flash("Invalid entry, fats cannot exceed 100 servings", data["meal_type"])
                 is_valid = False
 
         #fruits validation
         if not number_regex.match(data["fruits"]):
-            flash("Invalid fruits")
+            flash("Invalid fruits", data["meal_type"])
             is_valid = False
         if len(data["fruits"]) > 1:
             if float(data["fruits"]) > 50:
-                flash("Invalid entry, cannot exceed qty of 50 fruits")
+                flash("Invalid entry, cannot exceed qty of 50 fruits", data["meal_type"])
                 is_valid = False
 
         #vegetables validation
         if not number_regex.match(data["vegetables"]):
-            flash("Invalid vegetables")
+            flash("Invalid vegetables", data["meal_type"])
             is_valid = False
         if len(data["vegetables"]) > 1:
             if float(data["vegetables"]) > 50:
-                flash("Invalid entry, cannot exceed qty of 50 vegetables")
+                flash("Invalid entry, cannot exceed qty of 50 vegetables", data["meal_type"])
                 is_valid = False
         
         return is_valid

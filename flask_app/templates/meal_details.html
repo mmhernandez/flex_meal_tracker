@@ -121,6 +121,13 @@
                                     </div>
                                 </div>
                             </div>
+                            {% with messages = get_flashed_messages(category_filter = ["breakfast"])%}
+                                {% if messages %}
+                                    {% for msg in messages %}
+                                        <p class="text-danger text-center rounded py-2 my-2" style="background-color:#F5DADF">{{msg}}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
                         </div>
                     </div>
                     <!-- Lunch -->
@@ -128,7 +135,13 @@
                         <div class="container rounded p-3">
                             <p class="fs-3 text-tan">Lunch</p>
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" name="lunch_details" style="height: 150px"></textarea>
+                                {% if log_info and log_info.details %}
+                                    <textarea class="form-control" name="lunch_details" style="height: 150px"></textarea>
+                                {% elif "lunch_details" in session %}
+                                    <textarea class="form-control" name="lunch_details" style="height: 150px">{{session['lunch_details']}}</textarea>
+                                {% else %}
+                                    <textarea class="form-control" name="lunch_details" style="height: 150px"></textarea>
+                                {% endif %}
                                 <label for="lunch">Lunch meal details</label>
                             </div>
                             <div class="d-flex justify-content-between gap-1 meal-items-section">
@@ -153,6 +166,13 @@
                                     </div>
                                 </div>
                             </div>
+                            {% with messages = get_flashed_messages(category_filter = ["lunch"])%}
+                                {% if messages %}
+                                    {% for msg in messages %}
+                                        <p class="text-danger text-center rounded py-2 my-2" style="background-color:#F5DADF">{{msg}}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
                         </div>
                     </div>
                     <!-- Dinner -->
@@ -185,6 +205,13 @@
                                     </div>
                                 </div>
                             </div>
+                            {% with messages = get_flashed_messages(category_filter = ["dinner"])%}
+                                {% if messages %}
+                                    {% for msg in messages %}
+                                        <p class="text-danger text-center rounded py-2 my-2" style="background-color:#F5DADF">{{msg}}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
                         </div>
                     </div>
                     <!-- Snack -->
@@ -218,6 +245,13 @@
                                 </div>
                             </div>
                         </div>
+                        {% with messages = get_flashed_messages(category_filter = ["snack"])%}
+                                {% if messages %}
+                                    {% for msg in messages %}
+                                        <p class="text-danger text-center rounded py-2 my-2" style="background-color:#F5DADF">{{msg}}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
                     </div>
                 </div>
             </div>
