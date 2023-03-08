@@ -16,46 +16,46 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon/favicon-16x16.png">
     <link rel="manifest" href="../static/images/favicon/site.webmanifest">
 </head>
-<body class="bg-taupe">
-    <header class="bg-dark">
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-            <a href="/" class="nav nav-link float-md-start fs-4 py-1 text-light mx-auto">Flex Program</a>
+    <section class="hero">
+        <div class="d-flex justify-content-end align-items-start">
+            <a href="" class="btn btn-lg btn-outline-light my-3">Sign up</a>
+            <a href="/log_in" class="btn btn-lg btn-dark my-3 ms-2 me-5">Log in</a>
         </div>
-    </header>
-    <main>
-        <div class="container mx-auto px-5 py-3 my-5 bg-light rounded shadow w-25">
-            <!-- NEED TO MAKE THIS FROM RESPONSIVE -->
+        <main class="container mx-auto px-5 py-3 my-5 bg-light rounded shadow w-50">
+    <!-- NEED TO MAKE THIS FROM RESPONSIVE -->
             <h1 class="my-5 text-center">Create an account</h1>
             <form action="/signup" method="post">
-                <div class="mb-3">
-                    <label for="first_name" class="form-label">First Name</label>
-                    {% if "first_name" in session %}
-                        <input type="text" name="first_name" class="form-control" value="{{session['first_name']}}">
-                    {% else %}
-                        <input type="text" name="first_name" class="form-control">
-                    {% endif %}
-                    {% with messages = get_flashed_messages(category_filter = ["first_name"])%}
-                        {% if messages %}
-                            {% for msg in messages %}
-                                <p class="text-danger">{{msg}}</p>
-                            {% endfor %}
+                <div class="d-flex justify-content-between gap-4">
+                    <div class="mb-3 w-50">
+                        <label for="first_name" class="form-label">First Name</label>
+                        {% if "first_name" in session %}
+                            <input type="text" name="first_name" class="form-control" value="{{session['first_name']}}">
+                        {% else %}
+                            <input type="text" name="first_name" class="form-control">
                         {% endif %}
-                    {% endwith %}
-                </div>
-                <div class="mb-3">
-                    <label for="last_name" class="form-label">Last Name</label>
-                    {% if "last_name" in session %}
-                        <input type="text" name="last_name" class="form-control" value="{{session['last_name']}}">
-                    {% else %}
-                        <input type="text" name="last_name" class="form-control">
-                    {% endif %}
-                    {% with messages = get_flashed_messages(category_filter = ["last_name"])%}
-                        {% if messages %}
-                            {% for msg in messages %}
-                                <p class="text-danger">{{msg}}</p>
-                            {% endfor %}
+                        {% with messages = get_flashed_messages(category_filter = ["first_name"])%}
+                            {% if messages %}
+                                {% for msg in messages %}
+                                    <p class="text-danger">{{msg}}</p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        {% if "last_name" in session %}
+                            <input type="text" name="last_name" class="form-control" value="{{session['last_name']}}">
+                        {% else %}
+                            <input type="text" name="last_name" class="form-control">
                         {% endif %}
-                    {% endwith %}
+                        {% with messages = get_flashed_messages(category_filter = ["last_name"])%}
+                            {% if messages %}
+                                {% for msg in messages %}
+                                    <p class="text-danger">{{msg}}</p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
@@ -72,49 +72,51 @@
                         {% endif %}
                     {% endwith %}
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password
-                        <a href="#" class="text-dark" data-bs-toggle="tooltip" title="Password requirements: at least one uppercase and lowercase letter, number, and special character">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle ms-1" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
-                            </svg>
-                        </a>
-                    </label>
-                    <input type="password" name="password" class="form-control">
-                    {% with messages = get_flashed_messages(category_filter = ["password"])%}
-                        {% if messages %}
-                            {% for msg in messages %}
-                                <p class="text-danger">{{msg}}</p>
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                    {% with messages = get_flashed_messages(category_filter = ["confirm_password"])%}
-                        {% if messages %}
-                            {% for msg in messages %}
-                                <p class="text-danger">{{msg}}</p>
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                </div>
-                <div class="mb-3">
-                    <label for="confirm_password" class="form-label">Confirm Password</label>
-                    <input type="password" name="confirm_password" class="form-control">
-                    {% with messages = get_flashed_messages(category_filter = ["confirm_password"])%}
-                        {% if messages %}
-                            {% for msg in messages %}
-                                <p class="text-danger">{{msg}}</p>
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
+                <div class="d-flex justify-content-between gap-4">
+                    <div class="mb-3 w-50">
+                        <label for="password" class="form-label">Password
+                            <a href="#" class="text-dark" data-bs-toggle="tooltip" title="Password requirements: at least one uppercase and lowercase letter, number, and special character">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle ms-1" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                                </svg>
+                            </a>
+                        </label>
+                        <input type="password" name="password" class="form-control">
+                        {% with messages = get_flashed_messages(category_filter = ["password"])%}
+                            {% if messages %}
+                                {% for msg in messages %}
+                                    <p class="text-danger">{{msg}}</p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        {% with messages = get_flashed_messages(category_filter = ["confirm_password"])%}
+                            {% if messages %}
+                                {% for msg in messages %}
+                                    <p class="text-danger">{{msg}}</p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="confirm_password" class="form-label">Confirm Password</label>
+                        <input type="password" name="confirm_password" class="form-control">
+                        {% with messages = get_flashed_messages(category_filter = ["confirm_password"])%}
+                            {% if messages %}
+                                {% for msg in messages %}
+                                    <p class="text-danger">{{msg}}</p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
                 </div>
                 <div class="d-flex justify-content-end mt-4">
                     <input type="submit" value="Sign Up" class="btn btn-dark text-light">
                 </div>
             </form>
             <p class="mt-5 text-center">Already have an account? <a href="/log_in" class="my-5 text-center">Log in</a></p>
-        </div>
-    </main>
+        </main>
+    </section>
 
     <footer class="bg-dark text-light py-3">
         <div class="d-flex w-100 h-100 pt-5 gap-5 cover-container mx-auto align-items-center">
