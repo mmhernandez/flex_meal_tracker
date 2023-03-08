@@ -244,6 +244,14 @@ class DailyLog:
         connectToMySQL(db).query_db(query, data)
 
     @classmethod
+    def insert_blank_for_meal(cls, data):
+        query = '''
+            INSERT INTO daily_logs (date, user_id)
+            VALUES (%(date)s, %(user_id)s);
+        '''
+        return connectToMySQL(db).query_db(query, data)
+
+    @classmethod
     def update_weights_measurements(cls, data):
         query = '''
             UPDATE daily_logs

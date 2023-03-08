@@ -28,7 +28,7 @@ class Meal:
             is_valid = False
         if len(data["proteins"]) > 1:
             if float(data["proteins"]) > 100:
-                flash("Invalid entry, proteins cannot exceed 100 oz", data["meal_type"])
+                flash("Invalid proteins, cannot exceed 100 oz", data["meal_type"])
                 is_valid = False
 
         #fats validation
@@ -37,7 +37,7 @@ class Meal:
             is_valid = False
         elif len(data["fats"]) > 1:
             if float(data["fats"]) > 100:
-                flash("Invalid entry, fats cannot exceed 100 servings", data["meal_type"])
+                flash("Invalid fats, cannot exceed 100 servings", data["meal_type"])
                 is_valid = False
 
         #fruits validation
@@ -46,7 +46,7 @@ class Meal:
             is_valid = False
         if len(data["fruits"]) > 1:
             if float(data["fruits"]) > 50:
-                flash("Invalid entry, cannot exceed qty of 50 fruits", data["meal_type"])
+                flash("Invalid fruits, cannot exceed qty of 50", data["meal_type"])
                 is_valid = False
 
         #vegetables validation
@@ -55,7 +55,7 @@ class Meal:
             is_valid = False
         if len(data["vegetables"]) > 1:
             if float(data["vegetables"]) > 50:
-                flash("Invalid entry, cannot exceed qty of 50 vegetables", data["meal_type"])
+                flash("Invalid vegetables, cannot exceed qty of 50", data["meal_type"])
                 is_valid = False
         
         return is_valid

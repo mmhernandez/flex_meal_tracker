@@ -26,6 +26,22 @@ def meal_details_action(date):
             "fruits": request.form["breakfast_fruits"],
             "vegetables": request.form["breakfast_vegetables"]
         }
+        if len(request.form["breakfast_proteins"]) < 1:
+            breakfast_meal_info["breakfast_proteins"] = 0
+        else: 
+            breakfast_meal_info["breakfast_proteins"] = request.form["breakfast_proteins"]
+        if len(request.form["breakfast_fats"]) < 1:
+            breakfast_meal_info["breakfast_fats"] = 0
+        else: 
+            breakfast_meal_info["breakfast_fats"] = request.form["breakfast_fats"]
+        if len(request.form["breakfast_fruits"]) < 1:
+            breakfast_meal_info["breakfast_fruits"] = 0
+        else: 
+            breakfast_meal_info["breakfast_fruits"] = request.form["breakfast_fruits"]
+        if len(request.form["breakfast_vegetables"]) < 1:
+            breakfast_meal_info["breakfast_vegetables"] = 0
+        else: 
+            breakfast_meal_info["breakfast_vegetables"] = request.form["breakfast_vegetables"]
         is_breakast_valid = meal.Meal.validate_meal(breakfast_meal_info)
 
         lunch_meal_info = {
@@ -37,6 +53,22 @@ def meal_details_action(date):
             "fruits": request.form["lunch_fruits"],
             "vegetables": request.form["lunch_vegetables"]
         }
+        if len(request.form["lunch_proteins"]) < 1:
+            lunch_meal_info["lunch_proteins"] = 0
+        else: 
+            lunch_meal_info["lunch_proteins"] = request.form["lunch_proteins"]
+        if len(request.form["lunch_fats"]) < 1:
+            lunch_meal_info["lunch_fats"] = 0
+        else: 
+            lunch_meal_info["lunch_fats"] = request.form["lunch_fats"]
+        if len(request.form["lunch_fruits"]) < 1:
+            lunch_meal_info["lunch_fruits"] = 0
+        else: 
+            lunch_meal_info["lunch_fruits"] = request.form["lunch_fruits"]
+        if len(request.form["lunch_vegetables"]) < 1:
+            lunch_meal_info["lunch_vegetables"] = 0
+        else: 
+            lunch_meal_info["lunch_vegetables"] = request.form["lunch_vegetables"]
         is_lunch_valid = meal.Meal.validate_meal(lunch_meal_info)
 
         dinner_meal_info = {
@@ -48,6 +80,22 @@ def meal_details_action(date):
             "fruits": request.form["dinner_fruits"],
             "vegetables": request.form["dinner_vegetables"]
         }
+        if len(request.form["dinner_proteins"]) < 1:
+            dinner_meal_info["dinner_proteins"] = 0
+        else: 
+            dinner_meal_info["dinner_proteins"] = request.form["dinner_proteins"]
+        if len(request.form["dinner_fats"]) < 1:
+            dinner_meal_info["dinner_fats"] = 0
+        else: 
+            dinner_meal_info["dinner_fats"] = request.form["dinner_fats"]
+        if len(request.form["dinner_fruits"]) < 1:
+            dinner_meal_info["dinner_fruits"] = 0
+        else: 
+            dinner_meal_info["dinner_fruits"] = request.form["dinner_fruits"]
+        if len(request.form["dinner_vegetables"]) < 1:
+            dinner_meal_info["dinner_vegetables"] = 0
+        else: 
+            dinner_meal_info["dinner_vegetables"] = request.form["dinner_vegetables"]
         is_dinner_valid = meal.Meal.validate_meal(dinner_meal_info)
 
         snack_meal_info = {
@@ -59,12 +107,23 @@ def meal_details_action(date):
             "fruits": request.form["snack_fruits"],
             "vegetables": request.form["snack_vegetables"]
         }
+        if len(request.form["snack_proteins"]) < 1:
+            snack_meal_info["snack_proteins"] = 0
+        else: 
+            snack_meal_info["snack_proteins"] = request.form["snack_proteins"]
+        if len(request.form["snack_fats"]) < 1:
+            snack_meal_info["snack_fats"] = 0
+        else: 
+            snack_meal_info["snack_fats"] = request.form["snack_fats"]
+        if len(request.form["snack_fruits"]) < 1:
+            snack_meal_info["snack_fruits"] = 0
+        else: 
+            snack_meal_info["snack_fruits"] = request.form["snack_fruits"]
+        if len(request.form["snack_vegetables"]) < 1:
+            snack_meal_info["snack_vegetables"] = 0
+        else: 
+            snack_meal_info["snack_vegetables"] = request.form["snack_vegetables"]
         is_snack_valid = meal.Meal.validate_meal(snack_meal_info)
-
-        print(is_breakast_valid)
-        print(is_lunch_valid)
-        print(is_dinner_valid)
-        print(is_snack_valid)
 
         if is_breakast_valid and is_lunch_valid and is_dinner_valid and is_snack_valid:
             if daily_log_id:
@@ -75,8 +134,19 @@ def meal_details_action(date):
                 session["id"] = temp
                 return redirect(f"/daily_tracker/{date}")
             else: 
-                # insert daily log id
-                # use daily_log_id
+                new_daily_log_id = daily_log.DailyLog.insert_blank_for_meal({"date": date, "user_id": session["id"]})
+
+                breakfast_meal_info["daily_log_id"] = new_daily_log_id
+                meal.Meal.insert_meal_details(breakfast_meal_info)
+
+                lunch_meal_info["daily_log_id"] = new_daily_log_id
+                meal.Meal.insert_meal_details(lunch_meal_info)
+
+                dinner_meal_info["daily_log_id"] = new_daily_log_id
+                meal.Meal.insert_meal_details(dinner_meal_info)
+
+                snack_meal_info["daily_log_id"] = new_daily_log_id
+                meal.Meal.insert_meal_details(snack_meal_info)
                 
                 temp = session["id"]
                 session.clear()
