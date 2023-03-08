@@ -133,30 +133,50 @@
             <div class="d-flex justify-content-between gap-4 meal-block">
                 <!-- Breakfast -->
                 <div class="meal-items">
-                    <div class="container rounded p-3">
+                    <div class="container rounded p-3">                  
                         <p class="fs-3 text-tan">Breakfast</p>
-                        <div class="form-floating mb-3">
-                            <textarea class="form-control" name="breakfast_details" style="height: 150px" disabled></textarea>
+                        <div class="form-floating mb-3">   
+                            {% if log_info.meals %}                         
+                                <textarea class="form-control" name="breakfast_details" style="height: 150px" disabled>{{log_info.meals[0]["details"]}}</textarea>
+                            {% else %}
+                                <textarea class="form-control" name="breakfast_details" style="height: 150px" disabled></textarea>
+                            {% endif %}
                             <label for="breakfast">Breakfast meal details</label>
                         </div>
                         <div class="d-flex justify-content-between gap-1 meal-items-section">
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="breakfast_proteins" class="form-control" disabled>
+                                    {% if log_info.meals %} 
+                                        <input type="number" name="breakfast_proteins" class="form-control" value="{{log_info.meals[0]['proteins']}}" disabled >
+                                    {% else %}
+                                        <input type="number" name="breakfast_proteins" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="proteins" class="form-label">Proteins (oz)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="breakfast_fats" class="form-control" disabled>
+                                    {% if log_info.meals %} 
+                                        <input type="number" name="breakfast_fats" class="form-control" value="{{log_info.meals[0]['fats']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="breakfast_fats" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="fats" class="form-label">Fats (serving)</label>
                                 </div>
                             </div>
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="breakfast_fruits" class="form-control" disabled>
+                                    {% if log_info.meals %} 
+                                        <input type="number" name="breakfast_fruits" class="form-control" value="{{log_info.meals[0]['fruits']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="breakfast_fruits" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="fruits" class="form-label">Fruits (qty)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="breakfast_vegetables" class="form-control" disabled>
+                                    {% if log_info.meals %} 
+                                        <input type="number" name="breakfast_vegetables" class="form-control" value="{{log_info.meals[0]['vegetables']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="breakfast_vegetables" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="vegetables" class="form-label">Veggies (qty)</label>
                                 </div>
                             </div>
@@ -168,27 +188,47 @@
                     <div class="container rounded p-3">
                         <p class="fs-3 text-tan">Lunch</p>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" name="lunch_details" style="height: 150px" disabled></textarea>
+                            {% if log_info.meals%}                         
+                                <textarea class="form-control" name="lunch_details" style="height: 150px" disabled>{{log_info.meals[1]['details']}}</textarea>
+                            {% else %}
+                                <textarea class="form-control" name="lunch_details" style="height: 150px" disabled></textarea>
+                            {% endif %}
                             <label for="lunch">Lunch meal details</label>
                         </div>
                         <div class="d-flex justify-content-between gap-1 meal-items-section">
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="lunch_proteins" class="form-control" disabled>
+                                    {% if log_info.meals%}                         
+                                        <input type="number" name="lunch_proteins" class="form-control" value="{{log_info.meals[1]['proteins']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="lunch_proteins" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="proteins" class="form-label">Proteins (oz)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="lunch_fats" class="form-control" disabled>
+                                    {% if log_info.meals%}                         
+                                        <input type="number" name="lunch_fats" class="form-control" value="{{log_info.meals[1]['fats']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="lunch_fats" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="fats" class="form-label">Fats (serving)</label>
                                 </div>
                             </div>
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="lunch_fruits" class="form-control" disabled>
+                                    {% if log_info.meals%}                         
+                                        <input type="number" name="lunch_fruits" class="form-control" value="{{log_info.meals[1]['fruits']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="lunch_fruits" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="fruits" class="form-label">Fruits (qty)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="lunch_vegetables" class="form-control" disabled>
+                                    {% if log_info.meals%}                         
+                                        <input type="number" name="lunch_vegetables" class="form-control" value="{{log_info.meals[1]['vegetables']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="lunch_vegetables" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="vegetables" class="form-label">Veggies (qty)</label>
                                 </div>
                             </div>
@@ -202,27 +242,47 @@
                     <div class="container rounded p-3">
                         <p class="fs-3 text-tan">Dinner</p>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" name="dinner_details" style="height: 150px" disabled></textarea>
+                            {% if log_info.meals%}                         
+                                <textarea class="form-control" name="dinner_details" style="height: 150px" disabled>{{log_info.meals[2]['details']}}</textarea>
+                            {% else %}
+                                <textarea class="form-control" name="dinner_details" style="height: 150px" disabled></textarea>
+                            {% endif %}
                             <label for="dinner">Dinner meal details</label>
                         </div>
                         <div class="d-flex justify-content-between gap-1 meal-items-section">
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="dinner_proteins" class="form-control" disabled>
+                                    {% if log_info.meals%}                         
+                                        <input type="number" name="dinner_proteins" class="form-control" value="{{log_info.meals[2]['proteins']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="dinner_proteins" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="proteins" class="form-label">Proteins (oz)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="dinner_fats" class="form-control" disabled>
+                                    {% if log_info.meals%}                         
+                                        <input type="number" name="dinner_fats" class="form-control" value="{{log_info.meals[2]['fats']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="dinner_fats" class="form-control" disabled>                                    
+                                    {% endif %}
                                     <label for="fats" class="form-label">Fats (serving)</label>
                                 </div>
                             </div>
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="dinner_fruits" class="form-control" disabled>
+                                    {% if log_info.meals%}                         
+                                        <input type="number" name="dinner_fruits" class="form-control" value="{{log_info.meals[2]['fruits']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="dinner_fruits" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="fruits" class="form-label">Fruits (qty)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="dinner_vegetables" class="form-control" disabled>
+                                    {% if log_info.meals%}                         
+                                        <input type="number" name="dinner_vegetables" class="form-control" value="{{log_info.meals[2]['vegetables']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="dinner_vegetables" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="vegetables" class="form-label">Veggies (qty)</label>
                                 </div>
                             </div>
@@ -234,27 +294,47 @@
                     <div class="container rounded p-3">
                         <p class="fs-3 text-tan">Snack</p>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" name="snack_details" style="height: 150px" disabled></textarea>
+                            {% if log_info.meals%}                         
+                                <textarea class="form-control" name="snack_details" style="height: 150px" disabled>{{log_info.meals[3]['details']}}</textarea>
+                            {% else %}
+                                <textarea class="form-control" name="snack_details" style="height: 150px" disabled></textarea>
+                            {% endif %}
                             <label for="snack">Snack meal details</label>
                         </div>
                         <div class="d-flex justify-content-between gap-1 meal-items-section">
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="snack_proteins" class="form-control" disabled>
+                                    {% if log_info.meals%}                         
+                                        <input type="number" name="snack_proteins" class="form-control" value="{{log_info.meals[3]['proteins']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="snack_proteins" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="proteins" class="form-label">Proteins (oz)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="snack_fats" class="form-control" disabled>
+                                    {% if log_info.meals%}                         
+                                        <input type="number" name="snack_fats" class="form-control" value="{{log_info.meals[3]['fats']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="snack_fats" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="fats" class="form-label">Fats (serving)</label>
                                 </div>
                             </div>
                             <div class="d-flex gap-1 meal-items-block">
                                 <div class="form-floating">
-                                    <input type="number" name="snack_fruits" class="form-control" disabled>
+                                    {% if log_info.meals%}                         
+                                        <input type="number" name="snack_fruits" class="form-control" value="{{log_info.meals[3]['fruits']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="snack_fruits" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="fruits" class="form-label">Fruits (qty)</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="number" name="snack_vegetables" class="form-control" disabled>
+                                    {% if log_info.meals%}                         
+                                        <input type="number" name="snack_vegetables" class="form-control" value="{{log_info.meals[3]['vegetables']}}" disabled>
+                                    {% else %}
+                                        <input type="number" name="snack_vegetables" class="form-control" disabled>
+                                    {% endif %}
                                     <label for="vegetables" class="form-label">Veggies (qty)</label>
                                 </div>
                             </div>

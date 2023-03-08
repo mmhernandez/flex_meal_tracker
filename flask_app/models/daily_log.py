@@ -146,7 +146,6 @@ class DailyLog:
     
     @classmethod 
     def get_id_by_date(cls, data):
-        print(f'data = {data}')
         query = '''
             SELECT id 
             FROM daily_logs
@@ -154,7 +153,6 @@ class DailyLog:
                 AND user_id = %(user_id)s;
         '''
         results = connectToMySQL(db).query_db(query, data)
-        print(f'results = {results}')
         if len(results) < 1:
             return False
         return results[0]["id"]
@@ -193,8 +191,6 @@ class DailyLog:
         log.daily_checks_flag = results[0]["daily_checks_flag"]
         log.weight_measurements_flag = results[0]["weight_measurements_flag"]
         log.meal_details_flag = results[0]["meal_details_flag"]
-
-        print(f'log.meal_details_flag = {log.meal_details_flag}')
 
         if log.meal_details_flag == "Yes":
             for row in results:

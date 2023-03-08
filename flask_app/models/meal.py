@@ -3,7 +3,7 @@ from flask import flash
 import re
 
 db = "flex_program"
-number_regex = re.compile(r'^[0-9]*$')
+number_regex = re.compile(r'^[0-9]\d*(\.\d+)?$')
 
 class Meal:
     def __init__(self, data):
@@ -23,40 +23,36 @@ class Meal:
         is_valid = True
 
         #proteins validation
-        if not number_regex.match(data["proteins"]):
+        if not number_regex.match(str(data["proteins"])):
             flash("Invalid proteins", data["meal_type"])
             is_valid = False
-        if len(data["proteins"]) > 1:
-            if float(data["proteins"]) > 100:
-                flash("Invalid proteins, cannot exceed 100 oz", data["meal_type"])
-                is_valid = False
+        elif float(data["proteins"]) > 100:
+            flash("Invalid proteins, cannot exceed 100 oz", data["meal_type"])
+            is_valid = False
 
         #fats validation
-        if not number_regex.match(data["fats"]):
+        if not number_regex.match(str(data["fats"])):
             flash("Invalid fats", data["meal_type"])
             is_valid = False
-        elif len(data["fats"]) > 1:
-            if float(data["fats"]) > 100:
-                flash("Invalid fats, cannot exceed 100 servings", data["meal_type"])
-                is_valid = False
+        elif float(data["fats"]) > 100:
+            flash("Invalid fats, cannot exceed 100 servings", data["meal_type"])
+            is_valid = False
 
         #fruits validation
-        if not number_regex.match(data["fruits"]):
+        if not number_regex.match(str(data["fruits"])):
             flash("Invalid fruits", data["meal_type"])
             is_valid = False
-        if len(data["fruits"]) > 1:
-            if float(data["fruits"]) > 50:
-                flash("Invalid fruits, cannot exceed qty of 50", data["meal_type"])
-                is_valid = False
+        elif float(data["fruits"]) > 50:
+            flash("Invalid fruits, cannot exceed qty of 50", data["meal_type"])
+            is_valid = False
 
         #vegetables validation
-        if not number_regex.match(data["vegetables"]):
+        if not number_regex.match(str(data["vegetables"])):
             flash("Invalid vegetables", data["meal_type"])
             is_valid = False
-        if len(data["vegetables"]) > 1:
-            if float(data["vegetables"]) > 50:
-                flash("Invalid vegetables, cannot exceed qty of 50", data["meal_type"])
-                is_valid = False
+        elif float(data["vegetables"]) > 50:
+            flash("Invalid vegetables, cannot exceed qty of 50", data["meal_type"])
+            is_valid = False
         
         return is_valid
     
@@ -65,5 +61,19 @@ class Meal:
         query = '''
             INSERT INTO meals (daily_log_id, meal_type, details, proteins, fats, fruits, vegetables)
             VALUES (%(daily_log_id)s, %(meal_type)s, %(details)s, %(proteins)s, %(fats)s, %(fruits)s, %(vegetables)s);
+        '''
+        connectToMySQL(db).query_db(query, data)
+
+    @classmethod
+    def update_meal_details(cls, data):
+        query = '''
+            UPDATE meals
+            SET details = %(details)s,
+                proteins = %(proteins)s,
+                fats = %(fats)s,
+                fruits = %(fruits)s,
+                vegetables = %(vegetables)s
+            WHERE daily_log_id = %(daily_log_id)s
+                AND meal_type = %(meal_type)s;
         '''
         connectToMySQL(db).query_db(query, data)
