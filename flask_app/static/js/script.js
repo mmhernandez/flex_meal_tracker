@@ -81,3 +81,26 @@ document.querySelector('#next-year').onclick = () => {
     ++curr_year.value
     generateCalendar(curr_month.value, curr_year.value)
 }
+
+// COLOR THEME
+let root_variables = document.querySelector(':root'); // get the root element
+
+function color_theme_toggle() {
+    // if(theme == "light") {
+    //     // Set the value of variable --blue to another value (in this case "lightblue")
+    //     root_variables.style.setProperty('--blue', 'lightblue');
+
+    //     // --maroon: #603143;
+    //     // --light-maroon: #927681;
+    //     // --dark: #202B27;
+    //     // --grey: #a6a9a2;
+    //     // --tan: #dac8b6;
+    //     // --tapue: #d5d5d3;
+    //     // --calendar-bg-main: #fdfdfd;
+    //     // --calendar-hover: #efeeee;
+    //     // --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    // }
+    // else if(theme == "dark") {
+
+    // }
+}
