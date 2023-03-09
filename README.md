@@ -4,11 +4,11 @@
 To Do List:
 
 MUST HAVE:
-- Find a way to incorporate the DELETE part of CRUD (maybe deleting a daily log - in case the user added info to the wrong day?)
-
 - Finalize login/signup form responsiveness
 
 - Finalize dashboard snapshot calculations
+
+- Add "BACK TO TOP" option on daily log and exercise pages
 
 - Conditional on login/signup page, if logged in user navs to these pages they are not presented with login/signup pages (maybe a jinja session conditional to present the dashboard page)
 

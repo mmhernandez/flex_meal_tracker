@@ -145,59 +145,59 @@
                         <div class="mb-3">
                             <label for="weight" class="form-label">Weight <span class="fw-lighter">(lbs)</span></label>
                             {% if user.starting_weight %}
-                                <input type="number" name="weight" class="form-control" value="{{user.starting_weight}}" disabled>
+                                <input type="number" step="0.01" name="weight" class="form-control" value="{{user.starting_weight}}" disabled>
                             {% else %}
-                                <input type="number" name="weight" class="form-control" disabled>
+                                <input type="number" step="0.01" name="weight" class="form-control" disabled>
                             {% endif %}
                         </div>
                         <p class="fw-lighter fst-italic">Measurements are in inches</p>
                         <div class="mb-3">
                             <label for="bust" class="form-label">Bust</label>
                             {% if user.starting_bust %}
-                                <input type="number" name="bust" class="form-control" value="{{user.starting_bust}}" disabled>
+                                <input type="number" step="0.01" name="bust" class="form-control" value="{{user.starting_bust}}" disabled>
                             {% else %}
-                                <input type="number" name="bust" class="form-control" disabled>
+                                <input type="number" step="0.01" name="bust" class="form-control" disabled>
                             {% endif %}
                         </div>
                         <div class="mb-3">
                             <label for="waist" class="form-label">Waist</label>
                             {% if user.starting_bust %}
-                                <input type="number" name="waist" class="form-control" value="{{user.starting_waist}}" disabled>
+                                <input type="number" step="0.01" name="waist" class="form-control" value="{{user.starting_waist}}" disabled>
                             {% else %}
-                                <input type="number" name="waist" class="form-control" disabled>
+                                <input type="number" step="0.01" name="waist" class="form-control" disabled>
                             {% endif %}
                         </div>
                         <div class="mb-3">
                             <label for="abdomen" class="form-label">Abdomen</label>
                             {% if user.starting_bust %}
-                                <input type="number" name="abdomen" class="form-control" value="{{user.starting_abdomen}}" disabled>
+                                <input type="number" step="0.01" name="abdomen" class="form-control" value="{{user.starting_abdomen}}" disabled>
                             {% else %}
-                                <input type="number" name="abdomen" class="form-control" disabled>
+                                <input type="number" step="0.01" name="abdomen" class="form-control" disabled>
                             {% endif %}
                         </div>
                         <div class="mb-3">
                             <label for="hips" class="form-label">Hips</label>
                             {% if user.starting_bust %}
-                                <input type="number" name="hips" class="form-control" value="{{user.starting_hips}}" disabled>
+                                <input type="number" step="0.01" name="hips" class="form-control" value="{{user.starting_hips}}" disabled>
                             {% else %}
-                                <input type="number" name="hips" class="form-control" disabled>
+                                <input type="number" step="0.01" name="hips" class="form-control" disabled>
                             {% endif %}
                         </div>
                         <div class="d-flex gap-3 sm">
                             <div class="mb-3">
                                 <label for="right_arm" class="form-label">Right Arm</label>
                                 {% if user.starting_bust %}
-                                    <input type="number" name="right_arm" class="form-control" value="{{user.starting_right_arm}}" disabled>
+                                    <input type="number" step="0.01" name="right_arm" class="form-control" value="{{user.starting_right_arm}}" disabled>
                                 {% else %}
-                                    <input type="number" name="right_arm" class="form-control" disabled>
+                                    <input type="number" step="0.01" name="right_arm" class="form-control" disabled>
                                 {% endif %}
                             </div>
                             <div class="mb-3">
                                 <label for="left_arm" class="form-label">Left Arm</label>
                                 {% if user.starting_bust %}
-                                    <input type="number" name="left_arm" class="form-control" value="{{user.starting_left_arm}}" disabled>
+                                    <input type="number" step="0.01" name="left_arm" class="form-control" value="{{user.starting_left_arm}}" disabled>
                                 {% else %}
-                                    <input type="number" name="left_arm" class="form-control" disabled>
+                                    <input type="number" step="0.01" name="left_arm" class="form-control" disabled>
                                 {% endif %}
                             </div>
                         </div>
@@ -205,17 +205,17 @@
                             <div class="mb-3">
                                 <label for="right_thigh" class="form-label">Right Thigh</label>
                                 {% if user.starting_bust %}
-                                    <input type="number" name="right_thigh" class="form-control" value="{{user.starting_right_thigh}}" disabled>
+                                    <input type="number" step="0.01" name="right_thigh" class="form-control" value="{{user.starting_right_thigh}}" disabled>
                                 {% else %}
-                                    <input type="number" name="right_thigh" class="form-control" disabled>
+                                    <input type="number" step="0.01" name="right_thigh" class="form-control" disabled>
                                 {% endif %}
                             </div>
                             <div class="mb-3">
                                 <label for="left_thigh" class="form-label">Left Thigh</label>
                                 {% if user.starting_bust %}
-                                    <input type="number" name="left_thigh" class="form-control" value="{{user.starting_left_thigh}}" disabled>
+                                    <input type="number" step="0.01" name="left_thigh" class="form-control" value="{{user.starting_left_thigh}}" disabled>
                                 {% else %}
-                                    <input type="number" name="left_thigh" class="form-control" disabled>
+                                    <input type="number" step="0.01" name="left_thigh" class="form-control" disabled>
                                 {% endif %}
                             </div>
                         </div>
@@ -223,17 +223,17 @@
                             <div class="mb-3">
                                 <label for="right_calf" class="form-label">Right Calf</label>
                                 {% if user.starting_bust %}
-                                    <input type="number" name="right_calf" class="form-control" value="{{user.starting_right_calf}}" disabled>
+                                    <input type="number" step="0.01" name="right_calf" class="form-control" value="{{user.starting_right_calf}}" disabled>
                                 {% else %}
-                                    <input type="number" name="right_calf" class="form-control" disabled>
+                                    <input type="number" step="0.01" name="right_calf" class="form-control" disabled>
                                 {% endif %}
                             </div>
                             <div class="mb-3">
                                 <label for="left_calf" class="form-label">Left Calf</label>
                                 {% if user.starting_bust %}
-                                    <input type="number" name="left_calf" class="form-control" value="{{user.starting_left_calf}}" disabled>
+                                    <input type="number" step="0.01" name="left_calf" class="form-control" value="{{user.starting_left_calf}}" disabled>
                                 {% else %}
-                                    <input type="number" name="left_calf" class="form-control" disabled>
+                                    <input type="number" step="0.01" name="left_calf" class="form-control" disabled>
                                 {% endif %}
                             </div>
                         </div>

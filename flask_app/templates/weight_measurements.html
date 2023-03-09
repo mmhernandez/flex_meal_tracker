@@ -92,11 +92,11 @@
                             <div class="mb-3">
                                 <label for="weight" class="form-label">Weight <span class="fw-lighter">(lbs)</span></label>
                                 {% if log_info and log_info.weight %}
-                                    <input type="number" name="weight" class="form-control" value="{{log_info.weight}}">
+                                    <input type="number" step="0.01" name="weight" class="form-control" value="{{log_info.weight}}">
                                 {% elif "weight" in session %}
-                                    <input type="number" name="weight" class="form-control" value="{{session['weight']}}">
+                                    <input type="number" step="0.01" name="weight" class="form-control" value="{{session['weight']}}">
                                 {% else %}
-                                    <input type="number" name="weight" class="form-control">
+                                    <input type="number" step="0.01" name="weight" class="form-control">
                                 {% endif %}
                                 {% with messages = get_flashed_messages(category_filter = ["weight"])%}
                                     {% if messages %}
@@ -110,11 +110,11 @@
                             <div class="mb-3">
                                 <label for="bust" class="form-label">Bust</label>
                                 {% if log_info and log_info.bust %}
-                                    <input type="number" name="bust" class="form-control" value="{{log_info.bust}}">
+                                    <input type="number" step="0.01" name="bust" class="form-control" value="{{log_info.bust}}">
                                 {% elif "bust" in session %}
-                                    <input type="number" name="bust" class="form-control" value="{{session['bust']}}">
+                                    <input type="number" step="0.01" name="bust" class="form-control" value="{{session['bust']}}">
                                 {% else %}
-                                    <input type="number" name="bust" class="form-control">
+                                    <input type="number" step="0.01" name="bust" class="form-control">
                                 {% endif %}
                                 {% with messages = get_flashed_messages(category_filter = ["bust"])%}
                                     {% if messages %}
@@ -127,11 +127,11 @@
                             <div class="mb-3">
                                 <label for="waist" class="form-label">Waist</label>
                                 {% if log_info and log_info.waist %}
-                                    <input type="number" name="waist" class="form-control" value="{{log_info.waist}}">
+                                    <input type="number" step="0.01" name="waist" class="form-control" value="{{log_info.waist}}">
                                 {% elif "waist" in session %}
-                                    <input type="number" name="waist" class="form-control" value="{{session['waist']}}">
+                                    <input type="number" step="0.01" name="waist" class="form-control" value="{{session['waist']}}">
                                 {% else %}
-                                    <input type="number" name="waist" class="form-control">
+                                    <input type="number" step="0.01" name="waist" class="form-control">
                                 {% endif %}
                                 {% with messages = get_flashed_messages(category_filter = ["waist"])%}
                                     {% if messages %}
@@ -144,11 +144,11 @@
                             <div class="mb-3">
                                 <label for="abdomen" class="form-label">Abdomen</label>
                                 {% if log_info and log_info.abdomen %}
-                                    <input type="number" name="abdomen" class="form-control" value="{{log_info.abdomen}}">
+                                    <input type="number" step="0.01" name="abdomen" class="form-control" value="{{log_info.abdomen}}">
                                 {% elif "abdomen" in session %}
-                                    <input type="number" name="abdomen" class="form-control" value="{{session['abdomen']}}">
+                                    <input type="number" step="0.01" name="abdomen" class="form-control" value="{{session['abdomen']}}">
                                 {% else %}
-                                    <input type="number" name="abdomen" class="form-control">
+                                    <input type="number" step="0.01" name="abdomen" class="form-control">
                                 {% endif %}
                                 {% with messages = get_flashed_messages(category_filter = ["abdomen"])%}
                                     {% if messages %}
@@ -161,11 +161,11 @@
                             <div class="mb-3">
                                 <label for="hips" class="form-label">Hips</label>
                                 {% if log_info and log_info.hips %}
-                                    <input type="number" name="hips" class="form-control" value="{{log_info.hips}}">
+                                    <input type="number" step="0.01" name="hips" class="form-control" value="{{log_info.hips}}">
                                 {% elif "hips" in session %}
-                                    <input type="number" name="hips" class="form-control" value="{{session['hips']}}">
+                                    <input type="number" step="0.01" name="hips" class="form-control" value="{{session['hips']}}">
                                 {% else %}
-                                    <input type="number" name="hips" class="form-control">
+                                    <input type="number" step="0.01" name="hips" class="form-control">
                                 {% endif %}
                                 {% with messages = get_flashed_messages(category_filter = ["hips"])%}
                                     {% if messages %}
@@ -179,11 +179,11 @@
                                 <div class="mb-3">
                                     <label for="right_arm" class="form-label">Right Arm</label>
                                     {% if log_info and log_info.right_arm %}
-                                        <input type="number" name="right_arm" class="form-control" value="{{log_info.right_arm}}">
+                                        <input type="number" step="0.01" name="right_arm" class="form-control" value="{{log_info.right_arm}}">
                                     {% elif "right_arm" in session %}
-                                        <input type="number" name="right_arm" class="form-control" value="{{session['right_arm']}}">
+                                        <input type="number" step="0.01" name="right_arm" class="form-control" value="{{session['right_arm']}}">
                                     {% else %}
-                                        <input type="number" name="right_arm" class="form-control">
+                                        <input type="number" step="0.01" name="right_arm" class="form-control">
                                     {% endif %}
                                     {% with messages = get_flashed_messages(category_filter = ["right_arm"])%}
                                         {% if messages %}
@@ -196,11 +196,11 @@
                                 <div class="mb-3">
                                     <label for="left_arm" class="form-label">Left Arm</label>
                                     {% if log_info and log_info.left_arm %}
-                                        <input type="number" name="left_arm" class="form-control" value="{{log_info.left_arm}}">
+                                        <input type="number" step="0.01" name="left_arm" class="form-control" value="{{log_info.left_arm}}">
                                     {% elif "left_arm" in session %}
-                                        <input type="number" name="left_arm" class="form-control" value="{{session['left_arm']}}">
+                                        <input type="number" step="0.01" name="left_arm" class="form-control" value="{{session['left_arm']}}">
                                     {% else %}
-                                        <input type="number" name="left_arm" class="form-control">
+                                        <input type="number" step="0.01" name="left_arm" class="form-control">
                                     {% endif %}
                                     {% with messages = get_flashed_messages(category_filter = ["left_arm"])%}
                                         {% if messages %}
@@ -215,11 +215,11 @@
                                 <div class="mb-3">
                                     <label for="right_thigh" class="form-label">Right Thigh</label>
                                     {% if log_info and log_info.right_thigh %}
-                                        <input type="number" name="right_thigh" class="form-control" value="{{log_info.right_thigh}}">
+                                        <input type="number" step="0.01" name="right_thigh" class="form-control" value="{{log_info.right_thigh}}">
                                     {% elif "right_thigh" in session %}
-                                        <input type="number" name="right_thigh" class="form-control" value="{{session['right_thigh']}}">
+                                        <input type="number" step="0.01" name="right_thigh" class="form-control" value="{{session['right_thigh']}}">
                                     {% else %}
-                                        <input type="number" name="right_thigh" class="form-control">
+                                        <input type="number" step="0.01" name="right_thigh" class="form-control">
                                     {% endif %}
                                     {% with messages = get_flashed_messages(category_filter = ["right_thigh"])%}
                                         {% if messages %}
@@ -232,11 +232,11 @@
                                 <div class="mb-3">
                                     <label for="left_thigh" class="form-label">Left Thigh</label>
                                     {% if log_info and log_info.left_thigh %}
-                                        <input type="number" name="left_thigh" class="form-control" value="{{log_info.left_thigh}}">
+                                        <input type="number" step="0.01" name="left_thigh" class="form-control" value="{{log_info.left_thigh}}">
                                     {% elif "left_thigh" in session %}
-                                        <input type="number" name="left_thigh" class="form-control" value="{{session['left_thigh']}}">
+                                        <input type="number" step="0.01" name="left_thigh" class="form-control" value="{{session['left_thigh']}}">
                                     {% else %}
-                                        <input type="number" name="left_thigh" class="form-control">
+                                        <input type="number" step="0.01" name="left_thigh" class="form-control">
                                     {% endif %}
                                     {% with messages = get_flashed_messages(category_filter = ["left_thigh"])%}
                                         {% if messages %}
@@ -251,11 +251,11 @@
                                 <div class="mb-3">
                                     <label for="right_calf" class="form-label">Right Calf</label>
                                     {% if log_info and log_info.right_calf %}
-                                        <input type="number" name="right_calf" class="form-control" value="{{log_info.right_calf}}">
+                                        <input type="number" step="0.01" name="right_calf" class="form-control" value="{{log_info.right_calf}}">
                                     {% elif "right_calf" in session %}
-                                        <input type="number" name="right_calf" class="form-control" value="{{session['right_calf']}}">
+                                        <input type="number" step="0.01" name="right_calf" class="form-control" value="{{session['right_calf']}}">
                                     {% else %}
-                                        <input type="number" name="right_calf" class="form-control">
+                                        <input type="number" step="0.01" name="right_calf" class="form-control">
                                     {% endif %}
                                     {% with messages = get_flashed_messages(category_filter = ["right_calf"])%}
                                         {% if messages %}
@@ -268,11 +268,11 @@
                                 <div class="mb-3">
                                     <label for="left_calf" class="form-label">Left Calf</label>
                                     {% if log_info and log_info.left_calf %}
-                                        <input type="number" name="left_calf" class="form-control" value="{{log_info.left_calf}}">
+                                        <input type="number" step="0.01" name="left_calf" class="form-control" value="{{log_info.left_calf}}">
                                     {% elif "left_calf" in session %}
-                                        <input type="number" name="left_calf" class="form-control" value="{{session['left_calf']}}">
+                                        <input type="number" step="0.01" name="left_calf" class="form-control" value="{{session['left_calf']}}">
                                     {% else %}
-                                        <input type="number" name="left_calf" class="form-control">
+                                        <input type="number" step="0.01" name="left_calf" class="form-control">
                                     {% endif %}
                                     {% with messages = get_flashed_messages(category_filter = ["left_calf"])%}
                                         {% if messages %}
