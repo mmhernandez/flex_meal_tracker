@@ -77,3 +77,19 @@ class Meal:
                 AND meal_type = %(meal_type)s;
         '''
         connectToMySQL(db).query_db(query, data)
+
+    @classmethod
+    def get_daily_summary(cls, data):
+        query = '''
+            SELECT SUM(proteins) as total_proteins,
+                SUM(fats) as total_fats,
+                SUM(fruits) as total_fruits,
+                SUM(vegetables) as total_vegetables
+            FROM meals
+            WHERE daily_log_id = %(daily_log_id)s;
+        '''
+        results = connectToMySQL(db).query_db(query, data)
+        print(results[0]["total_proteins"])
+        if results[0]["total_proteins"] == None and results[0]["total_fats"] == None and results[0]["total_fruits"] == None and results[0]["total_vegetables"] == None:
+            return False
+        return results

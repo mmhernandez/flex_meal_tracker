@@ -86,14 +86,22 @@
                     <div class="card text-white bg-primary mb-3 flx-summary-items">
                         <div class="card-header fw-bold bg-dark text-tan">Lean Proteins</div>
                         <div class="card-body bg-white text-dark">
-                            <h5 class="card-title">## protiens</h5>
+                            {% if sums %}
+                                <h5 class="card-title">{{sums[0]["total_proteins"]|round}} protiens</h5>
+                            {% else %}
+                                <h5 class="card-title">0 protiens</h5>
+                            {% endif %}
                             <p class="card-text">Goal: 8 ounces</p>
                         </div>
                     </div>
                     <div class="card text-white bg-primary mb-3 flx-summary-items">
                         <div class="card-header fw-bold bg-dark text-tan">Fats</div>
                         <div class="card-body bg-white text-dark">
-                            <h5 class="card-title">## fats</h5>
+                            {% if sums %}
+                                <h5 class="card-title">{{sums[0]["total_fats"]|round}} fats</h5>
+                            {% else %}
+                                <h5 class="card-title">0 fats</h5>
+                            {% endif %}
                             <p class="card-text">Goal: 8 servings</p>
                         </div>
                     </div>
@@ -102,14 +110,22 @@
                     <div class="card text-white bg-primary mb-3 flx-summary-items">
                         <div class="card-header fw-bold bg-dark text-tan">Fruits</div>
                         <div class="card-body bg-white text-dark">
-                            <h5 class="card-title">## fruits</h5>
+                            {% if sums %}
+                                <h5 class="card-title">{{sums[0]["total_fruits"]|round}} fruits</h5>
+                            {% else %}
+                                <h5 class="card-title">0 fruits</h5>
+                            {% endif %}
                             <p class="card-text">Goal: 1 fruit</p>
                         </div>
                     </div>
                     <div class="card text-white bg-primary mb-3 flx-summary-items">
                         <div class="card-header fw-bold bg-dark text-tan">Vegetables</div>
                         <div class="card-body bg-white text-dark">
-                            <h5 class="card-title">## veggies</h5>
+                            {% if sums %}
+                                <h5 class="card-title">{{sums[0]["total_vegetables"]|round}} veggies</h5>
+                            {% else %}
+                                <h5 class="card-title">0 veggies</h5>
+                            {% endif %}
                             <p class="card-text">Goal: 6 veggies</p>
                         </div>
                     </div>

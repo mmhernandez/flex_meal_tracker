@@ -1,7 +1,7 @@
 from flask_app import app
 from flask import render_template, session, redirect, request
 from datetime import datetime
-from flask_app.models import daily_log
+from flask_app.models import daily_log, meal
 
 
 # DAILY LOG/TRACKER DISPLAY
@@ -12,9 +12,11 @@ def daily_tracker(date):
         daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date, "user_id": session["id"]})
         if daily_log_id:
             daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
+            summary_info = meal.Meal.get_daily_summary({"daily_log_id": daily_log_id})
         else: 
             daily_log_info = False
-        return render_template("daily_tracker.html", day=date_obj, log_info=daily_log_info)
+            summary_info = False
+        return render_template("daily_tracker.html", day=date_obj, log_info=daily_log_info, sums=summary_info)
     return redirect("/")
 
 
