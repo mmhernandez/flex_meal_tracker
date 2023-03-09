@@ -134,6 +134,11 @@
                 </div>
             </div>
         </form>
+
+        <!-- SCROLL TO TOP -->
+        <button onclick="scrollToTop()" id="scroll-to-top">
+            <img src="{{ url_for('static', filename='../static/images/top.svg') }}" alt="" class="mx-auto" />
+        </button>
     </main>
     <footer class="bg-dark text-light py-3 mt-5">
         <div class="d-flex w-100 h-100 pt-5 gap-5 cover-container mx-auto">
@@ -150,5 +155,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

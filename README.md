@@ -6,16 +6,14 @@ To Do List:
 MUST HAVE:
 - Finalize login/signup form responsiveness
 
-- Finalize dashboard snapshot calculations
-
-- Add "BACK TO TOP" option on daily log and exercise pages
-
 - Conditional on login/signup page, if logged in user navs to these pages they are not presented with login/signup pages (maybe a jinja session conditional to present the dashboard page)
 
 - Clear session when cancelling form submissions (consider making a cancel/blah route for each cancel button to clear session and redirect appropriately)
 
+- Finalize readme
+
 NICE TO HAVE:
-- Try using the {% include "htmlfilenamehere" %} for calendar and footer
+- Try using the {% include "htmlfilenamehere" %} for calendar, scroll to top, and footer
 
 - Add light/dark mode toggle to Account page
 

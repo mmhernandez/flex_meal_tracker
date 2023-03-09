@@ -55,9 +55,6 @@ def show_dashboard():
     if "id" in session:
         wm_stats = daily_log.DailyLog.get_weight_measurement_delta({"id": session["id"]})
         exercise_stats = daily_log.DailyLog.get_exercise_percent({"id": session["id"]})
-        
-        print(f'wm_stats = {wm_stats}')
-        print(f'exercise_stats = {exercise_stats}')
 
         return render_template("dashboard.html", wm=wm_stats, exercise=exercise_stats)
     return redirect("/")
