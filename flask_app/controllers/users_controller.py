@@ -56,10 +56,32 @@ def show_dashboard():
     if "id" in session:
         print("trying to render template")
         # pull in user's calculated info and pass to page
+        
         return render_template("dashboard.html")
     print("being redirected :()")
     return redirect("/")
 
+@app.route("/excersie")
+def show_exercise():
+    if "id" in session:
+        pass
+    # EXERCISE INSPO API
+    # https://api-ninjas.com/profile
+    
+    # import requests
+
+    # muscle = 'biceps'
+    # api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
+    # response = requests.get(api_url, headers={'X-Api-Key': 'YOUR_API_KEY'})
+    # if response.status_code == requests.codes.ok:
+    #     print(response.text)
+    # else:
+    #     print("Error:", response.status_code, response.text)
+
+
+    # API KEY: t7/NdZxSywmrfbmtsPJatw==gDNIQ5EbW62OBoGz
+    # send email using python: https://youtu.be/g_j6ILT-X0k
+    return redirect("/")
 
 # ACCOUNT
 @app.route("/account")
