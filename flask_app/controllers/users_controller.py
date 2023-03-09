@@ -1,7 +1,7 @@
 from flask_app import app   
 from flask import render_template, session, redirect, request
 from flask_app.models import user
-
+import requests
 
 @app.route("/")
 def home():
@@ -52,36 +52,42 @@ def sign_up():
 # DASHBOARD
 @app.route("/dashboard")
 def show_dashboard():
-    print("I'm in the dashboard route")
     if "id" in session:
-        print("trying to render template")
         # pull in user's calculated info and pass to page
         
         return render_template("dashboard.html")
-    print("being redirected :()")
     return redirect("/")
 
-@app.route("/excersie")
-def show_exercise():
+@app.route("/exercise", methods=["POST"])
+def get_exercise_data():
     if "id" in session:
-        pass
-    # EXERCISE INSPO API
-    # https://api-ninjas.com/profile
-    
-    # import requests
+        if request.form["muscle"] == 'Any':
+            muscle = False
+        else:
+            muscle = request.form["muscle"]
 
-    # muscle = 'biceps'
-    # api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
-    # response = requests.get(api_url, headers={'X-Api-Key': 'YOUR_API_KEY'})
-    # if response.status_code == requests.codes.ok:
-    #     print(response.text)
-    # else:
-    #     print("Error:", response.status_code, response.text)
+        if muscle:
+            api_url = f'https://api.api-ninjas.com/v1/exercises?muscle={muscle}'
+        else:
+            api_url = 'https://api.api-ninjas.com/v1/exercises'
 
+        api_response = requests.get(api_url, headers={'X-Api-Key': 't7/NdZxSywmrfbmtsPJatw==gDNIQ5EbW62OBoGz'})
+        if api_response.status_code == requests.codes.ok:
+            response_list = api_response.json()
+            print(response_list)
+        else:
+            print("Error:", api_response.status_code, api_response.text)
 
-    # API KEY: t7/NdZxSywmrfbmtsPJatw==gDNIQ5EbW62OBoGz
-    # send email using python: https://youtu.be/g_j6ILT-X0k
+        return render_template("exercises.html", exercise_list=response_list)
     return redirect("/")
+
+@app.route("/email/exercises")
+def email_exercises():
+    if "id" in session:
+        # send email using python: https://youtu.be/g_j6ILT-X0k
+        return redirect("/dashboard")
+    return redirect("/")
+
 
 # ACCOUNT
 @app.route("/account")

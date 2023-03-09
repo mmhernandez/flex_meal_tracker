@@ -151,7 +151,31 @@
             <h2 class="pb-2 border-bottom-tan">Exercise</h2>
             <p class="mt-3 fs-5">Need help with reaching your daily exercise goals? Check out the options below to access a comprehensive list of thousands of exercises targeting every major muscle group! </p>
             
-            
+            <form action="/exercise" method="post">
+                <div class="w-25 mb-3">
+                    <label for="muscle" class="form-label">Muscle Group</label>
+                    <select class="form-select" name="muscle" aria-label="Muscle" required>
+                        <option selected>Any</option>
+                        <option value="abdominals">Abs</option>
+                        <option value="abductors">Outher Thigh</option>
+                        <option value="adductors">Inner Thigh</option>
+                        <option value="biceps">Biceps</option>
+                        <option value="calves">Calves</option>
+                        <option value="chest">Chest</option>
+                        <option value="forearms">Forearms</option>
+                        <option value="glutes">Glutes</option>
+                        <option value="hamstrings">Hamstrings</option>
+                        <option value="lats">Lats</option>
+                        <option value="lower_back">Lower Back</option>
+                        <option value="middle_back">Middle Back</option>
+                        <option value="neck">Neck</option>
+                        <option value="quadriceps">Quadriceps</option>
+                        <option value="traps">Traps</option>
+                        <option value="triceps">Triceps</option>
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-tan text-white" value="Get Exercises">
+            </form>
 
         </div>
     </main>

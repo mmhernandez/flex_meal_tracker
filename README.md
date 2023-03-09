@@ -19,8 +19,6 @@ NICE TO HAVE:
 
 - Conditional on login/signup page, if logged in user navs to these pages they are not presented with login/signup pages (maybe a jinja session conditional to present the dashboard page)
 
-- Consider using M/F sex selection in the account to present info on the dashboard (use an API with AJAX to pull in helpful articles or motivational stuff and place on the dashboard)
-
 - Turn "?" help text into alert/pop up with password requirements (might look better HTML formatted)
 
 - Clear session when cancelling form submissions (consider making a cancel/blah route for each cancel button to clear session and redirect appropriately)
