@@ -212,6 +212,36 @@ class DailyLog:
         return log
 
     @classmethod
+    def get_weight_measurement_delta(cls, data):
+        query = '''
+            SELECT U.starting_weight - DL.weight AS weight_delta,
+                (starting_bust - bust) + (starting_waist - waist) + (starting_abdomen - abdomen) + (starting_hips - hips) + (starting_right_arm - right_arm) + (starting_left_arm - left_arm) + (starting_right_thigh - right_thigh) + (starting_left_thigh - left_thigh) + (starting_right_calf - right_calf) + (starting_left_calf - left_calf)  AS measurement_delta
+            FROM daily_logs DL
+            INNER JOIN users U ON DL.user_id = U.id
+            WHERE U.id = %(id)s
+            ORDER BY date DESC
+            LIMIT 1;
+        '''
+        results = connectToMySQL(db).query_db(query, data)
+        if len(results) < 1:
+            return False
+        return results
+
+    @classmethod
+    def get_exercise_percent(cls, data):
+        query = '''
+            SELECT (SUM(exercise) / COUNT(DL.id)) * 100 as percent_exercise
+            FROM daily_logs DL
+            INNER JOIN users U ON DL.user_id = U.id
+            WHERE U.id = %(id)s;
+        '''
+        results = connectToMySQL(db).query_db(query, data)
+        print(results[0]["percent_exercise"])
+        if not results[0]["percent_exercise"]:
+            return False
+        return results
+
+    @classmethod
     def insert_blank_for_meal(cls, data):
         query = '''
             INSERT INTO daily_logs (date, user_id)

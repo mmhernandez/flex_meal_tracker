@@ -1,6 +1,6 @@
 from flask_app import app   
 from flask import render_template, session, redirect, request
-from flask_app.models import user
+from flask_app.models import user, daily_log
 import requests
 
 @app.route("/")
@@ -53,9 +53,13 @@ def sign_up():
 @app.route("/dashboard")
 def show_dashboard():
     if "id" in session:
-        # pull in user's calculated info and pass to page
+        wm_stats = daily_log.DailyLog.get_weight_measurement_delta({"id": session["id"]})
+        exercise_stats = daily_log.DailyLog.get_exercise_percent({"id": session["id"]})
         
-        return render_template("dashboard.html")
+        print(f'wm_stats = {wm_stats}')
+        print(f'exercise_stats = {exercise_stats}')
+
+        return render_template("dashboard.html", wm=wm_stats, exercise=exercise_stats)
     return redirect("/")
 
 @app.route("/exercise", methods=["POST"])

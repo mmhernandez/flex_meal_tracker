@@ -91,7 +91,11 @@
                 <div class="col">
                     <div class="bg-stat-img-2 card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg">
                         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Dropped ## inches</h2>
+                            {% if wm %}   
+                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Dropped {{wm[0]["weight_delta"]|round}} inches</h2>
+                            {% else %}
+                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Dropped 0 inches</h2>
+                            {% endif %}
                             <ul class="d-flex list-unstyled mt-auto">
                                 <li class="me-auto text-light">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
@@ -109,7 +113,11 @@
                 <div class="col">
                     <div class="bg-stat-img-1 card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg">
                     <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Over ## lbs lost</h2>
+                        {% if wm %}
+                            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Over {{wm[0]["measurement_delta"]|round}} lbs lost</h2>
+                        {% else %}
+                            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">0 lbs lost</h2>
+                        {% endif %}
                         <ul class="d-flex list-unstyled mt-auto">
                             <li class="me-auto">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
@@ -127,7 +135,11 @@
                 <div class="col">
                     <div class="bg-stat-img-3 card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg">
                     <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">%% Consistency with Daily Exercise</h2>
+                        {% if exercise %}
+                            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{exercise[0]["percent_exercise"]|round}}% Daily Exercise Goal</h2>
+                        {% else %}
+                            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">0% Daily Exercise Goal</h2>
+                        {% endif %}
                         <ul class="d-flex list-unstyled mt-auto">
                             <li class="me-auto">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
