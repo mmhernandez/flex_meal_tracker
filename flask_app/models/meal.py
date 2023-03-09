@@ -57,6 +57,33 @@ class Meal:
         return is_valid
     
     @classmethod
+    def get_daily_summary(cls, data):
+        query = '''
+            SELECT SUM(proteins) as total_proteins,
+                SUM(fats) as total_fats,
+                SUM(fruits) as total_fruits,
+                SUM(vegetables) as total_vegetables
+            FROM meals
+            WHERE daily_log_id = %(daily_log_id)s;
+        '''
+        results = connectToMySQL(db).query_db(query, data)
+        if results[0]["total_proteins"] == None and results[0]["total_fats"] == None and results[0]["total_fruits"] == None and results[0]["total_vegetables"] == None:
+            return False
+        return results
+    
+    @classmethod
+    def is_meal_by_log(cls, data):
+        query = '''
+            SELECT * 
+            FROM meals
+            WHERE daily_log_id = %(id)s;
+        '''
+        results = connectToMySQL(db).query_db(query, data)
+        if len(results) < 1:
+            return False
+        return True
+
+    @classmethod
     def insert_meal_details(cls, data):
         query = '''
             INSERT INTO meals (daily_log_id, meal_type, details, proteins, fats, fruits, vegetables)
@@ -79,16 +106,9 @@ class Meal:
         connectToMySQL(db).query_db(query, data)
 
     @classmethod
-    def get_daily_summary(cls, data):
+    def delete_meals(cls, data):
         query = '''
-            SELECT SUM(proteins) as total_proteins,
-                SUM(fats) as total_fats,
-                SUM(fruits) as total_fruits,
-                SUM(vegetables) as total_vegetables
-            FROM meals
-            WHERE daily_log_id = %(daily_log_id)s;
+            DELETE FROM meals
+            WHERE daily_log_id = %(id)s;
         '''
-        results = connectToMySQL(db).query_db(query, data)
-        if results[0]["total_proteins"] == None and results[0]["total_fats"] == None and results[0]["total_fruits"] == None and results[0]["total_vegetables"] == None:
-            return False
-        return results
+        connectToMySQL(db).query_db(query, data)

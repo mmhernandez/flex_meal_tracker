@@ -29,7 +29,7 @@ class DailyLog:
         self.right_calf = data["right_calf"]
         self.left_calf = data["left_calf"]
         self.user_id = data["user_id"]
-        self.user = None
+        # self.user = None
         self.meals = []
         self.meal_details_flag = None
         self.daily_checks_flag = None
@@ -212,6 +212,14 @@ class DailyLog:
         return log
 
     @classmethod
+    def insert_blank_for_meal(cls, data):
+        query = '''
+            INSERT INTO daily_logs (date, user_id)
+            VALUES (%(date)s, %(user_id)s);
+        '''
+        return connectToMySQL(db).query_db(query, data)
+    
+    @classmethod
     def insert_daily_checks(cls, data):
         query = '''
             INSERT INTO daily_logs (date, flex_daily_bonus, exercise, water, user_id)
@@ -240,14 +248,6 @@ class DailyLog:
         connectToMySQL(db).query_db(query, data)
 
     @classmethod
-    def insert_blank_for_meal(cls, data):
-        query = '''
-            INSERT INTO daily_logs (date, user_id)
-            VALUES (%(date)s, %(user_id)s);
-        '''
-        return connectToMySQL(db).query_db(query, data)
-
-    @classmethod
     def update_weights_measurements(cls, data):
         query = '''
             UPDATE daily_logs
@@ -263,5 +263,15 @@ class DailyLog:
                 right_calf = %(right_calf)s,
                 left_calf = %(left_calf)s
             WHERE id = %(id)s
+        '''
+        connectToMySQL(db).query_db(query, data)
+
+    @classmethod
+    def delete_daily_checks(cls, data):
+        if meal.Meal.is_meal_by_log(data):
+            meal.Meal.delete_meals(data)
+        query = '''
+            DELETE FROM daily_logs
+            WHERE id = %(id)s;
         '''
         connectToMySQL(db).query_db(query, data)

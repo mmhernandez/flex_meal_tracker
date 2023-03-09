@@ -86,6 +86,16 @@ def daily_checks_update(date):
     return redirect("/")
 
 
+# DAILY CHECKS DELETE
+@app.route("/daily_checks/delete/<date>")
+def daily_checks_delete(date):
+    if "id" in session:
+        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date, "user_id": session["id"]})
+        daily_log.DailyLog.delete_daily_checks({"id": daily_log_id})
+        return redirect(f'/daily_tracker/{date}')
+    return redirect("/")
+
+
 # WEIGHTS & MEASUREMENTS ADD/EDIT
 @app.route("/weight_measurements/add/<date>")
 def weights_measurements_add(date):
