@@ -123,16 +123,22 @@ def meal_details_action(date):
         if is_breakast_valid and is_lunch_valid and is_dinner_valid and is_snack_valid:
             if daily_log_id:
                 breakfast_meal_info["daily_log_id"] = daily_log_id
-                meal.Meal.update_meal_details(breakfast_meal_info)
-
                 lunch_meal_info["daily_log_id"] = daily_log_id
-                meal.Meal.update_meal_details(lunch_meal_info) 
-
                 dinner_meal_info["daily_log_id"] = daily_log_id
-                meal.Meal.update_meal_details(dinner_meal_info)
-
                 snack_meal_info["daily_log_id"] = daily_log_id
-                meal.Meal.update_meal_details(snack_meal_info)
+
+                daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
+                if daily_log_info.meals:
+                    meal.Meal.update_meal_details(breakfast_meal_info)
+                    meal.Meal.update_meal_details(lunch_meal_info) 
+                    meal.Meal.update_meal_details(dinner_meal_info)
+                    meal.Meal.update_meal_details(snack_meal_info)
+                
+                else:
+                    meal.Meal.insert_meal_details(breakfast_meal_info)
+                    meal.Meal.insert_meal_details(lunch_meal_info)
+                    meal.Meal.insert_meal_details(dinner_meal_info) 
+                    meal.Meal.insert_meal_details(snack_meal_info)
                 
                 temp = session["id"]
                 session.clear()

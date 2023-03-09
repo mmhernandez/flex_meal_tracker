@@ -89,7 +89,6 @@ class Meal:
             WHERE daily_log_id = %(daily_log_id)s;
         '''
         results = connectToMySQL(db).query_db(query, data)
-        print(results[0]["total_proteins"])
         if results[0]["total_proteins"] == None and results[0]["total_fats"] == None and results[0]["total_fruits"] == None and results[0]["total_vegetables"] == None:
             return False
         return results

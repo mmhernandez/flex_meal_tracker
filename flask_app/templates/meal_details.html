@@ -354,12 +354,12 @@
                             </div>
                         </div>
                         {% with messages = get_flashed_messages(category_filter = ["snack"])%}
-                                {% if messages %}
-                                    {% for msg in messages %}
-                                        <p class="text-danger text-center rounded py-2 my-2" style="background-color:#F5DADF">{{msg}}</p>
-                                    {% endfor %}
-                                {% endif %}
-                            {% endwith %}
+                            {% if messages %}
+                                {% for msg in messages %}
+                                    <p class="text-danger text-center rounded py-2 my-2" style="background-color:#F5DADF">{{msg}}</p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
                     </div>
                 </div>
             </div>
