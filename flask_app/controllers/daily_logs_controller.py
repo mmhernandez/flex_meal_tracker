@@ -1,5 +1,5 @@
 from flask_app import app
-from flask import render_template, session, redirect, request
+from flask import render_template, session, redirect, request, jsonify
 from datetime import datetime
 from flask_app.models import daily_log, meal
 
@@ -8,6 +8,7 @@ from flask_app.models import daily_log, meal
 @app.route("/daily_tracker/<date>")
 def daily_tracker(date):
     if "id" in session:
+        print(f'date formatted properly = {date}')
         date_obj = datetime.strptime(date, '%Y-%m-%d')
         daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date, "user_id": session["id"]})
         if daily_log_id:
@@ -19,6 +20,20 @@ def daily_tracker(date):
         return render_template("daily_tracker.html", day=date_obj, log_info=daily_log_info, sums=summary_info)
     return redirect("/")
 
+@app.route("/calendar_builder/<month>/<day>/<year>")
+def daily_tracker_date_check(month, day, year):
+    if "id" in session:
+        check = False
+        date = f'{year}-{month}-{day}'
+        date_obj = datetime.strptime(date, '%Y-%m-%d')
+        # print(date_obj)
+
+        daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date_obj, "user_id": session["id"]})
+
+        if daily_log_id:
+            check = True
+        return jsonify(result=check)
+    return redirect("/")
 
 # DAILY CHECKS ADD/EDIT
 @app.route("/daily_checks/add/<date>")

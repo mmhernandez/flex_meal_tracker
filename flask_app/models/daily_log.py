@@ -236,7 +236,6 @@ class DailyLog:
             WHERE U.id = %(id)s;
         '''
         results = connectToMySQL(db).query_db(query, data)
-        print(results[0]["percent_exercise"])
         if not results[0]["percent_exercise"]:
             return False
         return results

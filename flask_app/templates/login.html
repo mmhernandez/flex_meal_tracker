@@ -7,23 +7,22 @@
     <title>Flex Program</title>
 
     <!-- styling -->
-    <link rel="stylesheet" href="../static/css/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
 
     <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../static/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../static/images/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='images/favicon/site.webmanifest') }}">
 </head>
 <body>
     <section class="hero">
         <div class="d-flex justify-content-end align-items-start">
-            <a href="/sign_up" class="btn btn-lg btn-outline-light my-3">Sign up</a>
-            <a href="" class="btn btn-lg btn-dark my-3 ms-2 me-5">Log in</a>
+            <a href="/sign_up" class="btn btn-outline-light my-3">Sign up</a>
+            <a href="" class="btn btn-dark my-3 ms-2 me-5">Log in</a>
         </div>
-        <div class="container mx-auto px-5 py-3 my-5 bg-light rounded shadow w-25">
-    <!-- NEED TO MAKE THIS FROM RESPONSIVE -->
+        <div class="container flx-login mx-auto px-5 py-3 my-5 bg-light rounded shadow">
             <h1 class="my-5 text-center">Welcome back!</h1>
             <form action="/login" method="post">
                 {% with messages = get_flashed_messages(category_filter = ["login"])%}
@@ -52,7 +51,7 @@
 
     <footer class="bg-dark text-light py-3">
         <div class="d-flex w-100 h-100 pt-5 gap-5 cover-container mx-auto align-items-center">
-            <img src="../static/images/MH-logo-light.png" alt="" class="fload-md-start footer-logo">
+            <img src="{{ url_for('static', filename='images/MH-logo-light.png') }}" alt="" class="fload-md-start footer-logo">
             <p>Created with &#9825 by Melissa Hernandez</p>
             </div>
         </div>

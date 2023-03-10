@@ -103,21 +103,21 @@
                                 <div class="d-flex gap-1 meal-items-block">
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="breakfast_proteins" class="form-control" value="{{log_info.meals[0]['proteins']}}">
+                                            <input type="number" step="0.01" name="breakfast_proteins" class="form-control" value="{{log_info.meals[0]['proteins']}}">
                                         {% elif "breakfast_details" in session %}
-                                            <input type="number" name="breakfast_proteins" class="form-control" value="{{session['breakfast_proteins']}}">
+                                            <input type="number" step="0.01" name="breakfast_proteins" class="form-control" value="{{session['breakfast_proteins']}}">
                                         {% else %}
-                                            <input type="number" name="breakfast_proteins" class="form-control">
+                                            <input type="number" step="0.01" name="breakfast_proteins" class="form-control">
                                         {% endif %}
                                         <label for="proteins" class="form-label">Proteins (oz)</label>
                                     </div>
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="breakfast_fats" class="form-control" value="{{log_info.meals[0]['fats']}}">
+                                            <input type="number" step="0.01" name="breakfast_fats" class="form-control" value="{{log_info.meals[0]['fats']}}">
                                         {% elif "breakfast_details" in session %}
-                                            <input type="number" name="breakfast_fats" class="form-control" value="{{session['breakfast_fats']}}">
+                                            <input type="number" step="0.01" name="breakfast_fats" class="form-control" value="{{session['breakfast_fats']}}">
                                         {% else %}
-                                            <input type="number" name="breakfast_fats" class="form-control">
+                                            <input type="number" step="0.01" name="breakfast_fats" class="form-control">
                                         {% endif %}
                                         <label for="fats" class="form-label">Fats (serving)</label>
                                     </div>
@@ -125,21 +125,21 @@
                                 <div class="d-flex gap-1 meal-items-block">
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="breakfast_fruits" class="form-control" value="{{log_info.meals[0]['fruits']}}">
+                                            <input type="number" step="0.01" name="breakfast_fruits" class="form-control" value="{{log_info.meals[0]['fruits']}}">
                                         {% elif "breakfast_details" in session %}
-                                            <input type="number" name="breakfast_fruits" class="form-control" value="{{session['breakfast_fruits']}}">
+                                            <input type="number" step="0.01" name="breakfast_fruits" class="form-control" value="{{session['breakfast_fruits']}}">
                                         {% else %}
-                                            <input type="number" name="breakfast_fruits" class="form-control">
+                                            <input type="number" step="0.01" name="breakfast_fruits" class="form-control">
                                         {% endif %}
                                         <label for="fruits" class="form-label">Fruits (qty)</label>
                                     </div>
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="breakfast_vegetables" class="form-control" value="{{log_info.meals[0]['vegetables']}}">
+                                            <input type="number" step="0.01" name="breakfast_vegetables" class="form-control" value="{{log_info.meals[0]['vegetables']}}">
                                         {% elif "breakfast_details" in session %}
-                                            <input type="number" name="breakfast_vegetables" class="form-control" value="{{session['breakfast_vegetables']}}">
+                                            <input type="number" step="0.01" name="breakfast_vegetables" class="form-control" value="{{session['breakfast_vegetables']}}">
                                         {% else %}
-                                            <input type="number" name="breakfast_vegetables" class="form-control">
+                                            <input type="number" step="0.01" name="breakfast_vegetables" class="form-control">
                                         {% endif %}
                                         <label for="vegetables" class="form-label">Veggies (qty)</label>
                                     </div>
@@ -172,21 +172,21 @@
                                 <div class="d-flex gap-1 meal-items-block">
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="lunch_proteins" class="form-control" value="{{log_info.meals[1]['proteins']}}">
+                                            <input type="number" step="0.01" name="lunch_proteins" class="form-control" value="{{log_info.meals[1]['proteins']}}">
                                         {% elif "lunch_details" in session %}
-                                            <input type="number" name="lunch_proteins" class="form-control" value="{{session['lunch_proteins']}}">
+                                            <input type="number" step="0.01" name="lunch_proteins" class="form-control" value="{{session['lunch_proteins']}}">
                                         {% else %}
-                                            <input type="number" name="lunch_proteins" class="form-control">
+                                            <input type="number" step="0.01" name="lunch_proteins" class="form-control">
                                         {% endif %}
                                         <label for="proteins" class="form-label">Proteins (oz)</label>
                                     </div>
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="lunch_fats" class="form-control" value="{{log_info.meals[1]['fats']}}">
+                                            <input type="number" step="0.01" name="lunch_fats" class="form-control" value="{{log_info.meals[1]['fats']}}">
                                         {% elif "lunch_details" in session %}
-                                            <input type="number" name="lunch_fats" class="form-control" value="{{session['lunch_fats']}}">
+                                            <input type="number" step="0.01" name="lunch_fats" class="form-control" value="{{session['lunch_fats']}}">
                                         {% else %}
-                                            <input type="number" name="lunch_fats" class="form-control">
+                                            <input type="number" step="0.01" name="lunch_fats" class="form-control">
                                         {% endif %}
                                         <label for="fats" class="form-label">Fats (serving)</label>
                                     </div>
@@ -194,21 +194,21 @@
                                 <div class="d-flex gap-1 meal-items-block">
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="lunch_fruits" class="form-control" value="{{log_info.meals[1]['fruits']}}">
+                                            <input type="number" step="0.01" name="lunch_fruits" class="form-control" value="{{log_info.meals[1]['fruits']}}">
                                         {% elif "lunch_details" in session %}
-                                            <input type="number" name="lunch_fruits" class="form-control" value="{{session['lunch_fruits']}}">
+                                            <input type="number" step="0.01" name="lunch_fruits" class="form-control" value="{{session['lunch_fruits']}}">
                                         {% else %}
-                                            <input type="number" name="lunch_fruits" class="form-control">
+                                            <input type="number" step="0.01" name="lunch_fruits" class="form-control">
                                         {% endif %}
                                         <label for="fruits" class="form-label">Fruits (qty)</label>
                                     </div>
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="lunch_vegetables" class="form-control" value="{{log_info.meals[1]['vegetables']}}">
+                                            <input type="number" step="0.01" name="lunch_vegetables" class="form-control" value="{{log_info.meals[1]['vegetables']}}">
                                         {% elif "lunch_details" in session %}
-                                            <input type="number" name="lunch_vegetables" class="form-control" value="{{session['lunch_vegetables']}}">
+                                            <input type="number" step="0.01" name="lunch_vegetables" class="form-control" value="{{session['lunch_vegetables']}}">
                                         {% else %}
-                                            <input type="number" name="lunch_vegetables" class="form-control">
+                                            <input type="number" step="0.01" name="lunch_vegetables" class="form-control">
                                         {% endif %}
                                         <label for="vegetables" class="form-label">Veggies (qty)</label>
                                     </div>
@@ -241,21 +241,21 @@
                                 <div class="d-flex gap-1 meal-items-block">
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="dinner_proteins" class="form-control" value="{{log_info.meals[2]['proteins']}}">
+                                            <input type="number" step="0.01" name="dinner_proteins" class="form-control" value="{{log_info.meals[2]['proteins']}}">
                                         {% elif "dinner_details" in session %}
-                                            <input type="number" name="dinner_proteins" class="form-control" value="{{session['dinner_proteins']}}">
+                                            <input type="number" step="0.01" name="dinner_proteins" class="form-control" value="{{session['dinner_proteins']}}">
                                         {% else %}
-                                            <input type="number" name="dinner_proteins" class="form-control">
+                                            <input type="number" step="0.01" name="dinner_proteins" class="form-control">
                                         {% endif %}
                                         <label for="proteins" class="form-label">Proteins (oz)</label>
                                     </div>
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="dinner_fats" class="form-control" value="{{log_info.meals[2]['fats']}}">
+                                            <input type="number" step="0.01" name="dinner_fats" class="form-control" value="{{log_info.meals[2]['fats']}}">
                                         {% elif "dinner_details" in session %}
-                                            <input type="number" name="dinner_fats" class="form-control" value="{{session['dinner_fats']}}">
+                                            <input type="number" step="0.01" name="dinner_fats" class="form-control" value="{{session['dinner_fats']}}">
                                         {% else %}
-                                            <input type="number" name="dinner_fats" class="form-control">
+                                            <input type="number" step="0.01" name="dinner_fats" class="form-control">
                                         {% endif %}
                                         <label for="fats" class="form-label">Fats (serving)</label>
                                     </div>
@@ -263,21 +263,21 @@
                                 <div class="d-flex gap-1 meal-items-block">
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="dinner_fruits" class="form-control" value="{{log_info.meals[2]['fruits']}}">
+                                            <input type="number" step="0.01" name="dinner_fruits" class="form-control" value="{{log_info.meals[2]['fruits']}}">
                                         {% elif "dinner_details" in session %}
-                                            <input type="number" name="dinner_fruits" class="form-control" value="{{session['dinner_fruits']}}">
+                                            <input type="number" step="0.01" name="dinner_fruits" class="form-control" value="{{session['dinner_fruits']}}">
                                         {% else %}
-                                            <input type="number" name="dinner_fruits" class="form-control">
+                                            <input type="number" step="0.01" name="dinner_fruits" class="form-control">
                                         {% endif %}
                                         <label for="fruits" class="form-label">Fruits (qty)</label>
                                     </div>
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="dinner_vegetables" class="form-control" value="{{log_info.meals[2]['vegetables']}}">
+                                            <input type="number" step="0.01" name="dinner_vegetables" class="form-control" value="{{log_info.meals[2]['vegetables']}}">
                                         {% elif "dinner_details" in session %}
-                                            <input type="number" name="dinner_vegetables" class="form-control" value="{{session['dinner_vegetables']}}">
+                                            <input type="number" step="0.01" name="dinner_vegetables" class="form-control" value="{{session['dinner_vegetables']}}">
                                         {% else %}
-                                            <input type="number" name="dinner_vegetables" class="form-control">
+                                            <input type="number" step="0.01" name="dinner_vegetables" class="form-control">
                                         {% endif %}
                                         <label for="vegetables" class="form-label">Veggies (qty)</label>
                                     </div>
@@ -310,21 +310,21 @@
                                 <div class="d-flex gap-1 meal-items-block">
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="snack_proteins" class="form-control" value="{{log_info.meals[3]['proteins']}}">
+                                            <input type="number" step="0.01" name="snack_proteins" class="form-control" value="{{log_info.meals[3]['proteins']}}">
                                         {% elif "snack_details" in session %}
-                                            <input type="number" name="snack_proteins" class="form-control" value="{{session['snack_proteins']}}">
+                                            <input type="number" step="0.01" name="snack_proteins" class="form-control" value="{{session['snack_proteins']}}">
                                         {% else %}
-                                            <input type="number" name="snack_proteins" class="form-control">
+                                            <input type="number" step="0.01" name="snack_proteins" class="form-control">
                                         {% endif %}
                                         <label for="proteins" class="form-label">Proteins (oz)</label>
                                     </div>
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="snack_fats" class="form-control" value="{{log_info.meals[3]['fats']}}">
+                                            <input type="number" step="0.01" name="snack_fats" class="form-control" value="{{log_info.meals[3]['fats']}}">
                                         {% elif "snack_details" in session %}
-                                            <input type="number" name="snack_fats" class="form-control" value="{{session['snack_fats']}}">
+                                            <input type="number" step="0.01" name="snack_fats" class="form-control" value="{{session['snack_fats']}}">
                                         {% else %}
-                                            <input type="number" name="snack_fats" class="form-control">
+                                            <input type="number" step="0.01" name="snack_fats" class="form-control">
                                         {% endif %}
                                         <label for="fats" class="form-label">Fats (serving)</label>
                                     </div>
@@ -332,21 +332,21 @@
                                 <div class="d-flex gap-1 meal-items-block">
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="snack_fruits" class="form-control" value="{{log_info.meals[3]['fruits']}}">
+                                            <input type="number" step="0.01" name="snack_fruits" class="form-control" value="{{log_info.meals[3]['fruits']}}">
                                         {% elif "snack_details" in session %}
-                                            <input type="number" name="snack_fruits" class="form-control" value="{{session['snack_fruits']}}">
+                                            <input type="number" step="0.01" name="snack_fruits" class="form-control" value="{{session['snack_fruits']}}">
                                         {% else %}
-                                            <input type="number" name="snack_fruits" class="form-control">
+                                            <input type="number" step="0.01" name="snack_fruits" class="form-control">
                                         {% endif %}
                                         <label for="fruits" class="form-label">Fruits (qty)</label>
                                     </div>
                                     <div class="form-floating">
                                         {% if log_info and log_info.meals %}
-                                            <input type="number" name="snack_vegetables" class="form-control" value="{{log_info.meals[3]['vegetables']}}">
+                                            <input type="number" step="0.01" name="snack_vegetables" class="form-control" value="{{log_info.meals[3]['vegetables']}}">
                                         {% elif "snack_details" in session %}
-                                            <input type="number" name="snack_vegetables" class="form-control" value="{{session['snack_vegetables']}}">
+                                            <input type="number" step="0.01" name="snack_vegetables" class="form-control" value="{{session['snack_vegetables']}}">
                                         {% else %}
-                                            <input type="number" name="snack_vegetables" class="form-control">
+                                            <input type="number" step="0.01" name="snack_vegetables" class="form-control">
                                         {% endif %}
                                         <label for="vegetables" class="form-label">Veggies (qty)</label>
                                     </div>
