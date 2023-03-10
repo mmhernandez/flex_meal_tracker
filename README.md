@@ -4,8 +4,6 @@
 To Do List:
 
 MUST HAVE:
-- Finalize login/signup form responsiveness
-
 - Conditional on login/signup page, if logged in user navs to these pages they are not presented with login/signup pages (maybe a jinja session conditional to present the dashboard page)
 
 - Clear session when cancelling form submissions (consider making a cancel/blah route for each cancel button to clear session and redirect appropriately)

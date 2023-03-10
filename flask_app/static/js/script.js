@@ -47,11 +47,8 @@ generateCalendar = (month, year) => {
                 day.classList.add('curr-date')
             }
 
-
             // is_logged = get_daily_tracker_check(curr_month, day_num, year)
-            // console.log(curr_month)
-            // console.log(day_num)
-            // console.log(year)
+            // console.log(is_logged.result)
             // if(is_logged == true) {
             //     console.log("WE HAVE A TRUE!")
             //     day.classList.add('calendar-day-logged');
@@ -62,9 +59,10 @@ generateCalendar = (month, year) => {
 }
 
 async function get_daily_tracker_check(month, day_num, year) {
-    let response = await fetch(`http://localhost:5000/calendar_builder/${month}/${day_num}/${year}`);
-    let is_already_logged = await response.json();
-    console.log(is_already_logged)
+    const response = await fetch(`http://localhost:5000/calendar_builder/${month}/${day_num}/${year}`);
+    const is_already_logged = await response.json();
+
+    // console.log(is_already_logged)
     return is_already_logged;
 }
 
@@ -76,12 +74,14 @@ async function get_daily_tracker_check(month, day_num, year) {
 //         .then((response) => { 
 //             return response.json(); 
 //         })
-//         // .then( ( data ) => { let bool = data 
-//         //     return data} )
-//         .then( data => console.log(data) )
+//         .then( ( data ) => { let bool = data 
+//             return data} )
+//         // .then( data => console.log(data) )
 //     // return data
 // }
-console.log(get_daily_tracker_check("3", "5", "2023"))
+let test;
+test = get_daily_tracker_check("3", "5", "2023")
+console.log(test)
 
 
 let month_list = calendar.querySelector('.month-list')

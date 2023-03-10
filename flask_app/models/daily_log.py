@@ -223,7 +223,7 @@ class DailyLog:
             LIMIT 1;
         '''
         results = connectToMySQL(db).query_db(query, data)
-        if len(results) < 1:
+        if not results[0]["weight_delta"] and not results[0]["measurement_delta"]:
             return False
         return results
 
