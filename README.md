@@ -22,7 +22,7 @@ Additional application features:
 * Full CRUD functionality for daily log entries
 * 
 * "Back to top" feature for each page
-* Click the GitHub and Linkedin icons in the footer to view more information
+* Click the GitHub and Linkedin icons in the footer to view more information about the app and creator
 * Features the use of CSS3 pseudo classes
 
 
