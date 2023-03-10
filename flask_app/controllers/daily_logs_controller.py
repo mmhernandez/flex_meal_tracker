@@ -32,6 +32,8 @@ def daily_tracker_date_check(month, day, year):
 
         if daily_log_id:
             check = True
+
+        print(f'check = {check}')
         return jsonify(result=check)
     return redirect("/")
 

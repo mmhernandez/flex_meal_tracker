@@ -11,7 +11,7 @@ getFebDays = (year) => {
     return isLeapYear(year) ? 29 : 28
 }
 
-generateCalendar = (month, year) => {
+generateCalendar = async (month, year) => {
     let calendar_days = calendar.querySelector('.calendar-days')
     let calendar_header_year = calendar.querySelector('#year')
     let days_of_month = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -33,7 +33,7 @@ generateCalendar = (month, year) => {
     for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
         let day = document.createElement('a')
         if (i >= first_day.getDay()) {
-            day.classList.add('calendar-day-hover')
+            // day.classList.add('calendar-day-hover')
 
             curr_month = month+1
             day_num = i - first_day.getDay() + 1
@@ -47,12 +47,10 @@ generateCalendar = (month, year) => {
                 day.classList.add('curr-date')
             }
 
-            // is_logged = get_daily_tracker_check(curr_month, day_num, year)
-            // console.log(is_logged.result)
-            // if(is_logged == true) {
-            //     console.log("WE HAVE A TRUE!")
-            //     day.classList.add('calendar-day-logged');
-            // }
+            let {result:is_logged} = await get_daily_tracker_check(curr_month, day_num, year)
+            if(is_logged == true) {
+                day.classList.add('calendar-day-logged');
+            }
         }
         calendar_days.appendChild(day)
     }
@@ -61,28 +59,8 @@ generateCalendar = (month, year) => {
 async function get_daily_tracker_check(month, day_num, year) {
     const response = await fetch(`http://localhost:5000/calendar_builder/${month}/${day_num}/${year}`);
     const is_already_logged = await response.json();
-
-    // console.log(is_already_logged)
     return is_already_logged;
 }
-
-// function get_daily_tracker_check(month, day_num, year) {
-//     fetch(`http://localhost:5000/calendar_builder/${month}/${day_num}/${year}`)
-//         // .then( response => response.json() )
-//         // .then( data => console.log(data) )
-//         // .then( data => { return data } )
-//         .then((response) => { 
-//             return response.json(); 
-//         })
-//         .then( ( data ) => { let bool = data 
-//             return data} )
-//         // .then( data => console.log(data) )
-//     // return data
-// }
-let test;
-test = get_daily_tracker_check("3", "5", "2023")
-console.log(test)
-
 
 let month_list = calendar.querySelector('.month-list')
 
