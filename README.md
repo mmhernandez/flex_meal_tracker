@@ -66,16 +66,10 @@ Figma |  VSCode  |  Git
 ## To Do List:
 
 MUST HAVE:
-- Clear session when cancelling form submissions (consider making a cancel/blah route for each cancel button to clear session and redirect appropriately)
-
-- Finalize readme
-
-
-NICE TO HAVE:
 - Add light/dark mode toggle to Account page
 
 - Upon sign-up, redirect to Account Page with banner/alert to setup initial weight/measurements (only present to user if this data doesn't exist in the db yet)
 
-
+- Finalize readme
 
 

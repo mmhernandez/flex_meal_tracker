@@ -189,6 +189,15 @@ def update_account():
             return redirect("/account/edit")
     return redirect("/")
 
+@app.route("/account/cancel/edit")
+def cancel_edit_account():
+    if "id" in session:
+        temp = session["id"]
+        session.clear()
+        session["id"] = temp
+        return redirect("/account")
+    return redirect("/")
+
 
 # LOGOUT
 @app.route("/logout")

@@ -32,13 +32,13 @@
         <form action="/daily_checks/action/{{day.strftime('%Y-%m-%d')}}" method="post">
             <div class="container flx-pg mx-auto px-5 py-3 my-5 bg-white rounded shadow">
                 {% if log_info and log_info.daily_checks_flag == "Yes" %}
-                    <h1 class="text-tan fw-bolder text-center mt-4">Edit Daily Checks</h1>
+                    <h1 class="text-tan fw-bolder text-center mt-4">Update Daily Checks</h1>
                 {% else %}
                     <h1 class="text-tan fw-bolder text-center mt-4">Add Daily Checks</h1>
                 {% endif %}
                 <p class="text-tan mt-2 text-center fs-5">for {{day.strftime('%b %d, %Y')}}</p>
                 <div class="d-flex justify-content-end py-4 border-bottom-tan">
-                    <a href="/daily_tracker/{{day.strftime('%Y-%m-%d')}}" class="btn btn-secondary mt-4 text-end me-2">Cancel</a>
+                    <a href="/daily_checks/action/cancel/{{day.strftime('%Y-%m-%d')}}" class="btn btn-secondary mt-4 text-end me-2">Cancel</a>
                     <input type="submit" value="Save" class="btn btn-tan mt-4 text-end">
                 </div>
                 <div class="mt-4">

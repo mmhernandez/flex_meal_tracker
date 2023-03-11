@@ -33,6 +33,7 @@ def daily_tracker_date_check(month, day, year):
         return jsonify(result=check)
     return redirect("/")
 
+
 # DAILY CHECKS ADD/EDIT
 @app.route("/daily_checks/add/<date>")
 def daily_checks_add(date):
@@ -98,6 +99,14 @@ def daily_checks_update(date):
         return render_template("daily_checks.html", day=date_obj, log_info=daily_log_info)
     return redirect("/")
 
+@app.route("/daily_checks/action/cancel/<date>")
+def daily_checks_action_cancel(date):
+    if "id" in session:
+        temp = session["id"]
+        session.clear()
+        session["id"] = temp
+        return redirect(f"/daily_tracker/{date}")
+    return redirect("/")
 
 # DAILY CHECKS DELETE
 @app.route("/daily_checks/delete/<date>")
@@ -214,3 +223,11 @@ def weights_measurements_edit(date):
         return render_template("weight_measurements.html", day=date_obj, log_info=daily_log_info)
     return redirect("/")
 
+@app.route("/weight_measurements/action/cancel/<date>")
+def weights_measurements_action_cancel(date):
+    if "id" in session:
+        temp = session["id"]
+        session.clear()
+        session["id"] = temp
+        return redirect(f"/daily_tracker/{date}")
+    return redirect("/")

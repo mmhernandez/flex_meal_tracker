@@ -199,3 +199,13 @@ def meal_details_update(date):
         daily_log_info = daily_log.DailyLog.get_all_by_id({"id": daily_log_id})
         return render_template("meal_details.html", day=date_obj, log_info=daily_log_info)
     return redirect("/")
+
+@app.route("/meal_details/action/cancel/<date>")
+def meal_details_action_cancel(date):
+    if "id" in session:
+        temp = session["id"]
+        session.clear()
+        session["id"] = temp
+        return redirect(f"/daily_tracker/{date}")
+    return redirect("/")
+
