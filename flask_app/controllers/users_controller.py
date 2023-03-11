@@ -5,12 +5,16 @@ import requests
 
 @app.route("/")
 def home():
+    if "id" in session:
+        return redirect("/dashboard")
     return render_template("home.html")
 
 
 # LOGIN AND SIGN UP
 @app.route("/log_in")
 def login_page():
+    if "id" in session:
+        return redirect("/dashboard")
     return render_template("login.html")
 
 @app.route("/login", methods=["POST"])
@@ -27,6 +31,8 @@ def login():
 
 @app.route("/sign_up")
 def signup_page():
+    if "id" in session:
+        return redirect("/dashboard")
     return render_template("signup.html")
 
 @app.route("/signup", methods=["POST"])

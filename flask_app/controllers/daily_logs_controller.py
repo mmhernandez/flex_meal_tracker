@@ -26,14 +26,10 @@ def daily_tracker_date_check(month, day, year):
         check = False
         date = f'{year}-{month}-{day}'
         date_obj = datetime.strptime(date, '%Y-%m-%d')
-        # print(date_obj)
 
         daily_log_id = daily_log.DailyLog.get_id_by_date({"date": date_obj, "user_id": session["id"]})
-
         if daily_log_id:
             check = True
-
-        print(f'check = {check}')
         return jsonify(result=check)
     return redirect("/")
 
