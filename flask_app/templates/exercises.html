@@ -31,9 +31,10 @@
     <main>
         <section class="container flx-pg mx-auto px-5 py-3 my-5 bg-white rounded shadow">
             <h1 class="text-tan fw-bolder text-center mt-4">Exercises</h1>
+            <p class="text-tan mt-2 text-center fst-italic">Exercises are uniquely generated each time. If you like what you see, send these exercises to your email!</p>
             <div class="d-flex justify-content-end py-4 border-bottom-tan">
                 <a href="/dashboard" class="btn btn-secondary mt-2 text-end me-2">Back</a>
-                <!-- <a href="email/exercises" class="btn btn-tan mt-4 text-end">Email to Me</a> -->
+                <a href="/email/exercises" class="btn btn-tan mt-2 text-end">Email to Me</a>
             </div>
             <div class="container mt-4">
                 {% for each in exercise_list %}

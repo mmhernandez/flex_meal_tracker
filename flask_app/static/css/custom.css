@@ -47,9 +47,16 @@
     text-shadow: 0 .05rem .1rem rgba(115, 114, 114, 0.5);
     box-shadow: inset 0 0 5rem rgba(115, 114, 114, 0.5);
 }
+.bg-light {
+    background-color: #f8f9fa !important;
+}
 
-.bg-primary { background-color: #4f4b42 !important; }
-.text-primary { color: #4f4b42 !important; }
+.bg-dark {
+    background-color: #212529 !important;
+}
+
+/* .bg-primary { background-color: #4f4b42 !important; } */
+/* .text-primary { color: #4f4b42 !important; }
 .btn-outline-primary {
     color: #4f4b42;
     border-color: #4f4b42;
@@ -58,7 +65,7 @@
     color: var(--light);
     background-color: #4f4b42;
     border-color: #4f4b42;
-}
+} */
 
 .bg-secondary { background-color: #B3A494 !important; }
 .text-secondary { color: #B3A494 !important; }

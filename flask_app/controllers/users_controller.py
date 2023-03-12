@@ -2,6 +2,9 @@ from flask_app import app
 from flask import render_template, session, redirect, request
 from flask_app.models import user, daily_log
 import requests
+from email.message import EmailMessage
+import ssl
+import smtplib
 
 @app.route("/")
 def home():
@@ -92,6 +95,30 @@ def get_exercise_data():
 def email_exercises():
     if "id" in session:
         # send email using python: https://youtu.be/g_j6ILT-X0k
+        email_sender = 'flexmealtracker@gmail.com'
+        email_password = 'dfkckfavyazvgrkx'
+        #App password: dfkckfavyazvgrkx
+        #Email password: -q)+T,8~x9Lq6^)?Qe*8
+        
+        #create get_email_by_id method to get the email address
+        email_recipient = ''
+
+        subject = ''
+        body = '''
+
+        '''
+
+        em = EmailMessage()
+        em["From"] = email_sender
+        em["To"] = email_recipient
+        em["Subject"] = subject
+        em.set_content(body)
+
+        context = ssl.create_default_context()
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+            smtp.login(email_sender, email_password)
+            smtp.sendmail(email_sender, email_recipient, em.as_string())
+
         return redirect("/dashboard")
     return redirect("/")
 

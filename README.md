@@ -44,6 +44,7 @@ Flask dependencies:
 
 * PyMySQL
 * Bcrypt
+---
 
 ## Tech Used
 
@@ -61,15 +62,5 @@ Other Tools
 Figma |  VSCode  |  Git
 :---:  |  :---:  |  :---:  
 ![figma logo](https://skillicons.dev/icons?i=figma "Figma logo")  | ![vscode logo](https://skillicons.dev/icons?i=vscode "VSCode logo") |  ![git logo](https://skillicons.dev/icons?i=git "Git logo") 
-
-
-## To Do List:
-
-MUST HAVE:
-- Add light/dark mode toggle to Account page
-
-- Upon sign-up, redirect to Account Page with banner/alert to setup initial weight/measurements (only present to user if this data doesn't exist in the db yet)
-
-- Finalize readme
 
 
