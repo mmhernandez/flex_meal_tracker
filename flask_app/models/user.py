@@ -228,6 +228,16 @@ class User:
         return results[0]["id"]
 
     @classmethod
+    def get_email_by_id(cls, data):
+        query = '''
+            SELECT email
+            FROM users
+            WHERE id = %(id)s;
+        '''
+        results = connectToMySQL(db).query_db(query, data)
+        return results[0]["email"]
+
+    @classmethod
     def get_pw_by_email(cls, data):
         # returns a dictionary with the user's pw
         query = '''
