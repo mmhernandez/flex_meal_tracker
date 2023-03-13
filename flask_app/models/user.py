@@ -18,7 +18,7 @@ class User:
         self.last_name = data["last_name"]
         self.email = data["email"]
         self.password = data["password"]
-        self.sex = data["sex"]
+        self.age = data["age"]
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
         self.starting_weight = data["starting_weight"]
@@ -274,14 +274,13 @@ class User:
 
     @classmethod
     def update(cls, data):
-
         if "email" in data:
             query = '''
                 UPDATE users
                 SET first_name = %(first_name)s,
                     last_name = %(last_name)s,
                     email = %(email)s,
-                    sex = %(sex)s,
+                    age = %(age)s,
                     starting_weight = %(weight)s,
                     starting_bust = %(bust)s,
                     starting_waist = %(waist)s,
@@ -296,11 +295,11 @@ class User:
                 WHERE id = %(id)s;
             '''
         else:
-                query = '''
+            query = '''
                 UPDATE users
                 SET first_name = %(first_name)s,
                     last_name = %(last_name)s,
-                    sex = %(sex)s,
+                    age = %(age)s,
                     starting_weight = %(weight)s,
                     starting_bust = %(bust)s,
                     starting_waist = %(waist)s,

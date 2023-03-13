@@ -29,7 +29,6 @@ class DailyLog:
         self.right_calf = data["right_calf"]
         self.left_calf = data["left_calf"]
         self.user_id = data["user_id"]
-        # self.user = None
         self.meals = []
         self.meal_details_flag = None
         self.daily_checks_flag = None

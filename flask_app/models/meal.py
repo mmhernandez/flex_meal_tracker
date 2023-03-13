@@ -22,6 +22,11 @@ class Meal:
     def validate_meal(data):
         is_valid = True
 
+        #meal details validation
+        if len(data["details"]) > 1000:
+            flash("Meal details cannot exceed 1000 characters", f'{data["meal_type"]}_details')
+            is_valid = False
+
         #proteins validation
         if not number_regex.match(str(data["proteins"])):
             flash("Invalid proteins", data["meal_type"])

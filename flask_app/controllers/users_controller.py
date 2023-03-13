@@ -152,7 +152,7 @@ def update_account():
             "id": session["id"],
             "first_name": request.form["first_name"],
             "last_name": request.form["last_name"],
-            "sex": request.form["sex"],
+            "age": request.form["age"],
             "weight": request.form["weight"],
             "bust": request.form["bust"],
             "waist": request.form["waist"],
@@ -177,8 +177,8 @@ def update_account():
                 session.pop("last_name")
             if "email" in session:
                 session.pop("email")
-            if "sex" in session:
-                session.pop("sex")
+            if "age" in session:
+                session.pop("age")
             if "weight" in session:
                 session.pop("weight")
             if "bust" in session:
@@ -206,7 +206,7 @@ def update_account():
         else:
             session["first_name"] = account_info["first_name"]
             session["last_name"] = account_info["last_name"]
-            session["sex"] = account_info["sex"]
+            session["age"] = account_info["age"]
             session["weight"] = account_info["weight"]
             session["bust"] = account_info["bust"]
             session["waist"] = account_info["waist"]

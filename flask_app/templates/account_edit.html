@@ -85,47 +85,147 @@
                             {% endif %}
                         {% endwith %}
                     </div>
-                    <label for="sex" class="mb-2">Sex</label>
+                    <label for="age" class="mb-2">Age</label>
                     <div>
-                        {% if "sex" in session %}
-                            {% if session["sex"] == 0 %}
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="sex" value="0" checked>
-                                <label class="form-check-label" for="0">Male</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="sex" value="1">
-                                <label class="form-check-label" for="1">Female</label>
-                            </div>
+                        {% if "age" in session %}
+                            {% if session["age"] == 0 %}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="0" checked>
+                                    <label class="form-check-label" for="0">Under 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="1">
+                                    <label class="form-check-label" for="1">20-39</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="2">
+                                    <label class="form-check-label" for="2">40-59 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="3">
+                                    <label class="form-check-label" for="3">60 +</label>
+                                </div>
+                            {% elif session["age"] == 1 %}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="0">
+                                    <label class="form-check-label" for="0">Under 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="1" checked>
+                                    <label class="form-check-label" for="1">20-39</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="2">
+                                    <label class="form-check-label" for="2">40-59 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="3">
+                                    <label class="form-check-label" for="3">60 +</label>
+                                </div>
+                            {% elif session["age"] == 2 %}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="0">
+                                    <label class="form-check-label" for="0">Under 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="1">
+                                    <label class="form-check-label" for="1">20-39</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="2" checked>
+                                    <label class="form-check-label" for="2">40-59 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="3">
+                                    <label class="form-check-label" for="3">60 +</label>
+                                </div>
                             {% else %}
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="sex" value="0">
-                                <label class="form-check-label" for="0">Male</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="sex" value="1" checked>
-                                <label class="form-check-label" for="1">Female</label>
-                            </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="0">
+                                    <label class="form-check-label" for="0">Under 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="1">
+                                    <label class="form-check-label" for="1">20-39</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="2">
+                                    <label class="form-check-label" for="2">40-59 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="3" checked>
+                                    <label class="form-check-label" for="3">60 +</label>
+                                </div>
                             {% endif %}
                         {% else %}
-                            {% if user.sex == 0 %}
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="sex" value="0" checked>
-                                <label class="form-check-label" for="0">Male</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="sex" value="1">
-                                <label class="form-check-label" for="1">Female</label>
-                            </div>
+                            {% if user.age == 0 %}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="0" checked>
+                                    <label class="form-check-label" for="0">Under 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="1">
+                                    <label class="form-check-label" for="1">20-39</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="2">
+                                    <label class="form-check-label" for="2">40-59 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="3">
+                                    <label class="form-check-label" for="3">60 +</label>
+                                </div>
+                            {% elif user.age == 1 %}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="0">
+                                    <label class="form-check-label" for="0">Under 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="1" checked>
+                                    <label class="form-check-label" for="1">20-39</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="2">
+                                    <label class="form-check-label" for="2">40-59 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="3">
+                                    <label class="form-check-label" for="3">60 +</label>
+                                </div>
+                            {% elif user.age == 2 %}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="0">
+                                    <label class="form-check-label" for="0">Under 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="1">
+                                    <label class="form-check-label" for="1">20-39</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="2" checked>
+                                    <label class="form-check-label" for="2">40-59 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="3">
+                                    <label class="form-check-label" for="3">60 +</label>
+                                </div>
                             {% else %}
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="sex" value="0">
-                                <label class="form-check-label" for="0">Male</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="sex" value="1" checked>
-                                <label class="form-check-label" for="1">Female</label>
-                            </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="0">
+                                    <label class="form-check-label" for="0">Under 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="1">
+                                    <label class="form-check-label" for="1">20-39</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="2">
+                                    <label class="form-check-label" for="2">40-59 20</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="age" value="3" checked>
+                                    <label class="form-check-label" for="3">60 +</label>
+                                </div>
                             {% endif %}
                         {% endif %}
                     </div>
