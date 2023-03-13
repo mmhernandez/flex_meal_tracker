@@ -84,7 +84,6 @@ def get_exercise_data():
         api_response = requests.get(api_url, headers={'X-Api-Key': 't7/NdZxSywmrfbmtsPJatw==gDNIQ5EbW62OBoGz'})
         if api_response.status_code == requests.codes.ok:
             response_list = api_response.json()
-            print(response_list)
         else:
             print("Error:", api_response.status_code, api_response.text)
 
@@ -102,6 +101,16 @@ def email_exercises():
         email_recipient = user.User.get_email_by_id({"id": session["id"]})
         subject = 'Exercise List'
 
+        ordered_form_data = []
+        #loop through request form in chunks of 10, to group like data together
+        #start at 0, then 10, then 20, etc, until 40 (since each exercise has 5 data points)
+        chunk = 0
+        while chunk <= 40:
+            for i in range (chunk, 10):
+                ordered_form_data.append(request.form[0])
+            chunk += 10
+
+        print(ordered_form_data)
         body = '''
             
         '''
