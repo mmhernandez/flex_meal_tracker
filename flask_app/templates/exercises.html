@@ -29,17 +29,14 @@
         </div>
     </header>
     <main>
-        <form action="/email/exercises" method="post" class="container flx-pg mx-auto px-5 py-3 my-5 bg-white rounded shadow">
+        <section action="/email/exercises" method="post" class="container flx-pg mx-auto px-5 py-3 my-5 bg-white rounded shadow">
             <h1 class="text-tan fw-bolder text-center mt-4">Exercises</h1>
-            <p class="text-tan mt-2 text-center fst-italic">Exercises are uniquely generated each time. If you like what you see, send these exercises to your email!</p>
             <div class="d-flex justify-content-end py-4 border-bottom-tan">
                 <a href="/dashboard" class="btn btn-secondary mt-2 text-end me-2">Back</a>
-                <input type="submit" value="Email to Me" class="btn btn-tan mt-2 text-end">
             </div>
             <div class="container mt-4">
                 {% for each in exercise_list %}
                     <h3 class="mb-2">Exercise #{{loop.index}}: {{each["name"]}}</h3>
-                    <input type="hidden" name="exercise_name" value="Exercise #{{loop.index}}: {{each['name']}}">
                     <table class="table w-75 mx-auto">
                         <thead>
                             <tr>
@@ -51,18 +48,15 @@
                         <tbody>
                             <tr>
                                 <td>{{each['equipment'].capitalize()}}</td>
-                                <input type="hidden" name="equipment" value="{{each['equipment'].capitalize()}}">
                                 <td>{{each['muscle'].capitalize()}}</td>
-                                <input type="hidden" name="muscle_group" value="{{each['muscle'].capitalize()}}">
                                 <td>{{each['difficulty'].capitalize()}}</td>
-                                <input type="hidden" name="difficulty" value="{{each['difficulty'].capitalize()}}">
                             </tr>
                         </tbody>
                     </table>
                     <p class="mt-3 mb-5">{{each['instructions']}}</p> 
                 {% endfor %}
             </div>
-        </form>
+        </section>
 
         <!-- SCROLL TO TOP -->
         {% include "template_scroll_top.html" %}

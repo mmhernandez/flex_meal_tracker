@@ -90,45 +90,6 @@ def get_exercise_data():
         return render_template("exercises.html", exercise_list=response_list)
     return redirect("/")
 
-@app.route("/email/exercises", methods=["POST"])
-def email_exercises():
-    if "id" in session:
-        print(request.form)
-
-        # send email using python: https://youtu.be/g_j6ILT-X0k
-        email_sender = 'flexmealtracker@gmail.com'
-        email_password = 'dfkckfavyazvgrkx'  #Email password: flexPython88
-        email_recipient = user.User.get_email_by_id({"id": session["id"]})
-        subject = 'Exercise List'
-
-        ordered_form_data = []
-        #loop through request form in chunks of 10, to group like data together
-        #start at 0, then 10, then 20, etc, until 40 (since each exercise has 5 data points)
-        chunk = 0
-        while chunk <= 40:
-            for i in range (chunk, 10):
-                ordered_form_data.append(request.form[0])
-            chunk += 10
-
-        print(ordered_form_data)
-        body = '''
-            
-        '''
-
-        # em = EmailMessage()
-        # em["From"] = email_sender
-        # em["To"] = email_recipient
-        # em["Subject"] = subject
-        # em.set_content(body)
-
-        # context = ssl.create_default_context()
-        # with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-        #     smtp.login(email_sender, email_password)
-        #     smtp.sendmail(email_sender, email_recipient, em.as_string())
-
-        return redirect("/dashboard")
-    return redirect("/")
-
 
 # ACCOUNT
 @app.route("/account")
