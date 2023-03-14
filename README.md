@@ -5,7 +5,7 @@ This app is used as a digital meal tracker. It was designed specifically for tra
 
 **This app is not created by, affiliated with, or supported by Red Mountain Weightloss*
 
-**Live link:** [tbd](tbd)
+**Live link:** [http://meal-tracker.com/](http://meal-tracker.com/)
 
 
 ## Features
@@ -31,7 +31,7 @@ Additional application features:
 Live verson:
 
 View the live version of this game, found at the link below.
-[Flex Meal Tracker](tbd)
+[Flex Meal Tracker](http://meal-tracker.com/)
 
 From the repo:
 
@@ -44,6 +44,7 @@ Flask dependencies:
 
 * PyMySQL
 * Bcrypt
+* Requests
 ---
 
 ## Tech Used
