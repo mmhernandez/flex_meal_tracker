@@ -134,47 +134,47 @@ def weights_measurements_action(date):
             "user_id": session["id"]
         }
         if len(request.form["weight"]) < 1:
-            wm_info["weight"] = 0
+            wm_info["weight"] = None
         else: 
             wm_info["weight"] = request.form["weight"]
         if len(request.form["bust"]) < 1:
-            wm_info["bust"] = 0
+            wm_info["bust"] = None
         else: 
             wm_info["bust"] = request.form["bust"]
         if len(request.form["waist"]) < 1:
-            wm_info["waist"] = 0
+            wm_info["waist"] = None
         else: 
             wm_info["waist"] = request.form["waist"]
         if len(request.form["abdomen"]) < 1:
-            wm_info["abdomen"] = 0
+            wm_info["abdomen"] = None
         else: 
             wm_info["abdomen"] = request.form["abdomen"]
         if len(request.form["hips"]) < 1:
-            wm_info["hips"] = 0
+            wm_info["hips"] = None
         else: 
             wm_info["hips"] = request.form["hips"]
         if len(request.form["right_arm"]) < 1:
-            wm_info["right_arm"] = 0
+            wm_info["right_arm"] = None
         else: 
             wm_info["right_arm"] = request.form["right_arm"]
         if len(request.form["left_arm"]) < 1:
-            wm_info["left_arm"] = 0
+            wm_info["left_arm"] = None
         else: 
             wm_info["left_arm"] = request.form["left_arm"]
         if len(request.form["right_thigh"]) < 1:
-            wm_info["right_thigh"] = 0
+            wm_info["right_thigh"] = None
         else: 
             wm_info["right_thigh"] = request.form["right_thigh"]
         if len(request.form["left_thigh"]) < 1:
-            wm_info["left_thigh"] = 0
+            wm_info["left_thigh"] = None
         else: 
             wm_info["left_thigh"] = request.form["left_thigh"]
         if len(request.form["right_calf"]) < 1:
-            wm_info["right_calf"] = 0
+            wm_info["right_calf"] = None
         else: 
             wm_info["right_calf"] = request.form["right_calf"]
         if len(request.form["left_calf"]) < 1:
-            wm_info["left_calf"] = 0
+            wm_info["left_calf"] = None
         else: 
             wm_info["left_calf"] = request.form["left_calf"]
 

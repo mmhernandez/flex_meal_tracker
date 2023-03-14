@@ -54,92 +54,103 @@ class DailyLog:
         is_valid = True
 
         #weight validation
-        if not number_regex.match(str(data["weight"])):
+        if data["weight"] and not number_regex.match(data["weight"]):
             flash("Invalid weight", "weight")
             is_valid = False
-        elif float(data["weight"]) > 700:
-            flash("Invalid weight, cannot exceed 700lbs", "weight")
-            is_valid = False
+        if data["weight"] and len(data["weight"]) > 1:
+            if float(data["weight"]) > 700:
+                flash("Invalid weight, cannot exceed 700lbs", "weight")
+                is_valid = False
 
         #bust validation
-        if not number_regex.match(str(data["bust"])):
+        if data["bust"] and not number_regex.match(data["bust"]):
             flash("Invalid bust measurement", "bust")
             is_valid = False
-        elif float(data["bust"]) > 70:
-            flash("Invalid bust measurement, cannot exceed 70 inches", "bust")
-            is_valid = False
+        if data["bust"] and len(data["bust"]) > 1:
+            if float(data["bust"]) > 70:
+                flash("Invalid bust measurement, cannot exceed 70 inches", "bust")
+                is_valid = False
 
         #waist validation
-        if not number_regex.match(str(data["waist"])):
+        if data["waist"] and not number_regex.match(data["waist"]):
             flash("Invalid waist measurement", "waist")
             is_valid = False
-        elif float(data["waist"]) > 100:
-            flash("Invalid waist measurement, cannot exceed 100 inches", "waist")
-            is_valid = False
+        if data["waist"] and len(data["waist"]) > 1:
+            if float(data["waist"]) > 100:
+                flash("Invalid waist measurement, cannot exceed 100 inches", "waist")
+                is_valid = False
 
         #abdomen validation
-        if not number_regex.match(str(data["abdomen"])):
+        if data["abdomen"] and not number_regex.match(data["abdomen"]):
             flash("Invalid abdomen measurement", "abdomen")
             is_valid = False
-        elif float(data["abdomen"]) > 100:
-            flash("Invalid abdomen measurement, cannot exceed 100 inches", "abdomen")
-            is_valid = False
+        if data["abdomen"] and len(data["abdomen"]) > 1:
+            if float(data["abdomen"]) > 100:
+                flash("Invalid abdomen measurement, cannot exceed 100 inches", "abdomen")
+                is_valid = False
 
         #hips validation
-        if not number_regex.match(str(data["hips"])):
+        if data["hips"] and not number_regex.match(data["hips"]):
             flash("Invalid hip measurement", "hips")
             is_valid = False
-        elif float(data["hips"]) > 100:
-            flash("Invalid hip measurement, cannot exceed 100 inches", "hips")
-            is_valid = False
+        if data["hips"] and len(data["hips"]) > 1:
+            if float(data["hips"]) > 100:
+                flash("Invalid hip measurement, cannot exceed 100 inches", "hips")
+                is_valid = False
         
         #right arm validation
-        if not number_regex.match(str(data["right_arm"])):
+        if data["right_arm"] and not number_regex.match(data["right_arm"]):
             flash("Invalid arm measurement", "right_arm")
             is_valid = False
-        elif float(data["right_arm"]) > 30:
-            flash("Invalid arm measurement, cannot exceed 30 inches", "right_arm")
-            is_valid = False
+        if data["right_arm"] and len(data["right_arm"]) > 1:
+            if float(data["right_arm"]) > 30:
+                flash("Invalid arm measurement, cannot exceed 30 inches", "right_arm")
+                is_valid = False
 
         #left arm validation
-        if not number_regex.match(str(data["left_arm"])):
+        if data["left_arm"] and not number_regex.match(data["left_arm"]):
             flash("Invalid arm measurement", "left_arm")
             is_valid = False
-        elif float(data["left_arm"]) > 30:
-            flash("Invalid arm measurement, cannot exceed 30 inches", "left_arm")
-            is_valid = False
+        if data["left_arm"] and len(data["left_arm"]) > 1:
+            if float(data["left_arm"]) > 30:
+                flash("Invalid arm measurement, cannot exceed 30 inches", "left_arm")
+                is_valid = False
 
         #right thigh validation
-        if not number_regex.match(str(data["right_thigh"])):
+        if data["right_thigh"] and not number_regex.match(data["right_thigh"]):
             flash("Invalid thigh measurement", "right_thigh")
             is_valid = False
-        elif float(data["right_thigh"]) > 40:
-            flash("Invalid thigh measurement, cannot exceed 40 inches", "right_thigh")
-            is_valid = False
+        if data["right_thigh"] and len(data["right_thigh"]) > 1:
+            if float(data["right_thigh"]) > 40:
+                flash("Invalid thigh measurement, cannot exceed 40 inches", "right_thigh")
+                is_valid = False
 
         #left thigh validation
-        if not number_regex.match(str(data["left_thigh"])):
+        if data["left_thigh"] and not number_regex.match(data["left_thigh"]):
             flash("Invalid thigh measurement", "left_thigh")
             is_valid = False
-        elif float(data["left_thigh"]) > 40:
-            flash("Invalid thigh measurement, cannot exceed 40 inches", "left_thigh")
-            is_valid = False
+        if data["left_thigh"] and len(data["left_thigh"]) > 1:
+            if float(data["left_thigh"]) > 40:
+                flash("Invalid thigh measurement, cannot exceed 40 inches", "left_thigh")
+                is_valid = False
 
         #right calf validation
-        if not number_regex.match(str(data["right_calf"])):
+        if data["right_calf"] and not number_regex.match(data["right_calf"]):
             flash("Invalid calf measurement", "right_calf")
             is_valid = False
-        elif float(data["right_calf"]) > 40:
-            flash("Invalid calf measurement, cannot exceed 40 inches", "right_calf")
-            is_valid = False
+        if data["right_calf"] and len(data["right_calf"]) > 1:
+            if float(data["right_calf"]) > 40:
+                flash("Invalid calf measurement, cannot exceed 40 inches", "right_calf")
+                is_valid = False
 
         #left calf validation
-        if not number_regex.match(str(data["left_calf"])):
+        if data["left_calf"] and not number_regex.match(data["left_calf"]):
             flash("Invalid calf measurement", "left_calf")
             is_valid = False
-        elif float(data["left_calf"]) > 40:
-            flash("Invalid calf measurement, cannot exceed 40 inches", "left_calf")
-            is_valid = False
+        if data["left_calf"] and len(data["left_calf"]) > 1:
+            if float(data["left_calf"]) > 40:
+                flash("Invalid calf measurement, cannot exceed 40 inches", "left_calf")
+                is_valid = False
 
         return is_valid
     
@@ -211,21 +222,87 @@ class DailyLog:
         return log
 
     @classmethod
-    def get_weight_measurement_delta(cls, data):
+    def get_weight_delta(cls, data):
         query = '''
-            SELECT U.starting_weight - DL.weight AS weight_delta,
-                (starting_bust - bust) + (starting_waist - waist) + (starting_abdomen - abdomen) + (starting_hips - hips) + (starting_right_arm - right_arm) + (starting_left_arm - left_arm) + (starting_right_thigh - right_thigh) + (starting_left_thigh - left_thigh) + (starting_right_calf - right_calf) + (starting_left_calf - left_calf)  AS measurement_delta
+            SELECT U.starting_weight - DL.weight AS weight_delta
             FROM daily_logs DL
             INNER JOIN users U ON DL.user_id = U.id
             WHERE U.id = %(id)s
+                AND weight IS NOT NULL
             ORDER BY date DESC
             LIMIT 1;
         '''
         results = connectToMySQL(db).query_db(query, data)
-        print(f'results = {results}')
+        print(f'weight delta results = {results}')
         if len(results) < 1:
             return False
-        elif not results[0]["weight_delta"] and not results[0]["measurement_delta"]:
+        # elif not results[0]["weight_delta"]:
+        #     return False
+        return results
+    
+    @classmethod
+    def get_measurements_delta(cls, data):
+        query = '''
+            SELECT 
+                (starting_bust - DLB.bust) + (starting_waist - DLW.waist) + (starting_abdomen - DLA.abdomen) + (starting_hips - DLH.hips) + (starting_right_arm - DLRA.right_arm) + (starting_left_arm - DLLA.left_arm) + (starting_right_thigh - DLRT.right_thigh) + (starting_left_thigh - DLLT.left_thigh) + (starting_right_calf - DLRC.right_calf) + (starting_left_calf - DLLC.left_calf)  AS measurement_delta
+            FROM daily_logs DL
+            INNER JOIN users U ON DL.user_id = U.id
+            LEFT JOIN 
+                (SELECT user_id, bust 
+                FROM daily_logs 
+                WHERE bust IS NOT NULL AND user_id = %(id)s 
+                ORDER BY date DESC LIMIT 1) AS DLB ON DLB.user_id = U.id
+            LEFT JOIN 
+                (SELECT user_id, waist 
+                FROM daily_logs 
+                WHERE waist IS NOT NULL AND user_id = %(id)s 
+                ORDER BY date DESC LIMIT 1) AS DLW ON DLW.user_id = U.id
+            LEFT JOIN 
+                (SELECT user_id, abdomen 
+                FROM daily_logs 
+                WHERE abdomen IS NOT NULL AND user_id = %(id)s 
+                ORDER BY date DESC LIMIT 1) AS DLA ON DLA.user_id = U.id
+            LEFT JOIN 
+                (SELECT user_id, hips 
+                FROM daily_logs 
+                WHERE hips IS NOT NULL AND user_id = %(id)s 
+                ORDER BY date DESC LIMIT 1) AS DLH ON DLH.user_id = U.id
+            LEFT JOIN 
+                (SELECT user_id, right_arm 
+                FROM daily_logs 
+                WHERE right_arm IS NOT NULL AND user_id = %(id)s 
+                ORDER BY date DESC LIMIT 1) AS DLRA ON DLRA.user_id = U.id
+            LEFT JOIN 
+                (SELECT user_id, left_arm 
+                FROM daily_logs 
+                WHERE left_arm IS NOT NULL AND user_id = %(id)s 
+                ORDER BY date DESC LIMIT 1) AS DLLA ON DLLA.user_id = U.id
+            LEFT JOIN 
+                (SELECT user_id, right_thigh
+                FROM daily_logs 
+                WHERE right_thigh IS NOT NULL AND user_id = %(id)s 
+                ORDER BY date DESC LIMIT 1) AS DLRT ON DLRT.user_id = U.id
+            LEFT JOIN 
+                (SELECT user_id, left_thigh
+                FROM daily_logs 
+                WHERE left_thigh IS NOT NULL AND user_id = %(id)s 
+                ORDER BY date DESC LIMIT 1) AS DLLT ON DLLT.user_id = U.id
+            LEFT JOIN 
+                (SELECT user_id, right_calf
+                FROM daily_logs 
+                WHERE right_calf IS NOT NULL AND user_id = %(id)s 
+                ORDER BY date DESC LIMIT 1) AS DLRC ON DLRC.user_id = U.id
+            LEFT JOIN 
+                (SELECT user_id, left_calf
+                FROM daily_logs 
+                WHERE left_calf IS NOT NULL AND user_id = %(id)s 
+                ORDER BY date DESC LIMIT 1) AS DLLC ON DLLC.user_id = U.id
+            WHERE U.id = %(id)s
+            LIMIT 1;
+        '''
+        results = connectToMySQL(db).query_db(query, data)
+        print(f'measurements delta results = {results}')
+        if len(results) < 1:
             return False
         return results
 

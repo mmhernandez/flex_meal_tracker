@@ -114,100 +114,100 @@ class User:
             is_valid = False
 
         #weight validation
-        if not number_regex.match(data["weight"]):
+        if data["weight"] and not number_regex.match(data["weight"]):
             flash("Invalid weight", "weight")
             is_valid = False
-        if len(data["weight"]) > 1:
+        if data["weight"] and len(data["weight"]) > 1:
             if float(data["weight"]) > 700:
                 flash("Invalid weight, cannot exceed 700lbs", "weight")
                 is_valid = False
 
         #bust validation
-        if not number_regex.match(data["bust"]):
+        if data["bust"] and not number_regex.match(data["bust"]):
             flash("Invalid bust measurement", "bust")
             is_valid = False
-        if len(data["bust"]) > 1:
+        if data["bust"] and len(data["bust"]) > 1:
             if float(data["bust"]) > 70:
                 flash("Invalid bust measurement, cannot exceed 70 inches", "bust")
                 is_valid = False
 
         #waist validation
-        if not number_regex.match(data["waist"]):
+        if data["waist"] and not number_regex.match(data["waist"]):
             flash("Invalid waist measurement", "waist")
             is_valid = False
-        if len(data["waist"]) > 1:
+        if data["waist"] and len(data["waist"]) > 1:
             if float(data["waist"]) > 100:
                 flash("Invalid waist measurement, cannot exceed 100 inches", "waist")
                 is_valid = False
 
         #abdomen validation
-        if not number_regex.match(data["abdomen"]):
+        if data["abdomen"] and not number_regex.match(data["abdomen"]):
             flash("Invalid abdomen measurement", "abdomen")
             is_valid = False
-        if len(data["abdomen"]) > 1:
+        if data["abdomen"] and len(data["abdomen"]) > 1:
             if float(data["abdomen"]) > 100:
                 flash("Invalid abdomen measurement, cannot exceed 100 inches", "abdomen")
                 is_valid = False
 
         #hips validation
-        if not number_regex.match(data["hips"]):
+        if data["hips"] and not number_regex.match(data["hips"]):
             flash("Invalid hip measurement", "hips")
             is_valid = False
-        if len(data["hips"]) > 1:
+        if data["hips"] and len(data["hips"]) > 1:
             if float(data["hips"]) > 100:
                 flash("Invalid hip measurement, cannot exceed 100 inches", "hips")
                 is_valid = False
         
         #right arm validation
-        if not number_regex.match(data["right_arm"]):
+        if data["right_arm"] and not number_regex.match(data["right_arm"]):
             flash("Invalid arm measurement", "right_arm")
             is_valid = False
-        if len(data["right_arm"]) > 1:
+        if data["right_arm"] and len(data["right_arm"]) > 1:
             if float(data["right_arm"]) > 30:
                 flash("Invalid arm measurement, cannot exceed 30 inches", "right_arm")
                 is_valid = False
 
         #left arm validation
-        if not number_regex.match(data["left_arm"]):
+        if data["left_arm"] and not number_regex.match(data["left_arm"]):
             flash("Invalid arm measurement", "left_arm")
             is_valid = False
-        if len(data["left_arm"]) > 1:
+        if data["left_arm"] and len(data["left_arm"]) > 1:
             if float(data["left_arm"]) > 30:
                 flash("Invalid arm measurement, cannot exceed 30 inches", "left_arm")
                 is_valid = False
 
         #right thigh validation
-        if not number_regex.match(data["right_thigh"]):
+        if data["right_thigh"] and not number_regex.match(data["right_thigh"]):
             flash("Invalid thigh measurement", "right_thigh")
             is_valid = False
-        if len(data["right_thigh"]) > 1:
+        if data["right_thigh"] and len(data["right_thigh"]) > 1:
             if float(data["right_thigh"]) > 40:
                 flash("Invalid thigh measurement, cannot exceed 40 inches", "right_thigh")
                 is_valid = False
 
         #left thigh validation
-        if not number_regex.match(data["left_thigh"]):
+        if data["left_thigh"] and not number_regex.match(data["left_thigh"]):
             flash("Invalid thigh measurement", "left_thigh")
             is_valid = False
-        if len(data["left_thigh"]) > 1:
+        if data["left_thigh"] and len(data["left_thigh"]) > 1:
             if float(data["left_thigh"]) > 40:
                 flash("Invalid thigh measurement, cannot exceed 40 inches", "left_thigh")
                 is_valid = False
 
         #right calf validation
-        if not number_regex.match(data["right_calf"]):
+        if data["right_calf"] and not number_regex.match(data["right_calf"]):
             flash("Invalid calf measurement", "right_calf")
             is_valid = False
-        if len(data["right_calf"]) > 1:
+        if data["right_calf"] and len(data["right_calf"]) > 1:
             if float(data["right_calf"]) > 40:
                 flash("Invalid calf measurement, cannot exceed 40 inches", "right_calf")
                 is_valid = False
 
         #left calf validation
-        if not number_regex.match(data["left_calf"]):
+        if data["left_calf"] and not number_regex.match(data["left_calf"]):
             flash("Invalid calf measurement", "left_calf")
             is_valid = False
-        if len(data["left_calf"]) > 1:
+        if data["left_calf"] and len(data["left_calf"]) > 1:
             if float(data["left_calf"]) > 40:
                 flash("Invalid calf measurement, cannot exceed 40 inches", "left_calf")
                 is_valid = False

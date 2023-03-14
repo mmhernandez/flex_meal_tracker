@@ -62,10 +62,13 @@ def sign_up():
 @app.route("/dashboard")
 def show_dashboard():
     if "id" in session:
-        wm_stats = daily_log.DailyLog.get_weight_measurement_delta({"id": session["id"]})
+        weight_stats = daily_log.DailyLog.get_weight_delta({"id": session["id"]})
+        measurement_stats = daily_log.DailyLog.get_measurements_delta({"id": session["id"]})
         exercise_stats = daily_log.DailyLog.get_exercise_percent({"id": session["id"]})
 
-        return render_template("dashboard.html", wm=wm_stats, exercise=exercise_stats)
+        print(f'weight_stats = {weight_stats}')
+        print(f'measurement_stats = {measurement_stats}')
+        return render_template("dashboard.html", weight=weight_stats, measurements=measurement_stats, exercise=exercise_stats)
     return redirect("/")
 
 @app.route("/exercise", methods=["POST"])
@@ -113,56 +116,63 @@ def update_account():
             "id": session["id"],
             "first_name": request.form["first_name"],
             "last_name": request.form["last_name"],
-            "age": request.form["age"],
-            "weight": request.form["weight"],
-            "bust": request.form["bust"],
-            "waist": request.form["waist"],
-            "abdomen": request.form["abdomen"],
-            "hips": request.form["hips"],
-            "right_arm": request.form["right_arm"],
-            "left_arm": request.form["left_arm"],
-            "right_thigh": request.form["right_thigh"],
-            "left_thigh": request.form["left_thigh"],
-            "right_calf": request.form["right_calf"],
-            "left_calf": request.form["left_calf"]
+            "age": request.form["age"]
         }
+        if len(request.form["weight"]) < 1:
+            account_info["weight"] = None
+        else: 
+            account_info["weight"] = request.form["weight"]
+        if len(request.form["bust"]) < 1:
+            account_info["bust"] = None
+        else: 
+            account_info["bust"] = request.form["bust"]
+        if len(request.form["waist"]) < 1:
+            account_info["waist"] = None
+        else: 
+            account_info["waist"] = request.form["waist"]
+        if len(request.form["abdomen"]) < 1:
+            account_info["abdomen"] = None
+        else: 
+            account_info["abdomen"] = request.form["abdomen"]
+        if len(request.form["hips"]) < 1:
+            account_info["hips"] = None
+        else: 
+            account_info["hips"] = request.form["hips"]
+        if len(request.form["right_arm"]) < 1:
+            account_info["right_arm"] = None
+        else: 
+            account_info["right_arm"] = request.form["right_arm"]
+        if len(request.form["left_arm"]) < 1:
+            account_info["left_arm"] = None
+        else: 
+            account_info["left_arm"] = request.form["left_arm"]
+        if len(request.form["right_thigh"]) < 1:
+            account_info["right_thigh"] = None
+        else: 
+            account_info["right_thigh"] = request.form["right_thigh"]
+        if len(request.form["left_thigh"]) < 1:
+            account_info["left_thigh"] = None
+        else: 
+            account_info["left_thigh"] = request.form["left_thigh"]
+        if len(request.form["right_calf"]) < 1:
+            account_info["right_calf"] = None
+        else: 
+            account_info["right_calf"] = request.form["right_calf"]
+        if len(request.form["left_calf"]) < 1:
+            account_info["left_calf"] = None
+        else: 
+            account_info["left_calf"] = request.form["left_calf"]
+
         user_info = user.User.get_all_by_id({"id": session["id"]})
         if request.form["email"] != user_info.email:
             account_info["email"] == request.form["email"]   
         
         if user.User.validate_account_info(account_info):
             user.User.update(account_info)
-            if "first_name" in session:
-                session.pop("first_name")
-            if "last_name" in session:
-                session.pop("last_name")
-            if "email" in session:
-                session.pop("email")
-            if "age" in session:
-                session.pop("age")
-            if "weight" in session:
-                session.pop("weight")
-            if "bust" in session:
-                session.pop("bust")
-            if "waist" in session:
-                session.pop("waist")
-            if "abdomen" in session:
-                session.pop("abdomen")
-            if "hips" in session: 
-                session.pop("hips")
-            if "right_arm" in session:
-                session.pop("right_arm")
-            if "left_arm" in session:
-                session.pop("left_arm")
-            if "right_thigh" in session:
-                session.pop("right_thigh")
-            if "left_thigh" in session:
-                session.pop("left_thigh")
-            if "right_calf" in session:
-                session.pop("right_calf")
-            if "left_calf" in session: 
-                session.pop("left_calf")
-                
+            
+            temp = session["id"]
+            session.clear()
+            session["id"] = temp
             return redirect("/account")
         else:
             session["first_name"] = account_info["first_name"]
