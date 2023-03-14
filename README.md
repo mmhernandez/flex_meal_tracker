@@ -35,7 +35,6 @@ Flask dependencies:
 * Jinja2
 * Requests
 
----
 
 ## Tech Used
 
