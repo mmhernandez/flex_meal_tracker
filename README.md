@@ -27,24 +27,14 @@ Additional application features:
 
 
 
-## Running The Project
-Live verson:
-
-View the live version of this game, found at the link below.
-[Flex Meal Tracker](http://meal-tracker.com/)
-
-From the repo:
-
-  1. ...
-  2. ...
-  3. ...
-
 ## Dependencies
 Flask dependencies:
 
 * PyMySQL
 * Bcrypt
+* Jinja2
 * Requests
+
 ---
 
 ## Tech Used
