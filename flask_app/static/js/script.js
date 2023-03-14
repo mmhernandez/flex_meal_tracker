@@ -55,7 +55,7 @@ generateCalendar = async (month, year) => {
 }
 
 async function get_daily_tracker_check(month, day_num, year) {
-    const response = await fetch(`http://localhost:5000/calendar_builder/${month}/${day_num}/${year}`);
+    const response = await fetch(`http://meal-tracker.com/calendar_builder/${month}/${day_num}/${year}`);
     const is_already_logged = await response.json();
     return is_already_logged;
 }
