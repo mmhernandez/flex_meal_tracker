@@ -85,8 +85,6 @@ class Meal:
         '''
         results = connectToMySQL(db).query_db(query,data)
 
-        print(f'results = {results}')
-
         if results == False:
             return False
         
