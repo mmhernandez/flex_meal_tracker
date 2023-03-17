@@ -1,10 +1,10 @@
 from flask_app import app   
 from flask import render_template, session, redirect, request
 from flask_app.models import user, daily_log
-import requests
-from email.message import EmailMessage
-import ssl
-import smtplib
+# import requests
+# from email.message import EmailMessage
+# import ssl
+# import smtplib
 
 @app.route("/")
 def home():
@@ -93,6 +93,13 @@ def get_exercise_data():
         return render_template("exercises.html", exercise_list=response_list)
     return redirect("/")
 
+@app.route("/weekly_report")
+def show_weekly_report():
+    if "id" in session:
+        data = daily_log.DailyLog.get_logs_w_meals_by_date_and_user({"user_id": session["id"]})
+        
+        return render_template("reports.html", type="weekly", weekly_data=data)
+    return redirect("/")
 
 # ACCOUNT
 @app.route("/account")

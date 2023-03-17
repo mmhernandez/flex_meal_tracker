@@ -1,4 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.models import daily_log, meal
 from flask import flash
 from flask_app import app
 from flask_bcrypt import Bcrypt
@@ -32,7 +33,7 @@ class User:
         self.starting_left_thigh = data["starting_left_thigh"]
         self.starting_right_calf = data["starting_right_calf"]
         self.starting_left_calf = data["starting_left_calf"]
-        self.daily_log = None
+        self.daily_log = []
 
     @staticmethod
     def validate_user(data):
@@ -261,7 +262,7 @@ class User:
         results = connectToMySQL(db).query_db(query, data)
         results[0]["password"] = ""
         return cls(results[0])
-    
+
     @classmethod
     def insert(cls, data):
         query = '''

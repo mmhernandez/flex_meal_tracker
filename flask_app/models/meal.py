@@ -77,6 +77,25 @@ class Meal:
         return results
     
     @classmethod
+    def get_meals_by_log_id(cls, data):
+        query = '''
+            SELECT *
+            FROM meals	
+            WHERE daily_log_id = %(daily_log_id)s;
+        '''
+        results = connectToMySQL(db).query_db(query,data)
+
+        print(f'results = {results}')
+
+        if results == False:
+            return False
+        
+        meals_list = []
+        for row in results:
+            meals_list.append(cls(row))
+        return meals_list
+
+    @classmethod
     def is_meal_by_log(cls, data):
         query = '''
             SELECT * 

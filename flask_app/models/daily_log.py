@@ -222,6 +222,26 @@ class DailyLog:
         return log
 
     @classmethod
+    def get_logs_w_meals_by_date_and_user(cls, data):
+        query = '''
+            SELECT * 
+            FROM daily_logs
+            WHERE user_id = %(user_id)s
+                AND date >= DATE_ADD(CURDATE(), INTERVAL -7 DAY);  
+        '''
+        results = connectToMySQL(db).query_db(query, data)
+        
+        daily_logs_list = []
+        for row in results:
+            log_obj = cls(row)
+
+            log_obj.meals.append(meal.Meal.get_meals_by_log_id({"daily_log_id": row["id"]}))
+
+            daily_logs_list.append(log_obj)
+
+        return daily_logs_list
+
+    @classmethod
     def get_weight_delta(cls, data):
         query = '''
             SELECT U.starting_weight - DL.weight AS weight_delta
