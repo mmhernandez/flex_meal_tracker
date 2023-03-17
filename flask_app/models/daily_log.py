@@ -227,15 +227,20 @@ class DailyLog:
             SELECT * 
             FROM daily_logs
             WHERE user_id = %(user_id)s
-                AND date >= DATE_ADD(CURDATE(), INTERVAL -7 DAY);  
+                AND date >= DATE_ADD(CURDATE(), INTERVAL %(duration)s DAY);  
         '''
         results = connectToMySQL(db).query_db(query, data)
         
+        print(f'results = {results}')
+
         daily_logs_list = []
         for row in results:
             log_obj = cls(row)
 
-            log_obj.meals.append(meal.Meal.get_meals_by_log_id({"daily_log_id": row["id"]}))
+            if data["type"] == "week":
+                log_obj.meals.append(meal.Meal.get_meal_by_log_id({"daily_log_id": row["id"]}))
+            elif data["type"] == "month":
+                log_obj.meals.append(meal.Meal.get_meal_summary_by_log_id({"daily_log_id": row["id"]}))
 
             daily_logs_list.append(log_obj)
 

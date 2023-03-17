@@ -93,12 +93,21 @@ def get_exercise_data():
         return render_template("exercises.html", exercise_list=response_list)
     return redirect("/")
 
-@app.route("/weekly_report")
-def show_weekly_report():
+@app.route("/report/<type>")
+def show_report(type):
     if "id" in session:
-        data = daily_log.DailyLog.get_logs_w_meals_by_date_and_user({"user_id": session["id"]})
-        
-        return render_template("reports.html", type="weekly", weekly_data=data)
+        data = {
+            "user_id": session["id"]
+        }
+        if type == "week":
+            data["duration"] = -7
+            data["type"] = "week"
+        elif type == "month":
+            data["duration"] = -30
+            data["type"] = "month"
+        data = daily_log.DailyLog.get_logs_w_meals_by_date_and_user(data)
+
+        return render_template("reports.html", type=type, data=data)
     return redirect("/")
 
 # ACCOUNT

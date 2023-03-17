@@ -17,6 +17,10 @@ class Meal:
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
         self.daily_log_id = data["daily_log_id"]
+        self.total_proteins = None
+        self.total_fats = None
+        self.total_fruits = None
+        self.total_vegetables = None
 
     @staticmethod
     def validate_meal(data):
@@ -77,7 +81,7 @@ class Meal:
         return results
     
     @classmethod
-    def get_meals_by_log_id(cls, data):
+    def get_meal_by_log_id(cls, data):
         query = '''
             SELECT *
             FROM meals	
@@ -92,6 +96,23 @@ class Meal:
         for row in results:
             meals_list.append(cls(row))
         return meals_list
+    
+    @classmethod
+    def get_meal_summary_by_log_id(cls, data):
+        query = '''
+            SELECT SUM(proteins) as total_proteins,
+                    SUM(fats) as total_fats,
+                    SUM(fruits) as total_fruits,
+                    SUM(vegetables) as total_vegetables
+            FROM meals	
+            WHERE daily_log_id = %(daily_log_id)s;
+        '''
+        results = connectToMySQL(db).query_db(query,data)
+
+        if results == False:
+            return False
+        
+        return results
 
     @classmethod
     def is_meal_by_log(cls, data):

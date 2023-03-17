@@ -18,7 +18,7 @@
                 <div>
                     <p class="float-md-start fs-4 py-1 text-light">Flex Program</p>
                     <nav class="nav nav-masthead justify-content-center float-md-end">
-                        <a class="nav-link fw-bold py-1 px-0 me-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" >Calendar</a>
+                        <a class="nav-link fw-bold py-1 px-0 me-3 pointer" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" >Calendar</a>
                         {% include "template_calendar_modal.html" %}
                         <a class="nav-link fw-bold py-1 px-0 active" href="/dashboard">Dashboard</a>
                         <a class="nav-link fw-bold py-1 px-0" href="/account">Account</a>
@@ -29,100 +29,189 @@
         </div>
     </header>
     <main>
-        {% if type == "weekly" %}
-            <h1 class="text-tan fw-bolder text-center my-4">Detailed Weekly Report</h1>
+        {% if type == "week" %}
+            <h1 class="text-tan fw-bolder text-center my-4">Detailed Report</h1>
             <p class="text-center">A detailed report of your daily meal tracker input from the last 7 days</p>
         {% else %}
-            <h1 class="text-tan fw-bolder text-center my-4">Condensed Monthly Report</h1>
+            <h1 class="text-tan fw-bolder text-center my-4">Condensed Report</h1>
+            <p class="text-center">A condensed report of your daily meal tracker input from the last 30 days</p>
         {% endif %}
         <div class="container d-flex justify-content-end mt-4">
             <a href="/dashboard" class="btn btn-tan">Back to Dashboard</a>
         </div>
-        <table class="table table-hover container mt-5 px-4 py-5 mx-auto text-center">
-            {% if type == "weekly" %}
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Flex Daily Bonus</th>
-                        <th>30+ Min Exercise</th>
-                        <th>Glasses of Water</th>
-                        <th>Meals</th>
-                        <th>Weight</th>
-                    </tr>
-                </thead>
-                {% for each in weekly_data %}
-                    <tbody>
+        {% if type == "week" %}
+            {% if data %}
+                <table class="table table-hover table-bordered container mt-5 px-4 py-5 mx-auto text-center">
+                    <thead>
                         <tr>
-                            <td>{{each.date.strftime('%b %d, %Y')}}</td>
-                            {% if not each.flex_daily_bonus or each.flex_daily_bonus == 0 %}
-                            <td> - </td>
-                            {% else %}
-                                <td>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
-                                    </svg>
-                                </td>
-                            {% endif %}
-                            {% if not each.exercise or each.exercise == 0 %}
-                                <td> - </td>
-                            {% else %}
-                                <td>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
-                                    </svg>
-                                </td>
-                            {% endif %}
-                            {% if not each.water %}
-                                <td> - </td>
-                            {% else %}
-                                <td>{{each.water}}</td>
-                            {% endif %}
-                            <td>
-                                <table class="table table-hover">
-                                    {% if each.meals %}
-                                        {% for meal_list in each.meals %}
-                                            {% if not meal_list %}
-                                                <p> - </p>
-                                            {% else %}
-                                                <thead class="text-tan">
-                                                    <tr>
-                                                        <th>Meal</th>
-                                                        <th>Details</th>
-                                                        <th>Proteins</th>
-                                                        <th>Fats</th>
-                                                        <th>Fruits</th>
-                                                        <th>Vegetables</th>
-                                                    </tr>
-                                                </thead>
-                                                {% for each_meal in meal_list %}
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>{{each_meal.meal_type.capitalize()}}</td>
-                                                            <td>{{each_meal.details}}</td>
-                                                            <td>{{each_meal.proteins}}</td>
-                                                            <td>{{each_meal.fats}}</td>
-                                                            <td>{{each_meal.fruits}}</td>
-                                                            <td>{{each_meal.vegetables}}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                {% endfor %}
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% else %}
-                                        <thead>-</thead>
-                                    {% endif %}
-                                </table>
-                            </td>
-                            {% if not each.weight %}
-                                <td></td>
-                            {% else %}
-                                <td>{{each.weight}}</td>
-                            {% endif %}
+                            <th class="fs-4">Date</th>
+                            <th class="fs-4">Flex Daily Bonus</th>
+                            <th class="fs-4">30+ Min Exercise</th>
+                            <th class="fs-4">Glasses of Water</th>
+                            <th class="fs-4">Meals</th>
+                            <th class="fs-4">Weight</th>
                         </tr>
-                    </tbody>
-                {% endfor %}
+                    </thead>
+                    {% for each in data %}
+                        <tbody>
+                            <tr>
+                                <td>{{each.date.strftime('%b %d, %Y')}}</td>
+                                {% if not each.flex_daily_bonus or each.flex_daily_bonus == 0 %}
+                                <td></td>
+                                {% else %}
+                                    <td>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                        </svg>
+                                    </td>
+                                {% endif %}
+                                {% if not each.exercise or each.exercise == 0 %}
+                                    <td></td>
+                                {% else %}
+                                    <td>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                        </svg>
+                                    </td>
+                                {% endif %}
+                                {% if not each.water %}
+                                    <td></td>
+                                {% else %}
+                                    <td>{{each.water}}</td>
+                                {% endif %}
+                                <td>
+                                    <table class="table table-hover">
+                                        {% if each.meals %}
+                                            {% for meal_list in each.meals %}
+                                                {% if not meal_list %}
+                                                    <p></p>
+                                                {% else %}
+                                                    <thead class="text-tan">
+                                                        <tr>
+                                                            <th>Meal</th>
+                                                            <th>Details</th>
+                                                            <th>Proteins</th>
+                                                            <th>Fats</th>
+                                                            <th>Fruits</th>
+                                                            <th>Vegetables</th>
+                                                        </tr>
+                                                    </thead>
+                                                    {% for each_meal in meal_list %}
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{{each_meal.meal_type.capitalize()}}</td>
+                                                                <td>{{each_meal.details}}</td>
+                                                                <td>{{each_meal.proteins}}</td>
+                                                                <td>{{each_meal.fats}}</td>
+                                                                <td>{{each_meal.fruits}}</td>
+                                                                <td>{{each_meal.vegetables}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% else %}
+                                            <thead>-</thead>
+                                        {% endif %}
+                                    </table>
+                                </td>
+                                {% if not each.weight %}
+                                    <td></td>
+                                {% else %}
+                                    <td>{{each.weight}}</td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p class="fw-bold text-center my-5">You have no data available for this date range</p>
             {% endif %}
-        </table>
+        {% elif type == "month" %}
+            {% if data %}
+                <table class="table table-hover table-bordered container mt-5 px-4 py-5 mx-auto text-center">
+                    <thead>
+                        <tr>
+                            <th class="fs-4">Date</th>
+                            <th class="fs-4">Flex Daily Bonus</th>
+                            <th class="fs-4">30+ Min Exercise</th>
+                            <th class="fs-4">Glasses of Water</th>
+                            <th class="fs-4">Daily Summary</th>
+                            <th class="fs-4">Weight</th>
+                        </tr>
+                    </thead>
+                        {% for each in data %}
+                            <tbody>
+                                <tr>
+                                    <td>{{each.date.strftime('%b %d, %Y')}}</td>
+                                    {% if not each.flex_daily_bonus or each.flex_daily_bonus == 0 %}
+                                    <td></td>
+                                    {% else %}
+                                        <td>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                            </svg>
+                                        </td>
+                                    {% endif %}
+                                    {% if not each.exercise or each.exercise == 0 %}
+                                        <td></td>
+                                    {% else %}
+                                        <td>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                            </svg>
+                                        </td>
+                                    {% endif %}
+                                    {% if not each.water %}
+                                        <td></td>
+                                    {% else %}
+                                        <td>{{each.water}}</td>
+                                    {% endif %}
+                                    <td>
+                                        <table class="table table-hover">
+                                            {% if each.meals %}
+                                                {% for meal_list in each.meals %}
+                                                    {% if not meal_list %}
+                                                        <p></p>
+                                                    {% else %}
+                                                        <thead class="text-tan">
+                                                            <tr>
+                                                                <th>Proteins</th>
+                                                                <th>Fats</th>
+                                                                <th>Fruits</th>
+                                                                <th>Vegetables</th>
+                                                            </tr>
+                                                        </thead>
+                                                        {% for each_meal in meal_list %}
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>{{each_meal["total_proteins"]}}</td>
+                                                                    <td>{{each_meal["total_fats"]}}</td>
+                                                                    <td>{{each_meal["total_fruits"]}}</td>
+                                                                    <td>{{each_meal["total_vegetables"]}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                                <thead>-</thead>
+                                            {% endif %}
+                                        </table>
+                                    </td>
+                                    {% if not each.weight %}
+                                        <td></td>
+                                    {% else %}
+                                        <td>{{each.weight}}</td>
+                                    {% endif %}
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                </table>
+            {% else %}
+                <p class="fw-bold text-center my-5">You have no data available for this date range</p>
+            {% endif %}
+        {% endif %}
 
         <!-- SCROLL TO TOP -->
         {% include "template_scroll_top.html" %}
