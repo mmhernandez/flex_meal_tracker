@@ -1,10 +1,7 @@
 from flask_app import app   
 from flask import render_template, session, redirect, request
 from flask_app.models import user, daily_log
-# import requests
-# from email.message import EmailMessage
-# import ssl
-# import smtplib
+
 
 @app.route("/")
 def home():
