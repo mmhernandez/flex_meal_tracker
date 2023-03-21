@@ -230,8 +230,6 @@ class DailyLog:
                 AND date >= DATE_ADD(CURDATE(), INTERVAL %(duration)s DAY);  
         '''
         results = connectToMySQL(db).query_db(query, data)
-        
-        print(f'results = {results}')
 
         daily_logs_list = []
         for row in results:
@@ -261,8 +259,6 @@ class DailyLog:
         print(f'weight delta results = {results}')
         if len(results) < 1:
             return False
-        # elif not results[0]["weight_delta"]:
-        #     return False
         return results
     
     @classmethod
